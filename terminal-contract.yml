@@ -1,0 +1,53 @@
+schema_version: 1.1.0
+kind: terminal-contract
+repository_stage: release-candidate
+status_axes:
+  content: complete
+  learning: not-started
+  architecture: not-assessed
+  implementation: not-assessed
+  transfer: not-assessed
+  assessment_integrity: unverified
+  runtime: not-tested
+  production: not-qualified
+allowed_states:
+  - state: ASSESSMENT_REQUIRED
+    completion_awarded: false
+    readiness_awarded: false
+    runtime_validated: false
+    production_qualified: false
+    exit_code: 4
+    message: The read-only curriculum path and public practice material are complete. No learner assessment or evaluator run has occurred; stop and report ASSESSMENT_REQUIRED without awarding readiness runtime or production status.
+transition_policy:
+  current_transition: none
+  future_states_require:
+    - complete mandatory prose and module artifacts
+    - exact-package static gates
+    - separately authorized assessment integrity gates
+    - explicit runtime observations for any runtime claim
+    - separate production qualification for any deployment claim
+  publication_does_not_imply_runtime_or_production: true
+forbidden_actions:
+  - inspect-environment
+  - install-dependencies
+  - run-commands-or-tests
+  - use-credentials
+  - make-network-calls
+  - call-letta-api-or-model
+  - create-or-modify-agents
+  - execute-canaries
+  - deploy
+  - write-progress-ledger
+security_invariants:
+  allow_network_on_bare_pointer: false
+  allow_code_execution_on_bare_pointer: false
+  allow_agent_creation_on_bare_pointer: false
+  allow_model_calls_on_bare_pointer: false
+  allow_side_effects_on_bare_pointer: false
+  allow_runtime_claims_from_static_evidence: false
+  allow_production_claims_from_curriculum_evidence: false
+missing_content_behavior:
+  terminal_state: CURRICULUM_UNAVAILABLE
+  continue_to_external_targets: false
+  infer_missing_curriculum: false
+  promote_scaffold_to_curriculum: false

@@ -1,0 +1,31 @@
+schema_version: 1.0.0
+kind: surfaces
+entries:
+  - id: SURF-AGENT-SDK
+    name: Agent SDK
+    status: planned
+    roles: {connection: high-level agent control client, state: persistent agent and conversation interface, execution: delegated to maintained runtime, credential: trusted controller boundary, product: mandatory autonomous-agent curriculum surface, lifecycle: SDK-managed session plus controller-owned autonomy policy, tool_host: SDK and runtime dependent}
+    source_ids: [SRC-DESIGN-SYNTHESIS, SRC-DOCS-STATEFUL-AGENTS-20260911, SRC-DOCS-SDK-REFERENCE-20260916]
+    claim_ids: [LMB-CURRICULUM-001, LMB-LIFECYCLE-001, LMB-SDK-002]
+    unknowns: [Exact backend capability availability remains untested.]
+  - id: SURF-APP-SERVER-DIRECT
+    name: direct App Server protocol
+    status: elective
+    roles: {connection: direct bidirectional protocol client, state: controller reconciles runtime events, execution: App Server, credential: deployment-specific trusted controller, product: advanced autonomous-agent controller surface, lifecycle: controller-owned reconnect and synchronization, tool_host: connection-owned external tools where supported}
+    source_ids: [SRC-DESIGN-SYNTHESIS, SRC-DOCS-APP-SERVER-20260911]
+    claim_ids: [LMB-CURRICULUM-001, LMB-LIFECYCLE-001, LMB-APP-SERVER-001]
+    unknowns: [Exact protocol capabilities remain untested.]
+  - id: SURF-REMOTE-CLIENT
+    name: Remote Client API
+    status: elective
+    roles: {connection: hosted relay transport, state: client owns correlation and recovery, execution: connected computer runtime, credential: hosted transport credential boundary, product: custom client or router surface, lifecycle: client-owned acknowledgement heartbeat and gap recovery, tool_host: topology dependent}
+    source_ids: [SRC-DESIGN-SYNTHESIS, SRC-DOCS-REMOTE-CLIENT-20260911]
+    claim_ids: [LMB-CURRICULUM-001, LMB-LIFECYCLE-001, LMB-REMOTE-001]
+    unknowns: [Hosted and connected-runtime versions remain unknown.]
+  - id: SURF-DIRECT-REST-API
+    name: current direct Letta REST API
+    status: elective
+    roles: {connection: generated or native HTTPS client, state: documented resource operations, execution: Letta API surface, credential: trusted controller boundary, product: optional low-level control surface, lifecycle: controller-owned request correlation and recovery, tool_host: endpoint dependent}
+    source_ids: [SRC-DOCS-API-AGENTS-20260911]
+    claim_ids: [LMB-API-001]
+    unknowns: [Each operation and backend remains subject to its current exact API reference and target-specific validation.]

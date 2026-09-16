@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/compatibility.schema.json",
+  "oneOf": [
+    { "$ref": "#/$defs/versions" },
+    { "$ref": "#/$defs/features" },
+    { "$ref": "#/$defs/surfaces" }
+  ],
+  "$defs": {
+    "strings": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "versions": {
+      "type": "object", "additionalProperties": false, "required": ["schema_version", "kind", "entries"],
+      "properties": {
+        "schema_version": { "const": "1.0.0" }, "kind": { "const": "versions" },
+        "entries": { "type": "array", "minItems": 4, "items": { "$ref": "#/$defs/versionEntry" } }
+      }
+    },
+    "versionEntry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "status", "package", "version", "integrity", "source_repository", "source_tag", "source_commit", "relations", "source_ids", "claim_ids", "runtime_observed", "does_not_prove"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^VER-[A-Z0-9-]+$" },
+        "status": { "enum": ["exact-evidence", "unknown-not-tested"] },
+        "package": { "type": ["string", "null"] }, "version": { "type": ["string", "null"] }, "integrity": { "type": ["string", "null"] },
+        "source_repository": { "type": ["string", "null"] }, "source_tag": { "type": ["string", "null"] },
+        "source_commit": { "anyOf": [{ "type": "null" }, { "type": "string", "pattern": "^[a-f0-9]{40}$" }] },
+        "relations": { "$ref": "#/$defs/strings" }, "source_ids": { "$ref": "#/$defs/strings" }, "claim_ids": { "$ref": "#/$defs/strings" },
+        "runtime_observed": { "const": false }, "does_not_prove": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "features": {
+      "type": "object", "additionalProperties": false, "required": ["schema_version", "kind", "entries"],
+      "properties": {
+        "schema_version": { "const": "1.0.0" }, "kind": { "const": "features" },
+        "entries": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/featureEntry" } }
+      }
+    },
+    "featureEntry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "status", "surface_ids", "backends", "version_ids", "source_ids", "claim_ids", "canary_scope", "does_not_prove"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^FEAT-[A-Z0-9-]+$" }, "status": { "enum": ["planned", "unknown-not-tested"] },
+        "surface_ids": { "$ref": "#/$defs/strings" }, "backends": { "$ref": "#/$defs/strings" }, "version_ids": { "$ref": "#/$defs/strings" },
+        "source_ids": { "$ref": "#/$defs/strings" }, "claim_ids": { "$ref": "#/$defs/strings" },
+        "canary_scope": { "type": "object", "additionalProperties": false, "required": ["required", "evidence_ids"], "properties": { "required": { "type": "boolean" }, "evidence_ids": { "type": "array", "maxItems": 0 } } },
+        "does_not_prove": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "surfaces": {
+      "type": "object", "additionalProperties": false, "required": ["schema_version", "kind", "entries"],
+      "properties": {
+        "schema_version": { "const": "1.0.0" }, "kind": { "const": "surfaces" },
+        "entries": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/surfaceEntry" } }
+      }
+    },
+    "surfaceEntry": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "status", "roles", "source_ids", "claim_ids", "unknowns"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^SURF-[A-Z0-9-]+$" }, "name": { "type": "string", "minLength": 1 },
+        "status": { "enum": ["planned", "elective", "prohibited-greenfield"] },
+        "roles": { "type": "object", "additionalProperties": false, "required": ["connection", "state", "execution", "credential", "product", "lifecycle", "tool_host"], "properties": {
+          "connection": { "type": "string" }, "state": { "type": "string" }, "execution": { "type": "string" }, "credential": { "type": "string" }, "product": { "type": "string" }, "lifecycle": { "type": "string" }, "tool_host": { "type": "string" }
+        } },
+        "source_ids": { "$ref": "#/$defs/strings" }, "claim_ids": { "$ref": "#/$defs/strings" }, "unknowns": { "$ref": "#/$defs/strings" }
+      }
+    }
+  }
+}

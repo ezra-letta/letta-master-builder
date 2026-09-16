@@ -1,0 +1,5 @@
+schema_version: 1.0.0
+kind: runtime-claim-registry
+execution_authorized: false
+aggregate: none
+claims: []

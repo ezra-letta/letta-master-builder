@@ -1,0 +1,56 @@
+schema_version: 1.0.0
+id: DOS-MASTER-BUILDER-TEMPLATE
+status: template-only
+execution_authorized: false
+release_scope:
+  curriculum_release: unset
+  package_tuple: unset
+  evidence_cutoff: unset
+mission:
+  statement: unset
+  stakeholders: []
+  acceptance_criteria: []
+  prohibited_outcomes: []
+autonomy_envelope:
+  allowed_decisions: []
+  forbidden_effects: []
+  budgets: []
+  pause_stop_escalation: []
+object_ownership:
+  records: []
+topology:
+  state_host: unset
+  execution_host: unset
+  controller_host: unset
+  selected_surface: unset
+  alternatives_rejected: []
+controls:
+  records: []
+observability:
+  evidence_records: []
+failure_recovery:
+  tests: []
+  reconciliation_rules: []
+  rollback_rules: []
+improvement:
+  proposal_authority: unset
+  evaluation_authority: unset
+  promotion_authority: unset
+  monitoring_rules: []
+security_tenancy:
+  credential_owners: []
+  trust_boundaries: []
+  tenant_isolation: []
+deployment:
+  process_owners: []
+  backups: []
+  upgrade_and_rollback: []
+claims:
+  static: []
+  runtime: []
+  production: []
+open_questions: []
+attestations: []
+non_claims:
+  - A completed dossier is not proof that a runtime or external effect behaved as designed.
+  - This template does not authorize execution deployment assessment or production qualification.

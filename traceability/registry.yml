@@ -1,0 +1,21 @@
+schema_version: 1.0.0
+id: LMB-TRACEABILITY-REVISION-0-4
+status: release-candidate
+module_records:
+  - {module_id: MOD-00, path: modules/MOD-00.md, capability_ids: [CAP-EVIDENCE-RELEASES], dossier_fields: [release_scope, claims, open_questions], practicum_ids: [], synthesis_checkpoint: false}
+  - {module_id: MOD-01, path: modules/MOD-01.md, capability_ids: [], dossier_fields: [mission, autonomy_envelope], practicum_ids: [], synthesis_checkpoint: false}
+  - {module_id: MOD-02, path: modules/MOD-02.md, capability_ids: [], dossier_fields: [object_ownership, topology], practicum_ids: [], synthesis_checkpoint: false}
+  - {module_id: MOD-03, path: modules/MOD-03.md, capability_ids: [CAP-MODELS-CONFIG-SCOPE, CAP-PORTABLE-CLIENT, CAP-QUERY-PROMPT, CAP-ALTERNATIVE-SURFACES], dossier_fields: [topology, claims], practicum_ids: [], synthesis_checkpoint: true}
+  - {module_id: MOD-04, path: modules/MOD-04.md, capability_ids: [CAP-AGENT-MANAGEMENT], dossier_fields: [object_ownership, controls, failure_recovery], practicum_ids: [SCN-PROVISIONING], synthesis_checkpoint: false}
+  - {module_id: MOD-05, path: modules/MOD-05.md, capability_ids: [CAP-CONVERSATION-MANAGEMENT, CAP-SESSION-LIFETIME, CAP-TURN-STREAMING, CAP-MESSAGE-RECONCILIATION, CAP-QUEUES-ENQUEUE, CAP-RECOVERY-APPROVALS], dossier_fields: [object_ownership, controls, observability, failure_recovery], practicum_ids: [SCN-SESSION-RECOVERY], synthesis_checkpoint: true}
+  - {module_id: MOD-06, path: modules/MOD-06.md, capability_ids: [CAP-MEMFS-CONTEXT, CAP-SKILLS-LOCALITY, CAP-SHARED-REPOSITORIES], dossier_fields: [object_ownership, controls, failure_recovery], practicum_ids: [SCN-PROVISIONING], synthesis_checkpoint: false}
+  - {module_id: MOD-07, path: modules/MOD-07.md, capability_ids: [CAP-TOOLS-LOCALITY, CAP-MCP-LIFECYCLE, CAP-PERMISSIONS-APPROVALS, CAP-EFFECT-RECONCILIATION], dossier_fields: [controls, observability, failure_recovery, security_tenancy], practicum_ids: [SCN-TOOLS-EFFECTS], synthesis_checkpoint: false}
+  - {module_id: MOD-08, path: modules/MOD-08.md, capability_ids: [CAP-TRIGGERS-DELIVERY, CAP-CHANNELS, CAP-CONCURRENCY-CONSISTENCY], dossier_fields: [autonomy_envelope, controls, observability, failure_recovery], practicum_ids: [SCN-SUPERVISED-IMPROVEMENT], synthesis_checkpoint: true}
+  - {module_id: MOD-09, path: modules/MOD-09.md, capability_ids: [CAP-MULTI-AGENT], dossier_fields: [object_ownership, controls, failure_recovery], practicum_ids: [], synthesis_checkpoint: false}
+  - {module_id: MOD-10, path: modules/MOD-10.md, capability_ids: [], dossier_fields: [improvement, claims], practicum_ids: [SCN-SUPERVISED-IMPROVEMENT], synthesis_checkpoint: false}
+  - {module_id: MOD-11, path: modules/MOD-11.md, capability_ids: [CAP-SUPERVISION-PRODUCTION, CAP-AUTH-TRANSPORT-SECURITY], dossier_fields: [observability, security_tenancy, failure_recovery, claims], practicum_ids: [SCN-SUPERVISED-IMPROVEMENT], synthesis_checkpoint: true}
+  - {module_id: MOD-12, path: modules/MOD-12.md, capability_ids: [CAP-EXECUTION-TOPOLOGY], dossier_fields: [topology, deployment, security_tenancy, claims], practicum_ids: [SCN-SUPERVISED-IMPROVEMENT], synthesis_checkpoint: true}
+  - {module_id: MOD-13, path: modules/MOD-13.md, capability_ids: [CAP-AGENT-MANAGEMENT, CAP-SESSION-LIFETIME, CAP-TURN-STREAMING, CAP-MESSAGE-RECONCILIATION, CAP-QUEUES-ENQUEUE, CAP-RECOVERY-APPROVALS, CAP-TOOLS-LOCALITY, CAP-MCP-LIFECYCLE, CAP-PERMISSIONS-APPROVALS, CAP-EFFECT-RECONCILIATION, CAP-EXECUTION-TOPOLOGY, CAP-CONCURRENCY-CONSISTENCY, CAP-SUPERVISION-PRODUCTION], dossier_fields: [attestations, claims, open_questions], practicum_ids: [SCN-PROVISIONING, SCN-SESSION-RECOVERY, SCN-TOOLS-EFFECTS, SCN-SUPERVISED-IMPROVEMENT], synthesis_checkpoint: false}
+non_claims:
+  - A populated map is not evidence that module prose is factually correct or pedagogically effective.
+  - Capability coverage does not establish runtime observation learner assessment or production qualification.

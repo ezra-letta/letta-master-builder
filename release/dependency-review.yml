@@ -1,0 +1,23 @@
+schema_version: 1.0.0
+id: REL-DEPENDENCY-REVIEW-0-4
+status: publication-blocked
+reviewed_at: 2026-09-16
+scope: vertical-slice/package-lock.json installed on macOS with lifecycle scripts disabled
+lock_package_records: 391
+direct_dependencies:
+  - {package: '@letta-ai/letta-agent-sdk', version: 0.8.9, license: Apache-2.0, role: exact compile dependency}
+  - {package: typescript, version: 5.9.3, license: Apache-2.0, role: exact compiler}
+  - {package: '@types/node', version: 22.20.3, license: MIT, role: exact Node declaration baseline}
+license_counts: {MIT: 241, Apache-2.0: 56, apache-2.0: 1, BSD-3-Clause: 14, ISC: 10, BlueOak-1.0.0: 5, LGPL-3.0-or-later: 2, BSD-2-Clause: 1, 0BSD: 1, Unlicense: 1, '(MIT OR CC0-1.0)': 1, missing-package-license-field: 58}
+license_notes:
+  - The two LGPL records are platform libvips binary packages reached through sharp; dependencies are installed for compile checking and are not vendored or redistributed by this repository.
+  - Fifty-eight optional native/platform package manifests omit a package-level license field; this unresolved metadata blocks a claim of complete transitive license clearance.
+install_script_packages: ['@google/genai', '@letta-ai/letta-code', '@scarf/scarf', node-pty, protobufjs, sharp]
+install_policy: npm installation uses --ignore-scripts; no dependency lifecycle script is authorized or required for type-checking the slice.
+vulnerability_audit:
+  severity_counts: {info: 0, low: 0, moderate: 0, high: 4, critical: 0, total: 4}
+  advisory_ids: [GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c]
+  affected_packages: [sharp, '@janhapke/sharp-electron', '@letta-ai/letta-code', '@letta-ai/letta-agent-sdk']
+redistribution: false
+decision: Static local compilation may continue with lifecycle scripts disabled; publication release and any runtime execution remain blocked pending upstream remediation or accountable security and license review.
+runtime_claim: false

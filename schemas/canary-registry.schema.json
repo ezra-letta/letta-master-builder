@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://letta-master-builder.local/schemas/canary-registry.schema.json",
+  "type": "object", "additionalProperties": false, "required": ["schema_version", "execution_authorized", "runtime_evidence_ids", "canaries"],
+  "properties": {"schema_version": {"const": "1.0.0"}, "execution_authorized": {"const": false}, "runtime_evidence_ids": {"type": "array", "maxItems": 0}, "canaries": {"type": "array", "maxItems": 0}}
+}

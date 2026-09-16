@@ -1,0 +1,99 @@
+schema_version: 1.0.0
+kind: assessment-misconception-registry
+registry_id: AMR-REVISION-0-4
+status: ready-unexecuted
+execution_authorized: false
+entries:
+  - id: MIS-AUTH-001
+    domain: authority
+    critical: true
+    misconception: A successful work turn may promote its own code or award its own status.
+    expected_correction: Work execution, improvement evaluation, promotion, and status ownership are separate authorities.
+    related_failure_id: CNF-001
+  - id: MIS-SEC-001
+    domain: safety
+    critical: true
+    misconception: Credentials, budgets, and leases are safe in memory editable by the model.
+    expected_correction: Controller-owned authority and secrets must remain outside model-editable memory and cross only declared narrow boundaries.
+    related_failure_id: CNF-002
+  - id: MIS-EFFECT-001
+    domain: recovery
+    critical: true
+    misconception: A timeout means an effect failed and can be retried immediately.
+    expected_correction: A timeout creates uncertainty; reconcile by stable request and canonical external identity before any retry.
+    related_failure_id: CNF-003
+  - id: MIS-LOOP-001
+    domain: architecture
+    critical: true
+    misconception: A good autonomous agent may continue until it decides the mission is complete.
+    expected_correction: The controller enforces explicit step, time, cost, retry, effect, and failure budgets plus stop conditions.
+    related_failure_id: CNF-004
+  - id: MIS-AUTH-002
+    domain: authority
+    critical: true
+    misconception: Work already in progress may continue after lease, budget, or approval authority is lost.
+    expected_correction: Loss of authority requires a safe stop, checkpoint, and supervised recovery.
+    related_failure_id: CNF-005
+  - id: MIS-TENANCY-001
+    domain: safety
+    critical: true
+    misconception: Shared infrastructure makes cross-tenant reuse safe when the data looks relevant.
+    expected_correction: Tenant identity and authority are explicit boundaries; cross-tenant disclosure or action is prohibited without specific authority.
+    related_failure_id: CNF-006
+  - id: MIS-TOPOLOGY-001
+    domain: evidence
+    critical: true
+    misconception: Passing in Local establishes parity with Cloud, hosted, browser, or direct protocol topologies.
+    expected_correction: Each topology needs separately scoped evidence; one topology cannot establish another.
+    related_failure_id: CNF-007
+  - id: MIS-EVIDENCE-001
+    domain: evidence
+    critical: true
+    misconception: Types, compilation, source inspection, or fixtures prove live runtime behavior.
+    expected_correction: Static and project-fixture evidence prove only their named axes; live behavior requires a scoped runtime observation.
+    related_failure_id: CNF-008
+  - id: MIS-ROLLBACK-001
+    domain: recovery
+    critical: true
+    misconception: Strong pre-release evaluation makes rollback optional.
+    expected_correction: Promotion remains reversible and requires an executable rollback path with retained evidence.
+    related_failure_id: CNF-009
+  - id: MIS-IMPROVEMENT-001
+    domain: evaluation
+    critical: true
+    misconception: Reflection, dreaming, a commit, or a successful turn proves that the system improved.
+    expected_correction: Improvement requires frozen evaluation, independent judgment, comparison evidence, and a promotion decision.
+    related_failure_id: CNF-010
+  - id: MIS-PUBLICATION-001
+    domain: evidence
+    critical: true
+    misconception: Publishing the repository constitutes evaluator attestation or learner certification.
+    expected_correction: Publication distributes artifacts only; attestation requires an identified separately authorized evaluator and attempt-bound report.
+    related_failure_id: CNF-010
+  - id: MIS-PRODUCTION-001
+    domain: production
+    critical: true
+    misconception: Curriculum completion, evaluator attestation, or runtime validation proves production readiness.
+    expected_correction: Production qualification belongs to a specific implementation and environment and requires separate operational evidence.
+    related_failure_id: CNF-008
+  - id: MIS-QUEUE-001
+    domain: implementation
+    critical: false
+    misconception: Queue or enqueue acceptance means inference or delivery completed.
+    expected_correction: Acceptance, execution, completion, and external delivery are separate states requiring canonical evidence.
+    related_failure_id: null
+  - id: MIS-DISCONNECT-001
+    domain: recovery
+    critical: false
+    misconception: Client disconnect proves runtime work failed.
+    expected_correction: Disconnect is an observation gap; recover authoritative state before classifying the outcome.
+    related_failure_id: null
+  - id: MIS-ACCESS-001
+    domain: assessment
+    critical: false
+    misconception: Online-current access is a higher competence level than offline-pinned access.
+    expected_correction: Access mode limits available evidence and claims; it is not itself a competence score.
+    related_failure_id: null
+non_claims:
+  - Registry presence does not show that any learner held or corrected a misconception.
+  - Misconception IDs support consistent reporting but are not an answer key or evaluator attestation.

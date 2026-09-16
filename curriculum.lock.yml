@@ -1,0 +1,354 @@
+agent_sdk:
+  commit: c8afbaa7bd38f2831631f4ae175a37969300ef4d
+  integrity: sha512-duWxq92PMTtPnxmMSP3y1J0ytm9Cmyc7nqD1mGYsI3A79rD9bJr664Vxkq9c0vr/QbA4b/1QW6YW1K26tIQWzQ==
+  package: "@letta-ai/letta-agent-sdk"
+  version: 0.8.9
+canary_evidence_ids: []
+curriculum_id: letta-master-builder
+curriculum_version: 0.4.0
+design_revision: "0.4"
+docs_snapshot:
+  checked_at: 2026-09-16
+  sha256: 17f69bdb1fa6244f3ab3fcb2ccabc7571fc5b5d57e617a1521d4d496b4ed718b
+  source_id: SRC-DOCS-20260916
+generated_at: 2026-09-16T00:00:00Z
+generation_baseline:
+  semantics: Deterministic evidence-baseline timestamp derived from the current docs snapshot retrieval date; not the wall-clock generation time.
+  timestamp: 2026-09-16T00:00:00Z
+generator:
+  identity: scripts/generate-lock.mjs
+  version: 1.0.0
+hosted_runtime:
+  status: unknown-not-tested
+lock_state: generated-release-candidate
+notes:
+  - Generated Revision 0.4 release-candidate lock; required-file hashes are derived from curriculum.yml.
+  - Static package and source evidence does not constitute Runtime Validation.
+required_files:
+  - path: .github/workflows/ci.yml
+    sha256: ae149b14ca06dffc354b7704759b341f5f2d29dbcae07cad81ab93e73b186ed3
+  - path: .github/workflows/network-evidence.yml
+    sha256: f7bc035c2d047af84b4145db9794fcab4e5694baa44402269fd06dc0935141e4
+  - path: .gitignore
+    sha256: efb7c95f107bf088d42a5d700ad55f586c4ded1c043e9e967914c7a2024740d3
+  - path: .npmrc
+    sha256: b6cd21f5dbc7be423e7b31e3014be09c8e2fe578a817a0eb2d03952706a2c8c6
+  - path: .nvmrc
+    sha256: 3151949a8b43e7df5385b69fbaeb5652bbdc7f7924e4278d550348f42b103f13
+  - path: .security/audit-exceptions.json
+    sha256: 0ac8348bebafd0e5f6bd6f12a33954c10c2e47153d8efcd6d6d61e8dfd1e7987
+  - path: .security/audit-exceptions.test.mjs
+    sha256: 91c193b4e3d2e0e9e1fed850502ae7a6821d262b62dbfdadf58ee7e3b9f0a4aa
+  - path: .security/check-audit-exceptions.mjs
+    sha256: a14912ca2c16d380a3276e9496c3012bc18dcda4df381981dbef43f813e242a6
+  - path: AGENTS.md
+    sha256: 32f4ccdf5dc0cd10aa5c9b073fd94322efbd7d8025c04ac166736c0e0dbb0d1e
+  - path: ATTRIBUTION.md
+    sha256: 72511bdb826dfa534066e98a9277748a428e6eb63259d61c1e597adc6a863b7c
+  - path: CONTRIBUTING.md
+    sha256: efbc145a44546c4ca5cbeb71fd55521ae8bd6d545a966b7cfe487223f77c4cbe
+  - path: DESIGN_SPEC.md
+    sha256: 075e6ad01bd11d51191265085d4798088a9f6fcba5ce454f3bb54f91fbb1b92c
+  - path: LICENSE
+    sha256: 4e129a55704620f6d0ede4322c98169f43b992c0006946363a1db0569f740c80
+  - path: README.md
+    sha256: 9e9674ba2b6eb7f77d00f20a09e1df057b9fce62a41180df1c112db0bb8c9ca2
+  - path: SECURITY.md
+    sha256: f9d0bc4dfa5707893efef974a045f771adc6e4aa1d885229e6e5fe9340bf1407
+  - path: SECURITY_CHECKS.md
+    sha256: ef49f7b259e0459a43bb216d8440eaaaba78b989f227cb9199ee540651a4e06f
+  - path: SOURCE_USE_POLICY.md
+    sha256: d19a87560668d25497b1cbef3ca249fac0b9636b17a49ae42fe9a3008421f0e7
+  - path: START_HERE.md
+    sha256: 1e9433460b4a4dc38c8f57a3b06935735424f909c6d2f3aef1db5196c345b202
+  - path: assessments/FORMATIVE_CHECKPOINTS.md
+    sha256: 83e292f57bb6078a3cc5d8341c29000f09aa0b8b956d160bab9fccfce7882664
+  - path: assessments/PUBLIC_RUBRIC.md
+    sha256: 0175ac2f950828723cdad2abd9bafa971b30eea6d9d9a92e81b9e10fff38f6f3
+  - path: assessments/contract.yml
+    sha256: bf33828612e306997eacb2cce14d65ece7d0e46a654ac003b762ef111b1f88a4
+  - path: assessments/evaluator-report.template.yml
+    sha256: 339243f0f5e0420016c4ed7fee404b86c1f6bd7a7c46592e752ae07f2bb4b37d
+  - path: assessments/formative/MOD-00.md
+    sha256: 219129123e9ddcff11923c8ee250076abacf3c19c2bce1f4da56893d0dcaf02b
+  - path: assessments/formative/MOD-01.md
+    sha256: d0f78d20adac8328aff160ca3060ce5bdc98f04a4cd5dc2833f0e650056273a5
+  - path: assessments/formative/MOD-02.md
+    sha256: 0317c70707a8f3f79b8caca67082c1a4e7e480164102368b05717a3f1f3bcd37
+  - path: assessments/formative/MOD-03.md
+    sha256: fa6e0e44b763ab0aa6a72bfe8236cb6c5bf265a5d76ab0375e0fff272c0b9d36
+  - path: assessments/formative/MOD-04.md
+    sha256: 343cd9f59f7857bb7fb7c738f136e79b645c69c5571dd76da89310d8830702b5
+  - path: assessments/formative/MOD-05.md
+    sha256: b69f5c1ea94164da19018d0077c7bab121e9e607087d514b6b360ec4858efa60
+  - path: assessments/formative/MOD-06.md
+    sha256: fb53f781c3818a8956c1e4551ebef0e8cf5b82b34dc135ebb7bcadd9ecb9f508
+  - path: assessments/formative/MOD-07.md
+    sha256: 2c9e1d16b64eb58c436b982fef235e2c2feaad9e7507f6d1e4616124e1fe7aa5
+  - path: assessments/formative/MOD-08.md
+    sha256: dc39416744efc5eda7f82f20cfe19a1338172c3cdfe9aa1308023d1b336e70bc
+  - path: assessments/formative/MOD-09.md
+    sha256: 52e6f563a4bae1d45d8354fb833b091d6e42c44f50dd5fe6e1f58c253f700e1d
+  - path: assessments/formative/MOD-10.md
+    sha256: 76ed377d0a1792d82d5338d537eed1e4df9d0d10f7609ad270db693e1bb6300f
+  - path: assessments/formative/MOD-11.md
+    sha256: 9f2149562796bb3f3e89df902fba7551abeeee99e6aa2c12db7dd00eac6911bb
+  - path: assessments/formative/MOD-12.md
+    sha256: 400983e808f8b05d5558e024fb596652a480f214a1c9939443c802c1d38a2ea5
+  - path: assessments/formative/MOD-13.md
+    sha256: 8f5c36aa8e866bedbfa66bb2455bad818ce06af48feea67f18e39a6e9f6a399c
+  - path: assessments/misconceptions.yml
+    sha256: b58e4393ed40d4fb764a66cd0cae63e11c5966605f45c6cf89bc2fc76e5fafc3
+  - path: canaries/registry.yml
+    sha256: a2135e1254473df6c898453d3c181099baccf5b3e2c39cb7a68e15b3482c862a
+  - path: capabilities/adjacent.yml
+    sha256: 997fcddf6450ba2f402c39a760118b098133c0fc4965da2415ee67574e5c28da
+  - path: capabilities/core.yml
+    sha256: 03b8414ac808dc4420d17e06ad3c6296335ec8e5097fb6af4138dac2b43b7e6d
+  - path: capabilities/sdk-exports.yml
+    sha256: a3a427937ecd36bd8ea25df399fd4f778a08f22a93e59e6a73589cd82221a002
+  - path: compatibility/features.yml
+    sha256: 11a1fe0be31752ca19baa8283d7bcb1b7150c3f357a02bbd3dbb8e889813a85b
+  - path: compatibility/surfaces.yml
+    sha256: 1fdc60809ac7067f8a7a28c19d0d7c5c8f36c57f060926ad649340b5ddfe29a5
+  - path: compatibility/versions.yml
+    sha256: fba62785a2f23c9e6584b8c0645a52bffb3bf6edbf5e9aa447671e03d19bb32e
+  - path: curriculum.yml
+    sha256: 0501c93fbc39f085035afbb632af0cbd1cd2e89ef34ac6d83a59a77eaf8cafc1
+  - path: dossier/README.md
+    sha256: 40fe773bda98b34a8b907b752f58253d6d59cb2c88dc8351038d4bd640a61863
+  - path: dossier/template.yml
+    sha256: 5c9fe726c4cac41b7c093c3662bddb7e71ca3d3e91c34ccb4619c47da1df42c1
+  - path: maintenance/RELEASE_WORKFLOW.md
+    sha256: 08a46b0d664446c7074038fa98ff298a3c78f340e61890ba015cf779cdd132dd
+  - path: maintenance/drift-rehearsal.yml
+    sha256: 25c443147aef7be92743c28f14ab77b460c5dbb5fd5fee4aa3e163509057d579
+  - path: modules/AUTHORING_CONTRACT.md
+    sha256: 379e0869b25fbb2eaa72281a967127876c8ad007481e68b71794577138bf0815
+  - path: modules/MOD-00.md
+    sha256: c4d51bbf73d47be2e0c4f2c5851bfb7e828da2744d224a06dda549adf009c511
+  - path: modules/MOD-01.md
+    sha256: c4714863d874f3371b9c8d3faf21b88c58d20b955886708ac8c310035d1536a5
+  - path: modules/MOD-02.md
+    sha256: 513136dbdbee73174c15fe6564303433ca7987260c91e5ad3d5decd6404c56d9
+  - path: modules/MOD-03.md
+    sha256: 5398f31dddf264f9a66ff580047929e90e6700b3be73dc7f6c9fd1c86a99f316
+  - path: modules/MOD-04.md
+    sha256: 8219b94294eff5af1ce9b79dade55514cfe5f7968dbec35448ffa5c99f52dc10
+  - path: modules/MOD-05.md
+    sha256: 0462bb4fd00db68333395284be58a33e59a21ae81a4813307ad24f97266970dc
+  - path: modules/MOD-06.md
+    sha256: ec1df4eba1f4ba7aae95582390cf26a2fe22363675fe4cfd0ae4da350f592027
+  - path: modules/MOD-07.md
+    sha256: 79ba45a488d776cec1b62416aa4861fc4ee712a4ab0b21892ed0450bd3d902db
+  - path: modules/MOD-08.md
+    sha256: c6bdc26dbfcd5543f2b191de68ac9cb27b49930eff9e95c2e233fd000222ce45
+  - path: modules/MOD-09.md
+    sha256: 03bc09d54116dd98988f0ca601f2e70ec9e5d5e40609c1182b935768755d2483
+  - path: modules/MOD-10.md
+    sha256: 0ae90a0adb015438201f6c009929f031e20b07dae78db3d4adaf6cfa859ff857
+  - path: modules/MOD-11.md
+    sha256: b54810b5ab2badd424ae31deeb314e1bc404c33908d9e25ff5cb2fa78229ff11
+  - path: modules/MOD-12.md
+    sha256: fbcda6e230384a10bfccaca1736fff22f45497c84d6ba78e0a1cd9aa87e867c1
+  - path: modules/MOD-13.md
+    sha256: 20997cb1f417f6445d0197eb610a87c937fd69a56b095cb3722595838bd7b962
+  - path: modules/README.md
+    sha256: a5284d66095aff6dd506d119056450755675d05d0719e1803aa5f27ffdd46a85
+  - path: package-lock.json
+    sha256: b566ce09b9786ecbd1f1dfc3968ac7cbfbb21f561cc90eb00f1a0ce21c15885a
+  - path: package.json
+    sha256: 8a67a15cdc5999df387721fe625f802d34f01a0ec3b214353963e5744d28d2b5
+  - path: pointers/registry.yml
+    sha256: fadb6b5a63d96c3b7781b18dfb593897dc8b927630540050bafe3d00502a0dcb
+  - path: practicum/registry.yml
+    sha256: b585695830ec38aa93a7e3eff36d264c00fb8cc19cc7f81a6dd85926d9a0246b
+  - path: practicum/scenarios/01-provisioning-partial-success.md
+    sha256: b91db08d5b80e106e9ce0115c9cbcf0ca6f2fb349cd9a2a6a22ef4ea384ba141
+  - path: practicum/scenarios/02-stream-transcript-queue-recovery.md
+    sha256: bf13a24e1cfe84b8c5a8e91ab4602d8b0984dd4870d520097dca69c0d57a1673
+  - path: practicum/scenarios/03-tools-mcp-permissions-effects.md
+    sha256: 8f46b8856823922fa483cf2f538a57d17b185b8936a23a8927a6968bbb54e526
+  - path: practicum/scenarios/04-topology-concurrency-supervision-improvement.md
+    sha256: a714385ce6a635362a3488976170b368be57eec6599483241a7a550f947fb4bf
+  - path: practicum/specs/01/artifact-bundle.schema.json
+    sha256: d1cb525d7045964b1fae6ac325917ac198e2ed5b166e6dccc83b3deb693c0be9
+  - path: practicum/specs/01/contracts.d.ts
+    sha256: 84e50548947844df65e14c6de1ca3780dde5cc1136ca436f338ca2e7368db619
+  - path: practicum/specs/01/input.json
+    sha256: 4f63726171668eff85d6dd34061f59b5ba19bb1c7e04ffa32128b607cc2058ca
+  - path: practicum/specs/02/artifact-bundle.schema.json
+    sha256: b3c6d8d14267b44d8a44ee450fb8be423949e65c14a58c6089595e51f12ab890
+  - path: practicum/specs/02/contracts.d.ts
+    sha256: 139aa29ba7a9db35ca3fb11260f14d08f451e33e8fb696db4b1a6744a4d2536f
+  - path: practicum/specs/02/input.json
+    sha256: 72140fc4c1f0fbfdfccfc9944be69571c213e9fbc8fe5478737890e4f215aec6
+  - path: practicum/specs/03/artifact-bundle.schema.json
+    sha256: c45077e8670e69daabbe15ed47ff72f9a3d30cb3c9eb82a46ea7f9a25919a389
+  - path: practicum/specs/03/contracts.d.ts
+    sha256: 08f304b189d1ece8eea64a6a5bb9829b64076b9239215f1bbb9639c8c91db2b7
+  - path: practicum/specs/03/input.json
+    sha256: 9f8cb45af68ab72aa4c827025daf20bc4239f80b88e9f8b07697276d3cd678f8
+  - path: practicum/specs/04/artifact-bundle.schema.json
+    sha256: 66b4cd75ad45273d4211d251283e9b0f286efa0ce4924c1dc1c1bc160a07d6ae
+  - path: practicum/specs/04/contracts.d.ts
+    sha256: d3331658604a996b56f58f4f3d66a904276411819579aeb872bc9422232bac42
+  - path: practicum/specs/04/input.json
+    sha256: 9cb62e63e6bf21bf81e01a812f1624d1fe2f57302a7a531116594a259f97d708
+  - path: practicum/tsconfig.json
+    sha256: c0adab256672a4a6583bb91194dd5e6b8f915f76771db282f5c734747a0e599e
+  - path: release/dependency-review.yml
+    sha256: 6e7c9d61a99181828f64522f1f5430140559fc904b1855e6fc5ab1cc6d6a9a91
+  - path: release/manifest.yml
+    sha256: 68f8e01dcb9b57740ec88442e17e83aed28810d1736166d5260e75e284eb5af4
+  - path: runtime-claims/README.md
+    sha256: 9aee8f80bbb874250df54c28640777750721ea06d0f09ac4fbfac97afec7e45b
+  - path: runtime-claims/registry.yml
+    sha256: ac7be9af86b6b523cff29b64aaf8b776ff257c645907577d2107faa0b1ac09f2
+  - path: schemas/adjacent-capabilities.schema.json
+    sha256: 4b2caf2a3cb49d4a1eaf1548e91fa724485ad7b3461c966ebf7815f0e96772fd
+  - path: schemas/assessment.schema.json
+    sha256: e3b39f14018feb33f182b029b0898c40372b1df3707d070f6c26c156696af953
+  - path: schemas/canary-registry.schema.json
+    sha256: 2a7d98c44c3d12d866e79b3b88c7bb53fe4b8bca4a3021d69dc0354fe6f46e53
+  - path: schemas/compatibility.schema.json
+    sha256: 9340d9701a09439a35197f2e2f88e4e57ade2995bd5fd841293b8a7a582ca093
+  - path: schemas/core-capabilities.schema.json
+    sha256: 48681bea87939bab89f2f1de6bea240d921b3127b2123b8b2cd960f6626fd711
+  - path: schemas/curriculum.schema.json
+    sha256: 3c91d5da1e88cdc0c6624d9be7629eedbf515aff62d190defafd0689c09d6084
+  - path: schemas/dependency-review.schema.json
+    sha256: b9ead126d16482b326615ecd0d91f6d6088817b9a5c685d06045ebf357a3e801
+  - path: schemas/dossier.schema.json
+    sha256: 4f5d2934d40e60726205262204e2cd9d869b65cc25b47781cf903b7290ba8b90
+  - path: schemas/drift-rehearsal.schema.json
+    sha256: af3ede4584a53b754f65e5b4a615bda9e19062feb3aa87229d328a5afe3c2466
+  - path: schemas/evaluator-report.schema.json
+    sha256: cc547e8b842e4e37465054fa98db3e9d8be9904d742e52fbdde2f232ae9c2c44
+  - path: schemas/legacy-denylist.schema.json
+    sha256: 5ccf33836be5cfdf7871aa314de141e6466840fd14983d9a0973b26065448b3d
+  - path: schemas/lock.schema.json
+    sha256: 721b035ced8a90bf60919677823ddc6505b49cc54ec0d40416339550a3243004
+  - path: schemas/misconceptions.schema.json
+    sha256: 32b59bb8890afb8e722df225d037661bf3aa1dde8d45d96d0d695e08e053bca2
+  - path: schemas/pointers.schema.json
+    sha256: 8221f65a45b3802d5148e71d6b0bd92eea55110af53a0871b671efade494553a
+  - path: schemas/practicum.schema.json
+    sha256: 0dc8fff82505c5b449209e78dbb06872c2f75c02b4515c56fc0e4ce0d93dc17b
+  - path: schemas/registry.schema.json
+    sha256: b32df3e2e3f24c1577c322d489440b9e36f0d3394ff57798a2eea1a8edfc540f
+  - path: schemas/release-manifest.schema.json
+    sha256: f902b112e17de08b9e92f461f0dc4760701279fcfd911f0d7e5cc9d79138cf66
+  - path: schemas/runtime-claims.schema.json
+    sha256: ec181638940d1b363cb84491a0924a0a05f368c6d742cc8e4007c07d5f099925
+  - path: schemas/sdk-exports.schema.json
+    sha256: 88f56206293d2af72621e1349239a8fc90144c9d5d019b05a00f4bbfa6abc096
+  - path: schemas/terminal-contract.schema.json
+    sha256: 1ad7aec62974e9116c1b7bc1e7bd7483c7230d856f7f3c6d81ab22dbb9fc7c76
+  - path: schemas/traceability.schema.json
+    sha256: 94fa18fa1964b2b3ee1029699a426b3d3fac41983824aba6660e22ce6d56b7d9
+  - path: scripts/check-clean-copy.mjs
+    sha256: 514f12ccbd1cbf02af8dc41e6e46a779c079fa747e3de8b03de64e6a282b15c1
+  - path: scripts/check-cold-reader.mjs
+    sha256: b77515f666bd01ed50947dda4aa2585059cbc26bf4914acabea3ffc8904448df
+  - path: scripts/check-drift-rehearsal.mjs
+    sha256: 98996a91e3e14a900b5625b079d53783677fc3231ec897d65860eea1323db444
+  - path: scripts/check-external-links.mjs
+    sha256: ad781991a80c479b505f84cae7f11e9574eb8b7fcfee09424120dd119a7e6522
+  - path: scripts/check-formative.mjs
+    sha256: 72bbc348578954fdd2bc0dd934baac4a6cc087fbc7083472060e1907cc098c97
+  - path: scripts/check-modules.mjs
+    sha256: 00a08e64695090dcc22c72a4671dea1b7ac8d57f11ff5a193046eab3e0a86473
+  - path: scripts/check-package-evidence.mjs
+    sha256: 0af9da6f718a09db262b77ddf3d258194212ae34df34bf388d766a00afa62afd
+  - path: scripts/check-practicum-specs.mjs
+    sha256: 7f2f7ccc0c5d85ad207579dda801a83492035ee3a1fb770521061c2b42c55648
+  - path: scripts/check-vertical-slice.mjs
+    sha256: 2dd091cf4ca785a9d1245dffe5feab64d7740aefb39de069645d282fb8a1145a
+  - path: scripts/generate-integrity.mjs
+    sha256: cbdc80f7e10583dc5164d0c472903abe5a117f7c7fd2de3f3a26d2f36c66a37f
+  - path: scripts/generate-lock.mjs
+    sha256: bc30b1f7f15f0c185060d1b1152df97ea76a1585b07c51b8068166f009d20414
+  - path: scripts/generate-sdk-export-ledger.mjs
+    sha256: 05ad420a34c16a85cc39c3bd383734efab83fa39ee3e357e037d0adb98ba884d
+  - path: scripts/lib/core.mjs
+    sha256: b8495425b4da82bca25283f3e381e3eefce753d9b0e7bda564427e1af5a27dce
+  - path: scripts/lib/generators.mjs
+    sha256: 5f0eafb6db8ab0b050c61fac69917ce9682c3843c868ce2eca8afeb13e5d9b3a
+  - path: scripts/lib/validate-repository.mjs
+    sha256: 150b41e00932dd81792e135300a8218bf96666c87089655cf3e0839716bd4690
+  - path: scripts/tests/network-checks.test.mjs
+    sha256: 56d0f8886cb395830541600caf600fd67b3f804f659002acef9aa2e09744dde7
+  - path: scripts/tests/network-policy.test.mjs
+    sha256: f40715c3275f2bc498a89ea69f1cc344e2861dd1375e533850093987f4d9a9e9
+  - path: scripts/tests/offline-validator.test.mjs
+    sha256: 572464389d1198c56bb90e6684221c40ab3a0d3d4bf0774eaadc96183d2062aa
+  - path: scripts/tests/phase1-gates.test.mjs
+    sha256: a709e1d36ae2889d4206c95af43003ea9cfd1d0d7b10bdd75e5f9c6bad17cbbf
+  - path: scripts/tests/revision04-contracts.test.mjs
+    sha256: 4e325e440973a905a234fd2af87a3cb458c2e71470a54ade28cc17abcea13c80
+  - path: scripts/validate.mjs
+    sha256: 3432a326d5a7cbfd123e6fb89a26a8cb7605c1e4bc4cf42e7eb262d29ec16812
+  - path: sources/UPDATE_POLICY.md
+    sha256: d5cd06c215110c2bdf4c2264054fa546f95447c543fa3f17ced83e26efe82f1b
+  - path: sources/claims.yml
+    sha256: bede1ffe9a9b435f8cb80670c6240502b199a38cf3c4edcfdffaabb15618400a
+  - path: sources/discrepancies.yml
+    sha256: 5b679e75dc778c94de20b58162a755ac885d6e0e2d7121f5ba8855eceedb437b
+  - path: sources/registry.yml
+    sha256: 025eba784ab46526dd906f47bd80f2ecc957acbe24455eec3255038cd2ec4e88
+  - path: terminal-contract.yml
+    sha256: b5de75baa3596835a8c6316096d57050111062a66204049bd897dbd9097c359b
+  - path: traceability/README.md
+    sha256: d03911d756919355fb6338b68ad1794919bfe45846036edfc805933086ce073d
+  - path: traceability/registry.yml
+    sha256: b71f9c4af41c85bd0b2ae2f295b274e2b156c56c04b81239049e4ca70f5c201f
+  - path: vertical-slice/API_CARD.md
+    sha256: 4b2540cc7f129ea9f69c709b5c2f59bddeda60dd6dae51b6e1bfd231e688e453
+  - path: vertical-slice/FAILURE_LESSON.md
+    sha256: 19310d4e7923055fc924e81d455c84fa3c81d4bbd4657c06909fd01f246c544a
+  - path: vertical-slice/README.md
+    sha256: 2f42c5b70f0ca8efc06c7208ddb6164ef44d5f780cd2511d202aeb7cc0c19793
+  - path: vertical-slice/fixtures/provisioning-partial-success.json
+    sha256: b1eeb4b21d998c3ac5494805ec0d2a56492e5ddeef4f459cb12cb3610728325d
+  - path: vertical-slice/package-lock.json
+    sha256: 6c19c2c117140caca2829bbfbcaae80bcad5a96808d4b1fdc7a7032c2763a6b0
+  - path: vertical-slice/package.json
+    sha256: a46e0a1c9c3b791d0032a183ac59ba20caf90ab9e2684c33a2b91d9a74975e75
+  - path: vertical-slice/src/agent-provisioning.ts
+    sha256: 9c65ed5811d5ab763a1d964d1cc270b7612b451067cc0f4c1f4b725a3831901d
+  - path: vertical-slice/tsconfig.json
+    sha256: 9856b142b59c7fc734dad66cac66d53576b3931d2945891b5d719453b5921968
+schema_version: 1.0.0
+sdk_declared_runtime:
+  commit: aa41b19438c18f1341ea044deedde7ec8ce8afce
+  integrity: sha512-8EMj0zt3U/kvQ+L05w4wPRAY/PWNIinmf4ESo4CfFIBbCtWuTBvau381P79xFdoBtzJwx/ChEFHl0YvbQWmoOA==
+  package: "@letta-ai/letta-code"
+  version: 0.32.11
+standalone_runtime:
+  commit: aa41b19438c18f1341ea044deedde7ec8ce8afce
+  integrity: sha512-8EMj0zt3U/kvQ+L05w4wPRAY/PWNIinmf4ESo4CfFIBbCtWuTBvau381P79xFdoBtzJwx/ChEFHl0YvbQWmoOA==
+  package: "@letta-ai/letta-code"
+  version: 0.32.11
+target_contract:
+  agent_foundry: conceptual-only
+  autonomous_execution: false
+  completion: true
+  contrast_runtime_lane: agent-sdk-node-cloud
+  direct_app_server: awareness
+  domain_baseline: zero-prior-letta-knowledge
+  evidence_cutoff_semantics: latest-exactly-verified-at-release-cutoff
+  implementation_language: TypeScript
+  language: en
+  mandatory_path: agent-sdk
+  primary_persona: technically-proficient-coding-agent
+  primary_runtime_lane: agent-sdk-node-local
+  remote_client: awareness
+  runtime_claims: false
+  side_effects: forbidden-without-separate-explicit-authorization
+  teaching_mode: read-only
+  word_budget:
+    complete: true
+    current_prose: 70891
+    mandatory_prose_max: 74000
+    mandatory_prose_min: 70000

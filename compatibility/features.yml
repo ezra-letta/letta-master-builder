@@ -1,0 +1,75 @@
+schema_version: 1.0.0
+kind: features
+entries:
+  - id: FEAT-PERSISTENT-AGENT-MANAGEMENT
+    status: planned
+    surface_ids: [SURF-AGENT-SDK]
+    backends: [documented]
+    version_ids: [VER-AGENT-SDK-0-8-9, VER-SDK-DECLARED-RUNTIME-0-32-11]
+    source_ids: [SRC-DOCS-STATEFUL-AGENTS-20260911, SRC-DOCS-SDK-AGENTS-20260916, SRC-DOCS-SDK-REFERENCE-20260916]
+    claim_ids: [LMB-SDK-002]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [Documentation and exact package evidence do not prove behavior on an unobserved target runtime.]
+  - id: FEAT-MEMFS-DREAMING
+    status: planned
+    surface_ids: [SURF-AGENT-SDK]
+    backends: [documented]
+    version_ids: []
+    source_ids: [SRC-DOCS-MEMFS-20260911, SRC-DOCS-MEMORY-20260911]
+    claim_ids: [LMB-MEMORY-001]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [A memory write commit or dreaming pass does not establish improvement synchronization or promotion.]
+  - id: FEAT-APP-SERVER-CONTROL
+    status: planned
+    surface_ids: [SURF-AGENT-SDK, SURF-APP-SERVER-DIRECT]
+    backends: [local, remote, cloud]
+    version_ids: []
+    source_ids: [SRC-DOCS-APP-SERVER-20260911]
+    claim_ids: [LMB-APP-SERVER-001]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [The documented surface does not prove exact reconnect queue tool or persistence behavior for an untested runtime.]
+  - id: FEAT-REMOTE-CLIENT-CONTROL
+    status: planned
+    surface_ids: [SURF-REMOTE-CLIENT]
+    backends: [cloud-relay]
+    version_ids: [VER-HOSTED-RUNTIME-UNKNOWN]
+    source_ids: [SRC-DOCS-REMOTE-CLIENT-20260911]
+    claim_ids: [LMB-REMOTE-001]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [No hosted relay or connected runtime was observed.]
+  - id: FEAT-DIRECT-REST-AGENT-MANAGEMENT
+    status: planned
+    surface_ids: [SURF-DIRECT-REST-API]
+    backends: [documented]
+    version_ids: []
+    source_ids: [SRC-DOCS-API-AGENTS-20260911]
+    claim_ids: [LMB-API-001]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [A documented endpoint is not automatically appropriate for every backend or curriculum lesson.]
+  - id: FEAT-MANDATORY-CURRICULUM
+    status: planned
+    surface_ids: [SURF-AGENT-SDK]
+    backends: [unspecified]
+    version_ids: [VER-AGENT-SDK-0-8-9, VER-SDK-DECLARED-RUNTIME-0-32-11]
+    source_ids: [SRC-DESIGN-SYNTHESIS]
+    claim_ids: [LMB-CURRICULUM-001]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [Planned curriculum structure does not prove product behavior or learner readiness.]
+  - id: FEAT-RUNTIME-CAPABILITIES
+    status: unknown-not-tested
+    surface_ids: [SURF-AGENT-SDK, SURF-APP-SERVER-DIRECT, SURF-REMOTE-CLIENT]
+    backends: [local, remote, hosted]
+    version_ids: [VER-AGENT-SDK-0-8-9, VER-SDK-DECLARED-RUNTIME-0-32-11, VER-STANDALONE-0-32-11, VER-HOSTED-RUNTIME-UNKNOWN]
+    source_ids: [SRC-DESIGN-SYNTHESIS]
+    claim_ids: [LMB-LIFECYCLE-001]
+    canary_scope: {required: true, evidence_ids: []}
+    does_not_prove: [No reconnect, replay, approval, queue, abort, tool, or persistence behavior was observed.]
+  - id: FEAT-AUTONOMOUS-AGENT-GOVERNANCE
+    status: planned
+    surface_ids: [SURF-AGENT-SDK]
+    backends: [controller-owned]
+    version_ids: []
+    source_ids: [SRC-PRODUCTION-HEURISTIC]
+    claim_ids: [LMB-SECURITY-001, LMB-AUTONOMY-001]
+    canary_scope: {required: false, evidence_ids: []}
+    does_not_prove: [A governance method does not qualify an implementation or establish SDK guarantees., Implementation-specific deterministic evaluation runtime canaries and production review remain separate., No autonomous-agent loop was executed.]

@@ -1,0 +1,298 @@
+schema_version: 2.0.0
+kind: practicum-registry
+revision: '0.4'
+reader_execution_authorized: false
+scored_execution_authorized: false
+status: ready-offline-suite-not-executed
+exact_tuple:
+  agent_sdk:
+    package: '@letta-ai/letta-agent-sdk'
+    version: 0.8.9
+    version_id: VER-AGENT-SDK-0-8-9
+  sdk_declared_runtime:
+    package: '@letta-ai/letta-code'
+    version: 0.32.11
+    version_id: VER-SDK-DECLARED-RUNTIME-0-32-11
+  standalone_runtime:
+    package: '@letta-ai/letta-code'
+    version: 0.32.11
+    version_id: VER-STANDALONE-0-32-11
+  implementation_language: TypeScript
+  compiler_version: 5.9.3
+  node_range: '>=22.19.0'
+runner_contract:
+  status: specified-not-executed
+  disposable_environment_required: true
+  offline_during_scored_execution: true
+  package_closure_locked_before_execution: true
+  exact_package_compilation_required: true
+  compile_and_fixture_results_separate: true
+  deterministic_rerun_required: true
+  workspace_write_scope: practicum-workspace-only
+  secrets_available: false
+  external_effects_allowed: false
+  in_process_sandbox_claimed: false
+  instrumentation_requirements:
+    - Detect and fail on any network request.
+    - Detect and fail on credential access.
+    - Detect and fail on writes outside the disposable workspace.
+    - Detect and fail on undeclared process creation.
+  note: The project specifies disposal and instrumentation requirements; it does not claim to provide a secure in-process sandbox.
+provenance_labels:
+  - label: package-derived-public-shape
+    meaning: A synthetic value or interface is constrained by the exact package's public declaration shape; no runtime behavior is implied.
+  - label: documented-behavior-fixture
+    meaning: An original synthetic fixture represents a behavior described by registered documentation; it is not captured runtime traffic.
+  - label: project-method-only
+    meaning: A controller policy, state machine, ordering rule, or invariant is owned by this project and is not a Letta product API or event.
+scoring_contract:
+  exact_package_compilation_required_percent: 100
+  schema_validation_required_percent: 100
+  critical_assertions_required_percent: 100
+  noncritical_assertions_minimum_percent: 90
+  deterministic_rerun_required: true
+  artifact_digests_required: true
+  machine_statuses_available:
+    - compile-verified
+    - offline-conformance-verified
+  machine_statuses_unavailable:
+    - architecture-verified
+    - transfer-verified
+    - runtime-verified
+    - production-qualified
+fixtures:
+  - id: FIX-PROVISIONING-PARTIAL-SUCCESS
+    name: Agent provisioning returns a canonical ID before controller persistence fails
+    evidence_class: verified-vertical-slice
+    provenance: project-method-only
+    capability_ids: [CAP-AGENT-MANAGEMENT, CAP-EFFECT-RECONCILIATION]
+    path: vertical-slice/fixtures/provisioning-partial-success.json
+    runtime_claim: false
+    production_claim: false
+    scored_scenario: false
+    status: verified-static
+    separation_note: This existing maintainer fixture validates infrastructure only and is not a scored learner scenario or answer fixture.
+scenarios:
+  - id: SCN-PROVISIONING
+    name: Provisioning agent and conversation with skill and repository partial success
+    status: ready
+    execution_authorized: false
+    brief_path: practicum/scenarios/01-provisioning-partial-success.md
+    specification_files: [practicum/specs/01/input.json, practicum/specs/01/contracts.d.ts, practicum/specs/01/artifact-bundle.schema.json]
+    implementation_entry: src/controller.ts
+    synthetic_namespace: lmb.practicum.v1.provisioning
+    provenance_labels: [package-derived-public-shape, documented-behavior-fixture, project-method-only]
+    capability_ids:
+      - CAP-AGENT-MANAGEMENT
+      - CAP-CONVERSATION-MANAGEMENT
+      - CAP-SKILLS-LOCALITY
+      - CAP-SHARED-REPOSITORIES
+      - CAP-EFFECT-RECONCILIATION
+    critical_assertions:
+      - id: S01-C01
+        statement: The controller never blindly creates, attaches, uploads, or deletes after an uncertain or partial outcome.
+      - id: S01-C02
+        statement: Supplied canonical agent and conversation identities survive later controller-store failure.
+      - id: S01-C03
+        statement: Skill-component and repository-attachment sub-effects retain separate partial-success states.
+      - id: S01-C04
+        statement: Multiple authoritative matches halt for operator disposition.
+      - id: S01-C05
+        statement: Cleanup is bounded by recorded ownership and preconditions.
+      - id: S01-C06
+        statement: Outputs label synthetic behavior and make no live-runtime claim.
+    noncritical_assertions:
+      - id: S01-N01
+        statement: Stable operation keys are human-auditable.
+      - id: S01-N02
+        statement: Report entries use deterministic ordering.
+      - id: S01-N03
+        statement: Diagnostics identify the failed sub-effect without erasing completed effects.
+      - id: S01-N04
+        statement: Retry prerequisites are explicit.
+      - id: S01-N05
+        statement: The ownership table distinguishes controller and synthetic authoritative state.
+    artifacts:
+      - {id: S01-A01, path: provisioning-result.json, format: json, digest_required: true}
+      - {id: S01-A02, path: reconciliation-report.json, format: json, digest_required: true}
+      - {id: S01-A03, path: cleanup-plan.json, format: json, digest_required: true}
+      - {id: S01-A04, path: controller-trace.jsonl, format: jsonl, digest_required: true}
+    forbidden_effects: [network-request, credential-access, live-agent-mutation, live-conversation-mutation, live-skill-operation, live-repository-operation, write-outside-workspace, undeclared-process, reuse-maintainer-fixture-as-answer]
+    runtime_claim: false
+    production_claim: false
+    non_claims:
+      - No backend acceptance uniqueness partial-success cleanup or persistence behavior is established.
+      - Fixture conformance is not learner transfer evidence or production qualification.
+  - id: SCN-SESSION-RECOVERY
+    name: Stream transcript history queue and disconnect recovery without blind resend
+    status: ready
+    execution_authorized: false
+    brief_path: practicum/scenarios/02-stream-transcript-queue-recovery.md
+    specification_files: [practicum/specs/02/input.json, practicum/specs/02/contracts.d.ts, practicum/specs/02/artifact-bundle.schema.json]
+    implementation_entry: src/controller.ts
+    synthetic_namespace: lmb.practicum.v1.stream_recovery
+    provenance_labels: [package-derived-public-shape, documented-behavior-fixture, project-method-only]
+    capability_ids:
+      - CAP-SESSION-LIFETIME
+      - CAP-TURN-STREAMING
+      - CAP-MESSAGE-RECONCILIATION
+      - CAP-QUEUES-ENQUEUE
+      - CAP-RECOVERY-APPROVALS
+    critical_assertions:
+      - id: S02-C01
+        statement: Disconnect or missing terminal evidence never triggers blind resend.
+      - id: S02-C02
+        statement: Accepted or queued input is not reported as completed work.
+      - id: S02-C03
+        statement: Canonical message identity conflicts remain explicit during transcript reconciliation.
+      - id: S02-C04
+        statement: Duplicate synthetic fragments do not duplicate reconciled transcript content.
+      - id: S02-C05
+        statement: Pending approval blocks continuation until valid synthetic authority is supplied.
+      - id: S02-C06
+        statement: Recovery attempts stop at the registered bound.
+      - id: S02-C07
+        statement: Outputs deny live ordering replay durability reconnect queue and approval claims.
+    noncritical_assertions:
+      - id: S02-N01
+        statement: Transcript entries have deterministic ordering.
+      - id: S02-N02
+        statement: Queue-selection rationale distinguishes active-turn queue from durable-enqueue design.
+      - id: S02-N03
+        statement: Conflict diagnostics identify both provisional and canonical identities.
+      - id: S02-N04
+        statement: Checkpoint state is sufficient for bounded recovery.
+      - id: S02-N05
+        statement: User input identity and canonical message identity remain distinct.
+    artifacts:
+      - {id: S02-A01, path: transcript-projection.json, format: json, digest_required: true}
+      - {id: S02-A02, path: queue-decision.json, format: json, digest_required: true}
+      - {id: S02-A03, path: recovery-plan.json, format: json, digest_required: true}
+      - {id: S02-A04, path: controller-trace.jsonl, format: jsonl, digest_required: true}
+    forbidden_effects: [network-request, credential-access, live-session, live-turn, live-queue-mutation, live-enqueue, live-approval-response, model-call, write-outside-workspace, undeclared-process, fabricated-terminal-event]
+    runtime_claim: false
+    production_claim: false
+    non_claims:
+      - No event ordering durability replay reconnect queue or approval behavior was observed.
+      - Compilation and fixture conformance do not establish account authorization or runtime reliability.
+  - id: SCN-TOOLS-EFFECTS
+    name: Tool MCP permission and uncertain-effect reconciliation
+    status: ready
+    execution_authorized: false
+    brief_path: practicum/scenarios/03-tools-mcp-permissions-effects.md
+    specification_files: [practicum/specs/03/input.json, practicum/specs/03/contracts.d.ts, practicum/specs/03/artifact-bundle.schema.json]
+    implementation_entry: src/controller.ts
+    synthetic_namespace: lmb.practicum.v1.tool_effect
+    provenance_labels: [package-derived-public-shape, documented-behavior-fixture, project-method-only]
+    capability_ids:
+      - CAP-TOOLS-LOCALITY
+      - CAP-MCP-LIFECYCLE
+      - CAP-PERMISSIONS-APPROVALS
+      - CAP-EFFECT-RECONCILIATION
+      - CAP-AUTH-TRANSPORT-SECURITY
+    critical_assertions:
+      - id: S03-C01
+        statement: Dispatch requires valid permission for the exact authorized argument digest.
+      - id: S03-C02
+        statement: No credential value appears in model-visible inputs or artifacts.
+      - id: S03-C03
+        statement: Timeout or abort after dispatch does not prove effect failure.
+      - id: S03-C04
+        statement: Uncertain effects are looked up before retry and multiple matches halt.
+      - id: S03-C05
+        statement: Irreversible effects are neither automatically retried nor compensated.
+      - id: S03-C06
+        statement: Authority permission or lease loss blocks continued execution.
+      - id: S03-C07
+        statement: Proposal authorization dispatch observation verification and reconciliation remain distinct.
+      - id: S03-C08
+        statement: Outputs make no real MCP approval tool or external-effect claim.
+    noncritical_assertions:
+      - id: S03-N01
+        statement: Proposed and authorized argument digests are deterministic.
+      - id: S03-N02
+        statement: Execution-locality rationale cites declared policy.
+      - id: S03-N03
+        statement: Redaction metadata is useful without revealing secret material.
+      - id: S03-N04
+        statement: Synthetic resource-close state is reported.
+      - id: S03-N05
+        statement: Lookup attempts are bounded.
+      - id: S03-N06
+        statement: Incident summary identifies uncertainty and allowed next action.
+    artifacts:
+      - {id: S03-A01, path: tool-authority.json, format: json, digest_required: true}
+      - {id: S03-A02, path: effect-ledger.json, format: json, digest_required: true}
+      - {id: S03-A03, path: reconciliation-report.json, format: json, digest_required: true}
+      - {id: S03-A04, path: controller-trace.jsonl, format: jsonl, digest_required: true}
+    forbidden_effects: [network-request, credential-access, live-mcp-start-or-contact, live-tool-registration, live-tool-execution, live-approval-interaction, external-write, write-outside-workspace, undeclared-process, automatic-compensation]
+    runtime_claim: false
+    production_claim: false
+    non_claims:
+      - No MCP lifecycle tool locality permission timeout external idempotency or compensation behavior was observed.
+      - Offline evidence cannot establish operational security or production safety.
+  - id: SCN-SUPERVISED-IMPROVEMENT
+    name: Topology concurrency lease supervision and independently evaluated improvement
+    status: ready
+    execution_authorized: false
+    brief_path: practicum/scenarios/04-topology-concurrency-supervision-improvement.md
+    specification_files: [practicum/specs/04/input.json, practicum/specs/04/contracts.d.ts, practicum/specs/04/artifact-bundle.schema.json]
+    implementation_entry: src/controller.ts
+    synthetic_namespace: lmb.practicum.v1.supervised_improvement
+    provenance_labels: [package-derived-public-shape, documented-behavior-fixture, project-method-only]
+    capability_ids:
+      - CAP-EXECUTION-TOPOLOGY
+      - CAP-CONCURRENCY-CONSISTENCY
+      - CAP-TRIGGERS-DELIVERY
+      - CAP-SUPERVISION-PRODUCTION
+      - CAP-AUTH-TRANSPORT-SECURITY
+    critical_assertions:
+      - id: S04-C01
+        statement: At most one controller reports authoritative ownership for a work and version pair.
+      - id: S04-C02
+        statement: Lease budget or supervisor authority loss stops later effect dispatch.
+      - id: S04-C03
+        statement: Topology selection records constraints unknowns and no parity inference.
+      - id: S04-C04
+        statement: Promotion requires a distinct evaluator frozen-case digest passing gates and rollback target.
+      - id: S04-C05
+        statement: The proposer cannot provide its own independent evaluation or promotion authority.
+      - id: S04-C06
+        statement: Monitoring regression or uncertainty reaches rollback or a safe stopped state.
+      - id: S04-C07
+        statement: Text reflection dreaming commit or turn success is not proof of improvement.
+      - id: S04-C08
+        statement: Outputs deny production qualification and live topology concurrency sandbox or supervision claims.
+    noncritical_assertions:
+      - id: S04-N01
+        statement: Synthetic tie-breaking is deterministic.
+      - id: S04-N02
+        statement: Topology rationale distinguishes the primary Local lane and Cloud contrast.
+      - id: S04-N03
+        statement: Checkpoint content is bounded.
+      - id: S04-N04
+        statement: Incident chronology is reconstructable.
+      - id: S04-N05
+        statement: Budget accounting is explicit.
+      - id: S04-N06
+        statement: Monitoring thresholds and rejection rationale are recorded.
+    artifacts:
+      - {id: S04-A01, path: topology-decision.json, format: json, digest_required: true}
+      - {id: S04-A02, path: operation-ledger.json, format: json, digest_required: true}
+      - {id: S04-A03, path: supervision-report.json, format: json, digest_required: true}
+      - {id: S04-A04, path: improvement-record.json, format: json, digest_required: true}
+      - {id: S04-A05, path: controller-trace.jsonl, format: jsonl, digest_required: true}
+    forbidden_effects: [network-request, credential-access, live-local-session, live-cloud-session, live-computer-or-sandbox, live-file-transfer, model-call, external-effect, evaluator-run, promotion, rollback, deployment, write-outside-workspace, undeclared-process]
+    runtime_claim: false
+    production_claim: false
+    non_claims:
+      - No topology parity lease enforcement concurrency sandbox supervision improvement or deployment behavior was observed.
+      - Project-method conformance cannot production qualify any implementation or environment.
+registry_non_claims:
+  - The four practice scenarios are ready specifications but execution and scoring are unauthorized.
+  - The verified vertical slice remains separate maintainer evidence and does not score learner competence.
+  - Synthetic fixtures do not emulate a complete Letta runtime and do not define SDK App Server or protocol event names.
+  - Compilation proves only compatibility with exact locked declarations used by the submission.
+  - Fixture conformance proves only conformance to project-owned offline contracts.
+  - No scenario establishes live interoperability ordering durability replay reconnect authorization account availability security deployment parity or production readiness.
+  - Schedules Channels multi-agent runtime real MemFS synchronization deployment parity and upgrade across tuples are not simulated as live behavior.

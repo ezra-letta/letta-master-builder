@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/dossier.schema.json",
+  "x-target": "dossier/template.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "execution_authorized", "release_scope", "mission", "autonomy_envelope", "object_ownership", "topology", "controls", "observability", "failure_recovery", "improvement", "security_tenancy", "deployment", "claims", "open_questions", "attestations", "non_claims"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"const": "DOS-MASTER-BUILDER-TEMPLATE"},
+    "status": {"const": "template-only"},
+    "execution_authorized": {"const": false},
+    "release_scope": {"type": "object", "additionalProperties": false, "required": ["curriculum_release", "package_tuple", "evidence_cutoff"], "properties": {"curriculum_release": {"type": "string"}, "package_tuple": {"type": "string"}, "evidence_cutoff": {"type": "string"}}},
+    "mission": {"type": "object", "additionalProperties": false, "required": ["statement", "stakeholders", "acceptance_criteria", "prohibited_outcomes"], "properties": {"statement": {"type": "string"}, "stakeholders": {"$ref": "#/$defs/strings"}, "acceptance_criteria": {"$ref": "#/$defs/strings"}, "prohibited_outcomes": {"$ref": "#/$defs/strings"}}},
+    "autonomy_envelope": {"type": "object", "additionalProperties": false, "required": ["allowed_decisions", "forbidden_effects", "budgets", "pause_stop_escalation"], "properties": {"allowed_decisions": {"$ref": "#/$defs/strings"}, "forbidden_effects": {"$ref": "#/$defs/strings"}, "budgets": {"$ref": "#/$defs/strings"}, "pause_stop_escalation": {"$ref": "#/$defs/strings"}}},
+    "object_ownership": {"$ref": "#/$defs/records"},
+    "topology": {"type": "object", "additionalProperties": false, "required": ["state_host", "execution_host", "controller_host", "selected_surface", "alternatives_rejected"], "properties": {"state_host": {"type": "string"}, "execution_host": {"type": "string"}, "controller_host": {"type": "string"}, "selected_surface": {"type": "string"}, "alternatives_rejected": {"$ref": "#/$defs/strings"}}},
+    "controls": {"$ref": "#/$defs/records"},
+    "observability": {"type": "object", "additionalProperties": false, "required": ["evidence_records"], "properties": {"evidence_records": {"type": "array"}}},
+    "failure_recovery": {"type": "object", "additionalProperties": false, "required": ["tests", "reconciliation_rules", "rollback_rules"], "properties": {"tests": {"type": "array"}, "reconciliation_rules": {"$ref": "#/$defs/strings"}, "rollback_rules": {"$ref": "#/$defs/strings"}}},
+    "improvement": {"type": "object", "additionalProperties": false, "required": ["proposal_authority", "evaluation_authority", "promotion_authority", "monitoring_rules"], "properties": {"proposal_authority": {"type": "string"}, "evaluation_authority": {"type": "string"}, "promotion_authority": {"type": "string"}, "monitoring_rules": {"$ref": "#/$defs/strings"}}},
+    "security_tenancy": {"type": "object", "additionalProperties": false, "required": ["credential_owners", "trust_boundaries", "tenant_isolation"], "properties": {"credential_owners": {"$ref": "#/$defs/strings"}, "trust_boundaries": {"$ref": "#/$defs/strings"}, "tenant_isolation": {"$ref": "#/$defs/strings"}}},
+    "deployment": {"type": "object", "additionalProperties": false, "required": ["process_owners", "backups", "upgrade_and_rollback"], "properties": {"process_owners": {"$ref": "#/$defs/strings"}, "backups": {"$ref": "#/$defs/strings"}, "upgrade_and_rollback": {"$ref": "#/$defs/strings"}}},
+    "claims": {"type": "object", "additionalProperties": false, "required": ["static", "runtime", "production"], "properties": {"static": {"type": "array"}, "runtime": {"type": "array"}, "production": {"type": "array"}}},
+    "open_questions": {"type": "array"},
+    "attestations": {"type": "array"},
+    "non_claims": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "strings": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "records": {"type": "object", "additionalProperties": false, "required": ["records"], "properties": {"records": {"type": "array"}}}
+  }
+}

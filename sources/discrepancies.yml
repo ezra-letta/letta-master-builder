@@ -1,0 +1,120 @@
+schema_version: 1.0.0
+kind: discrepancy-registry
+discrepancies:
+  - id: DISC-VERSION-001
+    status: resolved-static-discrepancy
+    summary: The exact package tuple advanced repeatedly between Revision 0.3 and Revision 0.4 implementation.
+    design_value: Agent SDK 0.8.3 with Code 0.31.7 and standalone Code 0.32.2; planning later observed 0.8.6 and 0.32.8.
+    implementation_value: Agent SDK 0.8.9 declaring Code 0.32.11; standalone Code 0.32.11.
+    resolved_at: 2026-09-16
+    resolution: Revision 0.4 uses exact 0.8.9 and 0.32.11 package and source evidence; all earlier tuples remain historical drift input only.
+    runtime_canary: false
+    claim_effect: historical-only
+  - id: DISC-CREATE-OPTIONS-001
+    status: open-claim-limiting
+    summary: Exported CreateAgentOptions includes values that current backend-specific validation rejects or qualifies.
+    design_value: A TypeScript option being exported could be read as universally accepted.
+    implementation_value: Exact SDK validation rejects or narrows system prompt presets memory presets allowedTools canUseTool systemInfoReminder and dreaming behavior on some backends.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: safe-subset-only
+  - id: DISC-SDK-REFERENCE-EXPORTS-001
+    status: open-claim-limiting
+    summary: The official reference overview does not enumerate every public root and portable package export or member.
+    design_value: Documentation table could be treated as a complete mechanical API ledger.
+    implementation_value: Exact declarations additionally expose management clients query repositories computers helpers errors ready sandbox and other symbols.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: safe-subset-only
+  - id: DISC-MEMORY-TRANSITION-001
+    status: open-claim-limiting
+    summary: SDK types retain compatibility memory persona and human options while source guidance prefers MemFS and focused memory files.
+    design_value: All exported memory creation options could be taught as equal greenfield defaults.
+    implementation_value: The exact source marks legacy memory configuration persona and human as deprecated or compatibility-oriented.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: awareness-only
+  - id: DISC-SKILL-PARTIAL-SUCCESS-001
+    status: open-claim-limiting
+    summary: Agent creation can precede a separate Cloud-only push of skill support files.
+    design_value: Skill seeding could be described as one atomic create operation.
+    implementation_value: SKILL.md instructions ride the create request while support files are pushed afterward and may fail independently.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: safe-subset-only
+  - id: DISC-RECONNECT-OWNERSHIP-001
+    status: open-claim-limiting
+    summary: Reconnect and approval recovery semantics differ across SDK session App Server listener and transport ownership layers.
+    design_value: Recovery could be generalized into one universal replay guarantee.
+    implementation_value: Exact behavior is connection runtime execution-owner and version scoped.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: blocks-runtime-claim
+  - id: DISC-REPOSITORY-PARTIAL-SUCCESS-001
+    status: open-claim-limiting
+    summary: Repository attachment or detachment can persist before default-conversation recompilation fails.
+    design_value: Relationship mutation and recompile could be treated as one atomic result.
+    implementation_value: Exact SDK source states the relationship remains changed and retrying recompile is safe.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: safe-subset-only
+  - id: DISC-SANDBOX-LIFETIME-001
+    status: open-claim-limiting
+    summary: Session cleanup does not universally terminate a managed sandbox.
+    design_value: Closing a session could be read as destroying all execution state.
+    implementation_value: Sandbox lifetime is option TTL ownership and topology dependent.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: awareness-only
+  - id: DISC-QUERY-TOPOLOGY-001
+    status: open-claim-limiting
+    summary: Agent-free query has backend and computer requirements not apparent from its compact top-level helper.
+    design_value: query could be presented as a universal stateless replacement for persistent agents.
+    implementation_value: Exact source requires explicit model and system plus an API-backed topology; Cloud additionally requires an explicit computer.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: awareness-only
+  - id: DISC-PORTABLE-ENTRY-001
+    status: open-claim-limiting
+    summary: The portable client entry point has different Node MCP image skill path and credential capabilities.
+    design_value: Root and portable package entry points could be treated as equivalent.
+    implementation_value: Exact exports and runtime restrictions differ and require separate ledger rows.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: safe-subset-only
+  - id: DISC-CODE-0-32-11-LIFECYCLE-001
+    status: open-claim-limiting
+    summary: Code 0.32.9 through 0.32.11 changes execution-owner recovery locally recorded turn resume subagent completion schedule attribution and teleport handoff behavior.
+    design_value: Earlier queue recovery and delegation descriptions could be reused without review.
+    implementation_value: Revision 0.4 must remap lifecycle ownership and preserve every statement as exact-version static evidence until a scoped runtime canary exists.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: blocks-runtime-claim
+  - id: DISC-CODE-0-32-11-CHANNELS-001
+    status: open-claim-limiting
+    summary: Code 0.32.11 migrates channel routes from routing.yaml to routing.json and hardens routed tool ownership.
+    design_value: Older file names and route ownership behavior could be presented as current.
+    implementation_value: Channels remain awareness-only in v1 and exact configuration guidance must use the selected release or later current docs.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: awareness-only
+  - id: DISC-SUBAGENT-DOCS-0-32-11-001
+    status: open-claim-limiting
+    summary: Current subagent documentation contains lifecycle and custom-frontmatter statements that differ from exact Letta Code 0.32.11 source.
+    design_value: The docs page could be treated as an exact description of background launch defaults and supported custom subagent memory fields.
+    implementation_value: Exact 0.32.11 source makes Agent launches background-only and does not parse the documented memoryBlocks field for fresh custom subagents.
+    resolved_at: null
+    resolution: null
+    runtime_canary: false
+    claim_effect: safe-subset-only

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/traceability.schema.json",
+  "x-target": "traceability/registry.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "module_records", "non_claims"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"const": "LMB-TRACEABILITY-REVISION-0-4"},
+    "status": {"enum": ["authoring", "release-candidate"]},
+    "module_records": {"type": "array", "minItems": 14, "maxItems": 14, "items": {"type": "object", "additionalProperties": false, "required": ["module_id", "path", "capability_ids", "dossier_fields", "practicum_ids", "synthesis_checkpoint"], "properties": {"module_id": {"type": "string", "pattern": "^MOD-(0[0-9]|1[0-3])$"}, "path": {"type": "string", "pattern": "^modules/MOD-(0[0-9]|1[0-3])\\.md$"}, "capability_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^CAP-"}}, "dossier_fields": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["release_scope", "mission", "autonomy_envelope", "object_ownership", "topology", "controls", "observability", "failure_recovery", "improvement", "security_tenancy", "deployment", "claims", "open_questions", "attestations"]}}, "practicum_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^SCN-"}}, "synthesis_checkpoint": {"type": "boolean"}}}},
+    "non_claims": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 1}}
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/misconceptions.schema.json",
+  "x-target": "assessments/misconceptions.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "registry_id", "status", "execution_authorized", "entries", "non_claims"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "kind": {"const": "assessment-misconception-registry"},
+    "registry_id": {"const": "AMR-REVISION-0-4"},
+    "status": {"const": "ready-unexecuted"},
+    "execution_authorized": {"const": false},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "domain", "critical", "misconception", "expected_correction", "related_failure_id"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^MIS-[A-Z]+-[0-9]{3}$"},
+          "domain": {"enum": ["architecture", "assessment", "authority", "evaluation", "evidence", "implementation", "production", "recovery", "safety"]},
+          "critical": {"type": "boolean"},
+          "misconception": {"type": "string", "minLength": 1},
+          "expected_correction": {"type": "string", "minLength": 1},
+          "related_failure_id": {"type": ["string", "null"], "pattern": "^CNF-[0-9]{3}$"}
+        }
+      }
+    },
+    "non_claims": {
+      "type": "array", "minItems": 2, "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

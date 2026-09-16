@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/assessment.schema.json",
+  "x-target": "assessments/contract.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "kind", "id", "revision", "status",
+    "execution_authorized", "base_release_certification", "learner_status_awarded", "publication_effect",
+    "learner_admission_profile", "allowed_access_modes", "current", "status_ownership",
+    "machine_thresholds", "evaluator_thresholds", "required_attestations",
+    "critical_noncompensable_failures", "artifacts", "non_claims"
+  ],
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "percent": {"type": "integer", "minimum": 0, "maximum": 100},
+    "nonEmptyUniqueStrings": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/nonEmptyString"}
+    },
+    "attestation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required", "subject"],
+      "properties": {
+        "required": {"const": true},
+        "subject": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "accessMode": {
+      "type": "object", "additionalProperties": false,
+      "required": ["implementation_status_eligible", "claim_limit", "access_boundary"],
+      "properties": {
+        "implementation_status_eligible": {"type": "boolean"},
+        "claim_limit": {"$ref": "#/$defs/nonEmptyString"},
+        "access_boundary": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "statusOwner": {
+      "type": "object", "additionalProperties": false,
+      "required": ["owner", "allowed_evidence", "machine_awardable"],
+      "properties": {
+        "owner": {"$ref": "#/$defs/nonEmptyString"},
+        "allowed_evidence": {"$ref": "#/$defs/nonEmptyUniqueStrings"},
+        "machine_awardable": {"type": "boolean"}
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {"const": "1.1.0"},
+    "kind": {"const": "assessment-governance"},
+    "id": {"const": "ASM-REVISION-0-4"},
+    "revision": {"const": "0.4"},
+    "status": {"const": "ready-governance-not-executed"},
+    "execution_authorized": {"const": false},
+    "base_release_certification": {"const": false},
+    "learner_status_awarded": {"const": false},
+    "publication_effect": {"const": "none"},
+    "learner_admission_profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["gate_type", "required_capabilities", "required_attempt_record", "admission_does_not_depend_on"],
+      "properties": {
+        "gate_type": {"const": "registered-functional"},
+        "required_capabilities": {
+          "type": "array", "uniqueItems": true,
+          "items": {"enum": [
+            "deterministic-repository-navigation", "typescript-async-streams-and-state-machines",
+            "schema-conformant-artifact-generation", "authority-boundary-recognition", "supplied-source-use"
+          ]},
+          "allOf": [
+            {"contains": {"const": "deterministic-repository-navigation"}},
+            {"contains": {"const": "typescript-async-streams-and-state-machines"}},
+            {"contains": {"const": "schema-conformant-artifact-generation"}},
+            {"contains": {"const": "authority-boundary-recognition"}},
+            {"contains": {"const": "supplied-source-use"}}
+          ]
+        },
+        "required_attempt_record": {
+          "type": "array", "uniqueItems": true,
+          "items": {"enum": [
+            "agent_or_conversation_identity", "model_provider_and_handle", "reasoning_profile",
+            "context_and_tool_profile", "allowed_aids", "time_limit", "retry_policy", "curriculum_lock_digest"
+          ]},
+          "minItems": 8, "maxItems": 8
+        },
+        "admission_does_not_depend_on": {
+          "type": "array", "uniqueItems": true, "minItems": 2, "maxItems": 2,
+          "items": {"enum": ["model-name-alone", "context-window-size-alone"]}
+        }
+      }
+    },
+    "allowed_access_modes": {
+      "type": "object", "additionalProperties": false,
+      "required": ["offline-pinned", "online-current", "degraded-conceptual"],
+      "properties": {
+        "offline-pinned": {"allOf": [{"$ref": "#/$defs/accessMode"}, {"type": "object", "properties": {"implementation_status_eligible": {"const": true}, "claim_limit": {"const": "pinned-baseline-only"}}}]},
+        "online-current": {"allOf": [{"$ref": "#/$defs/accessMode"}, {"type": "object", "properties": {"implementation_status_eligible": {"const": true}}}]},
+        "degraded-conceptual": {"allOf": [{"$ref": "#/$defs/accessMode"}, {"type": "object", "properties": {"implementation_status_eligible": {"const": false}, "claim_limit": {"const": "conceptual-evaluation-only"}}}]}
+      }
+    },
+    "current": {
+      "type": "object", "additionalProperties": false,
+      "required": ["learning", "architecture", "implementation", "transfer", "integrity", "runtime", "production"],
+      "properties": {
+        "learning": {"const": "not-started"},
+        "architecture": {"const": "not-assessed"},
+        "implementation": {"const": "not-assessed"},
+        "transfer": {"const": "not-assessed"},
+        "integrity": {"const": "unverified"},
+        "runtime": {"const": "not-tested"},
+        "production": {"const": "not-qualified"}
+      }
+    },
+    "status_ownership": {
+      "type": "object", "additionalProperties": false,
+      "required": ["learning", "architecture", "implementation", "transfer", "integrity", "runtime", "production"],
+      "properties": {
+        "learning": {"$ref": "#/$defs/statusOwner"},
+        "architecture": {"allOf": [{"$ref": "#/$defs/statusOwner"}, {"type": "object", "properties": {"machine_awardable": {"const": false}}}]},
+        "implementation": {"allOf": [{"$ref": "#/$defs/statusOwner"}, {"type": "object", "properties": {"machine_awardable": {"const": true}}}]},
+        "transfer": {"allOf": [{"$ref": "#/$defs/statusOwner"}, {"type": "object", "properties": {"machine_awardable": {"const": false}}}]},
+        "integrity": {"allOf": [{"$ref": "#/$defs/statusOwner"}, {"type": "object", "properties": {"machine_awardable": {"const": false}}}]},
+        "runtime": {"allOf": [{"$ref": "#/$defs/statusOwner"}, {"type": "object", "properties": {"machine_awardable": {"const": false}}}]},
+        "production": {"allOf": [{"$ref": "#/$defs/statusOwner"}, {"type": "object", "properties": {"machine_awardable": {"const": false}}}]}
+      }
+    },
+    "machine_thresholds": {
+      "type": "object", "additionalProperties": false,
+      "required": [
+        "exact_package_compilation_percent", "schema_validation_percent", "critical_fixture_assertions_percent",
+        "noncritical_fixture_assertions_min_percent", "deterministic_rerun_required", "forbidden_effects_observed_max",
+        "forbidden_effect_categories", "artifact_digests_required", "digest_algorithm", "eligible_statuses", "cannot_award"
+      ],
+      "properties": {
+        "exact_package_compilation_percent": {"const": 100},
+        "schema_validation_percent": {"const": 100},
+        "critical_fixture_assertions_percent": {"const": 100},
+        "noncritical_fixture_assertions_min_percent": {"type": "integer", "minimum": 90, "maximum": 100},
+        "deterministic_rerun_required": {"const": true},
+        "forbidden_effects_observed_max": {"const": 0},
+        "forbidden_effect_categories": {"$ref": "#/$defs/nonEmptyUniqueStrings"},
+        "artifact_digests_required": {"const": true},
+        "digest_algorithm": {"const": "sha256"},
+        "eligible_statuses": {"type": "array", "uniqueItems": true, "minItems": 2, "maxItems": 2, "items": {"enum": ["compile-verified", "offline-conformance-verified"]}},
+        "cannot_award": {"type": "array", "uniqueItems": true, "items": {"enum": ["architecture", "transfer", "integrity", "runtime", "production"]}, "minItems": 5, "maxItems": 5}
+      }
+    },
+    "evaluator_thresholds": {
+      "type": "object", "additionalProperties": false,
+      "required": ["conceptual", "transfer", "critical_judgments_percent", "evaluator_requirements"],
+      "properties": {
+        "conceptual": {
+          "type": "object", "additionalProperties": false, "required": ["overall_min_percent", "each_domain_min_percent"],
+          "properties": {"overall_min_percent": {"type": "integer", "minimum": 85, "maximum": 100}, "each_domain_min_percent": {"type": "integer", "minimum": 80, "maximum": 100}}
+        },
+        "transfer": {
+          "type": "object", "additionalProperties": false, "required": ["overall_min_percent", "domains"],
+          "properties": {
+            "overall_min_percent": {"type": "integer", "minimum": 85, "maximum": 100},
+            "domains": {
+              "type": "object", "additionalProperties": false,
+              "required": ["architecture", "implementation", "recovery", "evidence", "defense"],
+              "properties": {
+                "architecture": {"type": "integer", "minimum": 80, "maximum": 100},
+                "implementation": {"type": "integer", "minimum": 80, "maximum": 100},
+                "recovery": {"type": "integer", "minimum": 80, "maximum": 100},
+                "evidence": {"type": "integer", "minimum": 80, "maximum": 100},
+                "defense": {"type": "integer", "minimum": 80, "maximum": 100}
+              }
+            }
+          }
+        },
+        "critical_judgments_percent": {"const": 100},
+        "evaluator_requirements": {
+          "type": "object", "additionalProperties": false,
+          "required": ["identified", "independent_from_subject_attempt", "separately_authorized", "signed_or_attested_report", "fresh_mission_required_for_transfer", "withheld_perturbations_min"],
+          "properties": {
+            "identified": {"const": true},
+            "independent_from_subject_attempt": {"const": true},
+            "separately_authorized": {"const": true},
+            "signed_or_attested_report": {"const": true},
+            "fresh_mission_required_for_transfer": {"const": true},
+            "withheld_perturbations_min": {"type": "integer", "minimum": 2}
+          }
+        }
+      }
+    },
+    "required_attestations": {
+      "type": "object", "additionalProperties": false,
+      "required": ["novelty", "identity", "aids", "retry", "contamination", "independence"],
+      "properties": {
+        "novelty": {"$ref": "#/$defs/attestation"},
+        "identity": {"$ref": "#/$defs/attestation"},
+        "aids": {"$ref": "#/$defs/attestation"},
+        "retry": {"$ref": "#/$defs/attestation"},
+        "contamination": {"$ref": "#/$defs/attestation"},
+        "independence": {"$ref": "#/$defs/attestation"}
+      }
+    },
+    "critical_noncompensable_failures": {
+      "type": "object", "additionalProperties": false,
+      "required": ["items", "consequence"],
+      "properties": {
+        "items": {
+          "type": "array", "minItems": 12, "uniqueItems": true,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["id", "condition"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^CNF-[0-9]{3}$"},
+              "condition": {"$ref": "#/$defs/nonEmptyString"}
+            }
+          }
+        },
+        "consequence": {"const": "attempt-fails-and-cannot-be-offset-by-other-scores"}
+      }
+    },
+    "artifacts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["formative_checkpoints", "public_rubric", "misconception_registry", "evaluator_report_template", "misconception_schema", "evaluator_report_schema"],
+      "properties": {
+        "formative_checkpoints": {"const": "assessments/FORMATIVE_CHECKPOINTS.md"},
+        "public_rubric": {"const": "assessments/PUBLIC_RUBRIC.md"},
+        "misconception_registry": {"const": "assessments/misconceptions.yml"},
+        "evaluator_report_template": {"const": "assessments/evaluator-report.template.yml"},
+        "misconception_schema": {"const": "schemas/misconceptions.schema.json"},
+        "evaluator_report_schema": {"const": "schemas/evaluator-report.schema.json"}
+      }
+    },
+    "non_claims": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"$ref": "#/$defs/nonEmptyString"}}
+  }
+}

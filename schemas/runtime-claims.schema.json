@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/runtime-claims.schema.json",
+  "x-target": "runtime-claims/registry.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "execution_authorized", "aggregate", "claims"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "kind": {"const": "runtime-claim-registry"},
+    "execution_authorized": {"const": false},
+    "aggregate": {"const": "none"},
+    "claims": {"type": "array", "maxItems": 0}
+  }
+}

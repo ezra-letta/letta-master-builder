@@ -1,0 +1,119 @@
+schema_version: 1.0.0
+kind: evaluator-report-template
+template_id: AER-REVISION-0-4
+contract_id: ASM-REVISION-0-4
+report_status: unexecuted-template
+execution_authorized: false
+awards_learner_status: false
+
+assessment_identity:
+  assessment_id: REPLACE
+  curriculum_release: REPLACE
+  curriculum_lock_sha256: REPLACE_WITH_64_LOWERCASE_HEX
+  package_tuple: REPLACE
+  access_mode: offline-pinned
+  form_sha256: REPLACE_WITH_64_LOWERCASE_HEX
+  started_at: '1970-01-01T00:00:00Z'
+  completed_at: '1970-01-01T00:00:00Z'
+
+learner_profile:
+  agent_or_conversation_identity: REPLACE
+  model_provider_and_handle: REPLACE
+  reasoning_profile: REPLACE
+  context_and_tool_profile: REPLACE
+  time_limit: REPLACE
+  retry_policy: REPLACE
+
+admission:
+  decision: not-assessed
+  evidence:
+    deterministic_repository_navigation: REPLACE
+    typescript_async_streams_and_state_machines: REPLACE
+    schema_conformant_artifact_generation: REPLACE
+    authority_boundary_recognition: REPLACE
+    supplied_source_use: REPLACE
+
+administration:
+  administrator_identity: REPLACE
+  disposable_workspace_identity: REPLACE
+  network_disabled: true
+  secrets_present: false
+  fresh_mission_id: REPLACE
+  withheld_perturbation_ids: [REPLACE-1, REPLACE-2]
+
+machine_results:
+  status: not-run
+  exact_package_compilation: {passed: 0, total: 0, percent: 0}
+  schema_validation: {passed: 0, total: 0, percent: 0}
+  critical_fixture_assertions: {passed: 0, total: 0, percent: 0}
+  noncritical_fixture_assertions: {passed: 0, total: 0, percent: 0}
+  deterministic_rerun: {performed: false, equivalent: false, normalization: REPLACE}
+  forbidden_effects:
+    network_requests: 0
+    credential_access_or_disclosure: 0
+    writes_outside_workspace: 0
+    forbidden_processes: 0
+    instrumentation_limitations: REPLACE
+  artifact_digests:
+    - {path: REPLACE, sha256: REPLACE_WITH_64_LOWERCASE_HEX}
+  eligible_implementation_status: none
+
+evaluator:
+  identity: REPLACE
+  version_or_qualification: REPLACE
+  authorization_reference: REPLACE
+  independent_from_subject_attempt: false
+  conflict_disclosure: REPLACE
+
+conceptual_scores:
+  status: not-assessed
+  domains:
+    - {domain_id: REPLACE, percent: 0, notes: REPLACE}
+  overall_percent: 0
+  critical_judgments: {passed: 0, total: 0, percent: 0}
+
+transfer_scores:
+  status: not-assessed
+  architecture: {percent: 0, notes: REPLACE}
+  implementation: {percent: 0, notes: REPLACE}
+  recovery: {percent: 0, notes: REPLACE}
+  evidence: {percent: 0, notes: REPLACE}
+  defense: {percent: 0, notes: REPLACE}
+  overall_percent: 0
+  critical_judgments: {passed: 0, total: 0, percent: 0}
+
+misconceptions:
+  observed_ids: []
+  corrected_ids: []
+  unresolved_ids: []
+
+critical_failures:
+  observed_ids: []
+  details: []
+
+attestations:
+  novelty: {attested: false, statement: REPLACE, limitations: REPLACE}
+  identity: {attested: false, statement: REPLACE, limitations: REPLACE}
+  aids: {attested: false, allowed: REPLACE, used: REPLACE, limitations: REPLACE}
+  retry: {attested: false, attempts: 0, resets: REPLACE, reused_artifacts: REPLACE, limitations: REPLACE}
+  contamination: {attested: false, prior_access: REPLACE, overlap_or_leakage: REPLACE, limitations: REPLACE}
+  independence: {attested: false, statement: REPLACE, limitations: REPLACE}
+
+decisions:
+  architecture: not-assessed
+  implementation: not-assessed
+  transfer: not-assessed
+  integrity: unverified
+  learner_status_awarded: false
+  rationale: Template only; no assessment has been executed.
+
+non_claims:
+  repository_publication_is_evaluator_attestation: false
+  static_or_fixture_evidence_is_runtime_validation: false
+  evaluator_attestation_is_runtime_validation: false
+  runtime_validation_is_production_qualification: false
+  production_qualified: false
+
+report_attestation:
+  evaluator_signature_or_attestation: NOT_SIGNED
+  attested_at: null

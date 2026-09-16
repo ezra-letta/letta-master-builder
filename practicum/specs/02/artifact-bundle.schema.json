@@ -1,0 +1,499 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.invalid/practicum/specs/02/artifact-bundle.schema.json",
+  "title": "SCN-SESSION-RECOVERY artifact bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "minProperties": 4,
+  "maxProperties": 4,
+  "required": [
+    "transcript-projection.json",
+    "queue-decision.json",
+    "recovery-plan.json",
+    "controller-trace.jsonl"
+  ],
+  "properties": {
+    "transcript-projection.json": {
+      "$ref": "#/$defs/transcriptProjection"
+    },
+    "queue-decision.json": {
+      "$ref": "#/$defs/queueDecision"
+    },
+    "recovery-plan.json": {
+      "$ref": "#/$defs/recoveryPlan"
+    },
+    "controller-trace.jsonl": {
+      "$ref": "#/$defs/controllerTrace"
+    }
+  },
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "claimDenials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "liveOrderingObserved",
+        "replayObserved",
+        "durabilityEstablished",
+        "reconnectBehaviorObserved",
+        "queueBehaviorObserved",
+        "approvalRecoveryObserved",
+        "accountAuthorizationEstablished",
+        "runtimeReliabilityEstablished"
+      ],
+      "properties": {
+        "liveOrderingObserved": {"const": false},
+        "replayObserved": {"const": false},
+        "durabilityEstablished": {"const": false},
+        "reconnectBehaviorObserved": {"const": false},
+        "queueBehaviorObserved": {"const": false},
+        "approvalRecoveryObserved": {"const": false},
+        "accountAuthorizationEstablished": {"const": false},
+        "runtimeReliabilityEstablished": {"const": false}
+      }
+    },
+    "transcriptIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputId",
+        "provisionalMessageId",
+        "canonicalMessageId",
+        "turnKey"
+      ],
+      "properties": {
+        "inputId": {
+          "type": ["string", "null"]
+        },
+        "provisionalMessageId": {
+          "type": ["string", "null"]
+        },
+        "canonicalMessageId": {
+          "type": ["string", "null"]
+        },
+        "turnKey": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "transcriptEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entryId",
+        "order",
+        "role",
+        "text",
+        "status",
+        "identity",
+        "provenance",
+        "sourceSequences"
+      ],
+      "properties": {
+        "entryId": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "role": {
+          "enum": ["user", "assistant"]
+        },
+        "text": {
+          "type": "string"
+        },
+        "status": {
+          "enum": ["provisional", "reconciled", "conflict"]
+        },
+        "identity": {
+          "$ref": "#/$defs/transcriptIdentity"
+        },
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "local-input",
+              "synthetic-stream",
+              "canonical-history"
+            ]
+          }
+        },
+        "sourceSequences": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "transcriptConflict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conflictId",
+        "turnKey",
+        "provisionalMessageId",
+        "canonicalMessageId",
+        "provisionalText",
+        "canonicalText",
+        "resolution"
+      ],
+      "properties": {
+        "conflictId": {"$ref": "#/$defs/nonEmptyString"},
+        "turnKey": {"$ref": "#/$defs/nonEmptyString"},
+        "provisionalMessageId": {"$ref": "#/$defs/nonEmptyString"},
+        "canonicalMessageId": {"$ref": "#/$defs/nonEmptyString"},
+        "provisionalText": {"type": "string"},
+        "canonicalText": {"type": "string"},
+        "resolution": {"const": "canonical-history-retained"}
+      }
+    },
+    "transcriptProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioId",
+        "namespace",
+        "normalization",
+        "entries",
+        "conflicts",
+        "duplicateFragmentIds"
+      ],
+      "properties": {
+        "scenarioId": {"const": "SCN-SESSION-RECOVERY"},
+        "namespace": {"const": "lmb.practicum.v1.stream_recovery"},
+        "normalization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "unicode",
+            "lineEndings",
+            "entryOrder",
+            "fragmentDeduplicationKey"
+          ],
+          "properties": {
+            "unicode": {"const": "NFC"},
+            "lineEndings": {"const": "LF"},
+            "entryOrder": {
+              "type": "array",
+              "prefixItems": [
+                {"const": "canonicalOrdinal"},
+                {"const": "firstObservedSequence"},
+                {"const": "entryId"}
+              ],
+              "items": false,
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "fragmentDeduplicationKey": {
+              "type": "array",
+              "prefixItems": [
+                {"const": "turnKey"},
+                {"const": "fragmentId"}
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            }
+          }
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/transcriptEntry"
+          }
+        },
+        "conflicts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/transcriptConflict"
+          }
+        },
+        "duplicateFragmentIds": {
+          "type": "array",
+          "contains": {"const": "fragment-002"},
+          "minContains": 1,
+          "maxContains": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "queueDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioId",
+        "namespace",
+        "inputId",
+        "inputTurnKey",
+        "unresolvedTurnKey",
+        "disposition",
+        "completed",
+        "rationale",
+        "durableEnqueuePerformed",
+        "liveQueueMutationPerformed"
+      ],
+      "properties": {
+        "scenarioId": {"const": "SCN-SESSION-RECOVERY"},
+        "namespace": {"const": "lmb.practicum.v1.stream_recovery"},
+        "inputId": {"const": "input-002"},
+        "inputTurnKey": {"const": "turn-002"},
+        "unresolvedTurnKey": {"const": "turn-001"},
+        "disposition": {
+          "enum": [
+            "active-turn-queue",
+            "durable-enqueue-candidate",
+            "reject-or-defer"
+          ]
+        },
+        "completed": {"const": false},
+        "rationale": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        },
+        "durableEnqueuePerformed": {"const": false},
+        "liveQueueMutationPerformed": {"const": false}
+      }
+    },
+    "recoveryAttempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt",
+        "evidenceConsulted",
+        "resendPerformed",
+        "outcome"
+      ],
+      "properties": {
+        "attempt": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2
+        },
+        "evidenceConsulted": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["bootstrap-001", "history-001", "approval-001"]
+          }
+        },
+        "resendPerformed": {"const": false},
+        "outcome": {
+          "enum": ["unresolved", "blocked-pending-approval"]
+        }
+      }
+    },
+    "recoveryPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioId",
+        "namespace",
+        "turnKey",
+        "transportState",
+        "terminalOutcomeObserved",
+        "bootstrapTurnState",
+        "pendingApproval",
+        "autonomousContinuationAllowed",
+        "blindResendAllowed",
+        "maximumAttempts",
+        "attempts",
+        "stopReason",
+        "checkpoint",
+        "claimDenials"
+      ],
+      "properties": {
+        "scenarioId": {"const": "SCN-SESSION-RECOVERY"},
+        "namespace": {"const": "lmb.practicum.v1.stream_recovery"},
+        "turnKey": {"const": "turn-001"},
+        "transportState": {"const": "unknown"},
+        "terminalOutcomeObserved": {"const": false},
+        "bootstrapTurnState": {"const": "active"},
+        "pendingApproval": {"const": true},
+        "autonomousContinuationAllowed": {"const": false},
+        "blindResendAllowed": {"const": false},
+        "maximumAttempts": {"const": 2},
+        "attempts": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "allOf": [
+                {"$ref": "#/$defs/recoveryAttempt"},
+                {"type": "object", "properties": {"attempt": {"const": 1}}}
+              ]
+            },
+            {
+              "allOf": [
+                {"$ref": "#/$defs/recoveryAttempt"},
+                {"type": "object", "properties": {"attempt": {"const": 2}}}
+              ]
+            }
+          ],
+          "items": false
+        },
+        "stopReason": {
+          "const": "evidence-insufficient-at-recovery-bound"
+        },
+        "checkpoint": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "lastInputSequence",
+            "uniqueFragmentIds",
+            "canonicalMessageIds",
+            "unresolvedApprovalIds"
+          ],
+          "properties": {
+            "lastInputSequence": {"const": 10},
+            "uniqueFragmentIds": {"$ref": "#/$defs/stringArray"},
+            "canonicalMessageIds": {"$ref": "#/$defs/stringArray"},
+            "unresolvedApprovalIds": {
+              "type": "array",
+              "contains": {"const": "approval-001"},
+              "minContains": 1,
+              "maxContains": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/nonEmptyString"}
+            }
+          }
+        },
+        "claimDenials": {
+          "$ref": "#/$defs/claimDenials"
+        }
+      }
+    },
+    "traceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequence", "kind", "turnKey", "inputId", "detail"],
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "enum": [
+            "lmb.practicum.v1.stream_recovery.queue.input_recorded",
+            "lmb.practicum.v1.stream_recovery.stream.fragment_accepted",
+            "lmb.practicum.v1.stream_recovery.stream.fragment_duplicate_ignored",
+            "lmb.practicum.v1.stream_recovery.transport.state_unknown",
+            "lmb.practicum.v1.stream_recovery.bootstrap.consulted",
+            "lmb.practicum.v1.stream_recovery.history.reconciled",
+            "lmb.practicum.v1.stream_recovery.history.conflict_recorded",
+            "lmb.practicum.v1.stream_recovery.approval.continuation_blocked",
+            "lmb.practicum.v1.stream_recovery.queue.decision_recorded",
+            "lmb.practicum.v1.stream_recovery.recovery.attempt_recorded",
+            "lmb.practicum.v1.stream_recovery.recovery.stopped",
+            "lmb.practicum.v1.stream_recovery.claims.denied"
+          ]
+        },
+        "turnKey": {
+          "type": ["string", "null"]
+        },
+        "inputId": {
+          "type": ["string", "null"]
+        },
+        "detail": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "controllerTrace": {
+      "description": "The JSONL artifact is represented as this ordered array; each item is one line in order.",
+      "type": "array",
+      "minItems": 12,
+      "items": {
+        "$ref": "#/$defs/traceRecord"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "lmb.practicum.v1.stream_recovery.stream.fragment_duplicate_ignored"
+              }
+            },
+            "required": ["kind"]
+          },
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "lmb.practicum.v1.stream_recovery.history.conflict_recorded"
+              }
+            },
+            "required": ["kind"]
+          },
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "lmb.practicum.v1.stream_recovery.approval.continuation_blocked"
+              }
+            },
+            "required": ["kind"]
+          },
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "lmb.practicum.v1.stream_recovery.recovery.stopped"
+              }
+            },
+            "required": ["kind"]
+          },
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "lmb.practicum.v1.stream_recovery.claims.denied"
+              }
+            },
+            "required": ["kind"]
+          },
+          "minContains": 1
+        }
+      ]
+    }
+  }
+}

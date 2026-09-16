@@ -1,0 +1,38 @@
+schema_version: 1.0.0
+id: REL-REVISION-0-4-RC
+status: release-candidate-publication-blocked
+curriculum_version: 0.4.0
+design_revision: '0.4'
+evidence_cutoff: 2026-09-16
+package_tuple:
+  agent_sdk: VER-AGENT-SDK-0-8-9
+  sdk_declared_runtime: VER-SDK-DECLARED-RUNTIME-0-32-11
+  standalone_runtime: VER-STANDALONE-0-32-11
+docs_source_id: SRC-DOCS-20260916
+toolchain: {node: '>=22.19.0', typescript: 5.9.3}
+lanes: {primary: agent-sdk-node-local, contrast: agent-sdk-node-cloud, hosted_runtime: unknown-not-tested}
+artifacts: {curriculum_available: true, mandatory_modules: 'ready:14:70891-words', practicum_specs: ready-unexecuted, assessment_governance: ready-unexecuted, vertical_slice: compile-verified, sdk_export_ledger: generated}
+dependency_audit:
+  control_plane: zero-known-vulnerabilities
+  compile_only_slice: known-upstream-advisories
+  publication_blocked: true
+  advisory_ids: [GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c]
+  affected_packages: [sharp, '@janhapke/sharp-electron', '@letta-ai/letta-code', '@letta-ai/letta-agent-sdk']
+dependency_review: release/dependency-review.yml
+independent_review:
+  status: local-release-candidate-approved
+  completed_at: 2026-09-16T14:54:41Z
+  reviewers: [factual-evidence, pedagogical-transfer, security-assessment]
+  closed_findings:
+    - release and module status drift
+    - subagent and App Server evidence registration gaps
+    - dossier formative and assessment reader continuity
+    - incomplete practicum input type schema and perturbation contracts
+    - duplicate JSON schema metadata keys and fail-closed parsing
+  remaining_external_blockers: [dependency advisories and incomplete transitive license metadata block publication]
+runtime_validation: not-performed
+non_claims:
+  - This unpublished release-candidate manifest is not a learner credential publication approval runtime validation or production qualification.
+  - Static compilation does not prove Local Cloud hosted or provider runtime behavior.
+  - No Agent API model channel schedule deployment or canary was executed.
+  - The compile-only exact dependency closure currently carries upstream high-severity sharp and libvips advisories and is not publication-cleared.

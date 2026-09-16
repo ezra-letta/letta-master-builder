@@ -1,0 +1,17 @@
+schema_version: 1.0.0
+default_action: fail
+exception_policy:
+  default: deny
+  require_exact_path: true
+  require_named_reviewer: true
+  require_rationale: true
+  broad_directory_exceptions: false
+rules:
+  - {id: LEG-004, pattern: '\bLETTA_BASE_URL\b', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Deprecated public configuration must not be taught as a greenfield interface., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+  - {id: LEG-005, pattern: '\btool_rules\b', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Deprecated persisted tool rules must not be presented as current architecture., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+  - {id: LEG-006, pattern: '\bsend_message\b', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Removed visible-output tool architecture must not be presented as current., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+  - {id: LEG-007, pattern: '\brun_code\b', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Legacy server-executed code tools must not be the greenfield Agent SDK capability path., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+  - {id: LEG-008, pattern: 'control.{0,20}socket|stream.{0,20}socket', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Retired split direct App Server sockets are prohibited as current architecture., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+  - {id: LEG-009, pattern: '\bAgentFile\b', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Retired AgentFile transfer must not be presented as current migration., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+  - {id: LEG-010, pattern: 'fall back to V1', severity: error, include: ['**/*'], exclude: [legacy-boundary/denylist.yml, DESIGN_SPEC.md], reason: Greenfield material has no fallback to retired V1 server architecture., replacement_pointer: DESIGN_SPEC.md#56-legacy-boundary}
+reviewed_exceptions: []

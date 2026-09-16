@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/registry.schema.json",
+  "title": "Evidence registry contracts",
+  "oneOf": [
+    { "$ref": "#/$defs/sourceRegistry" },
+    { "$ref": "#/$defs/claimRegistry" },
+    { "$ref": "#/$defs/discrepancyRegistry" }
+  ],
+  "$defs": {
+    "nonempty": { "type": "string", "minLength": 1 },
+    "idList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/nonempty" }
+    },
+    "sourceRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "sources"],
+      "properties": {
+        "schema_version": { "const": "1.0.0" },
+        "kind": { "const": "source-registry" },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "type", "publisher", "url", "retrieved_at", "revision", "snapshot_scope", "claim_ids", "surfaces", "versions", "freshness", "status"],
+            "properties": {
+              "id": { "$ref": "#/$defs/nonempty" },
+              "type": { "enum": ["official-docs-snapshot", "npm-artifact", "immutable-source", "maintainer-synthesis", "production-heuristic"] },
+              "publisher": { "$ref": "#/$defs/nonempty" },
+              "url": { "$ref": "#/$defs/nonempty" },
+              "retrieved_at": { "type": "string", "format": "date" },
+              "revision": { "$ref": "#/$defs/nonempty" },
+              "snapshot_scope": { "type": ["string", "null"], "minLength": 1 },
+              "claim_ids": { "$ref": "#/$defs/idList" },
+              "surfaces": { "$ref": "#/$defs/idList" },
+              "versions": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+              "freshness": { "enum": ["stable", "medium", "fast", "live"] },
+              "status": { "enum": ["current", "planning", "superseded"] }
+            }
+          }
+        }
+      }
+    },
+    "claimRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "claims"],
+      "properties": {
+        "schema_version": { "const": "1.0.0" },
+        "kind": { "const": "claim-registry" },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "statement", "classification", "owner", "freshness", "applies_to", "evidence_ids", "non_claims", "verified_at", "discrepancy_ids", "recheck_when"],
+            "properties": {
+              "id": { "$ref": "#/$defs/nonempty" },
+              "statement": { "$ref": "#/$defs/nonempty" },
+              "classification": { "enum": ["documented-current", "sdk-package-exact", "sdk-declared-runtime-exact", "standalone-runtime-exact", "hosted-runtime-observed", "live-canary-observed", "maintainer-synthesis", "production-heuristic", "historical-evidence", "unknown-not-tested", "unsupported", "deprecated", "prohibited-greenfield"] },
+              "owner": { "$ref": "#/$defs/nonempty" },
+              "freshness": { "enum": ["stable", "medium", "fast", "live"] },
+              "applies_to": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["surfaces", "backends", "versions"],
+                "properties": {
+                  "surfaces": { "$ref": "#/$defs/idList" },
+                  "backends": { "$ref": "#/$defs/idList" },
+                  "versions": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+                }
+              },
+              "evidence_ids": { "$ref": "#/$defs/idList" },
+              "non_claims": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonempty" } },
+              "verified_at": { "type": "string", "format": "date" },
+              "discrepancy_ids": { "$ref": "#/$defs/idList" },
+              "recheck_when": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonempty" } }
+            }
+          }
+        }
+      }
+    },
+    "discrepancyRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "kind", "discrepancies"],
+      "properties": {
+        "schema_version": { "const": "1.0.0" },
+        "kind": { "const": "discrepancy-registry" },
+        "discrepancies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "status", "summary", "design_value", "implementation_value", "resolved_at", "resolution", "runtime_canary", "claim_effect"],
+            "properties": {
+              "id": { "$ref": "#/$defs/nonempty" },
+              "status": { "enum": ["open-claim-limiting", "resolved-planning-discrepancy", "resolved-static-discrepancy"] },
+              "summary": { "$ref": "#/$defs/nonempty" },
+              "design_value": { "$ref": "#/$defs/nonempty" },
+              "implementation_value": { "$ref": "#/$defs/nonempty" },
+              "resolved_at": { "type": ["string", "null"], "format": "date" },
+              "resolution": { "type": ["string", "null"], "minLength": 1 },
+              "runtime_canary": { "const": false },
+              "claim_effect": { "enum": ["safe-subset-only", "awareness-only", "historical-only", "blocks-runtime-claim"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

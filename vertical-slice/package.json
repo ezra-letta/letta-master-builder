@@ -1,0 +1,13 @@
+{
+  "name": "letta-master-builder-agent-provisioning-slice",
+  "version": "0.0.0-private",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22.19.0"},
+  "scripts": {"typecheck": "tsc -p tsconfig.json --noEmit"},
+  "devDependencies": {
+    "@types/node": "22.20.3",
+    "@letta-ai/letta-agent-sdk": "0.8.9",
+    "typescript": "5.9.3"
+  }
+}

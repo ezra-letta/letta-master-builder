@@ -1,0 +1,30 @@
+{
+  "fixture_id": "FIX-PROVISIONING-PARTIAL-SUCCESS",
+  "provenance": "project-method-only",
+  "runtime_claim": false,
+  "request_key": "lesson-0001",
+  "steps": [
+    {"operation": "store.getAgentId", "result": null},
+    {"operation": "agents.list", "tag_match_count": 0},
+    {"operation": "createAgent", "result_agent_id": "agent-example-123"},
+    {"operation": "agents.retrieve", "result_agent_id": "agent-example-123"},
+    {"operation": "store.saveAgentId", "error": "simulated durable-store outage"}
+  ],
+  "expected_result": {
+    "state": "created-unrecorded",
+    "agentId": "agent-example-123",
+    "retryWithSameRequestKey": true
+  },
+  "next_retry": {
+    "store_mapping": null,
+    "tag_match_ids": ["agent-example-123"],
+    "expected_state_after_save": "reconciled"
+  },
+  "alternate_retry_persistence_failure": {
+    "store_mapping": null,
+    "tag_match_ids": ["agent-example-123"],
+    "save_error": "simulated durable-store outage",
+    "expected_state": "reconciled-unrecorded",
+    "creation_claim": false
+  }
+}

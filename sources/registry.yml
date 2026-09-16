@@ -1,0 +1,387 @@
+schema_version: 1.0.0
+kind: source-registry
+sources:
+  - id: SRC-DOCS-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/llms.txt
+    retrieved_at: 2026-09-11
+    revision: sha256:17f69bdb1fa6244f3ab3fcb2ccabc7571fc5b5d57e617a1521d4d496b4ed718b
+    snapshot_scope: Exact body of the public llms.txt documentation index; linked page bodies are not covered by this hash.
+    claim_ids: []
+    surfaces: [official-docs]
+    versions: []
+    freshness: medium
+    status: superseded
+  - id: SRC-DOCS-STATEFUL-AGENTS-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/concepts/stateful-agents/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:060a6d7109ecffd8929da2e4b74921935d9c93867282578e8c911236302be2b1
+    snapshot_scope: Exact body of the indexed stateful-agents page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-SDK-002]
+    surfaces: [stateful-agents]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-REFERENCE-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/reference/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:236664ad10f2e800d552857b204aa93e6a8d6c28ad3539460150a0b628e112fb
+    snapshot_scope: Exact body of the indexed Agent SDK reference page retrieved through the ETag-checked official docs route.
+    claim_ids: []
+    surfaces: [agent-sdk]
+    versions: []
+    freshness: fast
+    status: superseded
+  - id: SRC-DOCS-MEMFS-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/concepts/memfs/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:889173552c8adea77a1fce37aba0b2e63eaf68c35d1c4a1d36d611bcd5d196be
+    snapshot_scope: Exact body of the indexed MemFS concept page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-MEMORY-001]
+    surfaces: [memfs]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-MEMORY-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/configuration/memory/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:6d171d6a9102543fb9fc28e53a375ec9a2271c0b82d6079d074dcfbb75da9b57
+    snapshot_scope: Exact body of the indexed memory and dreaming page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-MEMORY-001]
+    surfaces: [memory, dreaming]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-APP-SERVER-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/platform/app-server/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:fb3540d552c605dc46169406f26d763d83da43bec5f05d574e666cb22623a474
+    snapshot_scope: Exact body of the indexed App Server page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-APP-SERVER-001]
+    surfaces: [app-server]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-REMOTE-CLIENT-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/remote-client/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:8005d16522d9378810e112c4324b2c81f2b2b9144acad3ddc7f49b5715f6eff7
+    snapshot_scope: Exact body of the indexed Remote Client page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-REMOTE-001]
+    surfaces: [remote-client]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-API-AGENTS-20260911
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/api/resources/agents/index.md
+    retrieved_at: 2026-09-11
+    revision: sha256:092779a0c1475b2adfd35b4463f8328c004e0f6cde1c0ddcd72f4d76ddeb7f1b
+    snapshot_scope: Exact body of the indexed Agents REST API reference page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-API-001]
+    surfaces: [direct-rest-api]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-SDK-NPM-0.8.3
+    type: npm-artifact
+    publisher: Letta
+    url: https://registry.npmjs.org/%40letta-ai%2Fletta-agent-sdk/0.8.3
+    retrieved_at: 2026-09-11
+    revision: sha512-6DW1eNZbI2ptmxgbatM9n829CEr4m+Qvq3yeQKtcqAGSPMgoYGrIc7EMEuIz57ZJoh7aMGZbJg3cxEWskJl+UA==
+    snapshot_scope: null
+    claim_ids: []
+    surfaces: [agent-sdk]
+    versions: [0.8.3]
+    freshness: fast
+    status: superseded
+  - id: SRC-SDK-SOURCE-0.8.3
+    type: immutable-source
+    publisher: Letta
+    url: https://github.com/letta-ai/letta-agent-sdk/tree/v0.8.3
+    retrieved_at: 2026-09-11
+    revision: 4abb682e8d8e4e192dc77378c29f80f3bae8f5f8
+    snapshot_scope: null
+    claim_ids: []
+    surfaces: [agent-sdk]
+    versions: [0.8.3]
+    freshness: fast
+    status: superseded
+  - id: SRC-SDK-RUNTIME-0.31.7
+    type: immutable-source
+    publisher: Letta
+    url: https://github.com/letta-ai/letta-code/tree/v0.31.7
+    retrieved_at: 2026-09-11
+    revision: 43338c87df01c2ffcef5115244c3229e76316e63
+    snapshot_scope: null
+    claim_ids: []
+    surfaces: [sdk-declared-runtime]
+    versions: [0.31.7]
+    freshness: fast
+    status: superseded
+  - id: SRC-SDK-RUNTIME-NPM-0.31.7
+    type: npm-artifact
+    publisher: Letta
+    url: https://registry.npmjs.org/%40letta-ai%2Fletta-code/0.31.7
+    retrieved_at: 2026-09-11
+    revision: sha512-u8Y1cbYVxOKABuIybwqkUVfZkGXqsUW4FfyPFBPzotYVsTPTRVucGMtBUfCN/1RsIEF08k9bHcZmQ6zp8ewIFw==
+    snapshot_scope: null
+    claim_ids: []
+    surfaces: [sdk-declared-runtime]
+    versions: [0.31.7]
+    freshness: fast
+    status: superseded
+  - id: SRC-STANDALONE-NPM-0.32.2
+    type: npm-artifact
+    publisher: Letta
+    url: https://registry.npmjs.org/%40letta-ai%2Fletta-code/0.32.2
+    retrieved_at: 2026-09-11
+    revision: sha512-6PrcT2Pxov+ZFq4PWiOqJbnKXfvTl75MSAzIiqwxccpelb8govSEpg1qmN4xdG5d5l24vDNBBcD8WjDbHExx5A==
+    snapshot_scope: null
+    claim_ids: []
+    surfaces: [standalone-runtime]
+    versions: [0.32.2]
+    freshness: fast
+    status: superseded
+  - id: SRC-STANDALONE-SOURCE-0.32.2
+    type: immutable-source
+    publisher: Letta
+    url: https://github.com/letta-ai/letta-code/tree/v0.32.2
+    retrieved_at: 2026-09-11
+    revision: aa3e294d006b448e36a0be44afed440f47923aa8
+    snapshot_scope: null
+    claim_ids: []
+    surfaces: [standalone-runtime]
+    versions: [0.32.2]
+    freshness: fast
+    status: superseded
+  - id: SRC-DOCS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/llms.txt
+    retrieved_at: 2026-09-16
+    revision: sha256:17f69bdb1fa6244f3ab3fcb2ccabc7571fc5b5d57e617a1521d4d496b4ed718b
+    snapshot_scope: Exact body of the public llms.txt documentation index; linked page bodies are not covered by this hash.
+    claim_ids: [LMB-VERSION-001]
+    surfaces: [official-docs]
+    versions: []
+    freshness: medium
+    status: current
+  - id: SRC-DOCS-SDK-AGENTS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/agents/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:5bcda87b0853d11d65cb072b10d21414ae84552a7f6440e23bb52bfc0dc0146c
+    snapshot_scope: Exact body of the indexed Agent SDK creating-agents page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-SDK-002]
+    surfaces: [agent-sdk]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-REFERENCE-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/reference/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:236664ad10f2e800d552857b204aa93e6a8d6c28ad3539460150a0b628e112fb
+    snapshot_scope: Exact body of the indexed Agent SDK reference page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-SDK-002]
+    surfaces: [agent-sdk]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-SESSIONS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/sessions/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:6a6b69696db99722f737b4fca80c859471cf30ea49b1614b261623eef6d1d6c8
+    snapshot_scope: Exact body of the indexed Agent SDK sessions turns and durability page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-LIFECYCLE-001]
+    surfaces: [agent-sdk]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-MEMORY-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/memory/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:e880ce9c95c4f7ed6f36c6383f07c9573d9d89b90d105653f7a1b5e151873c8b
+    snapshot_scope: Exact body of the indexed Agent SDK memory page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-MEMORY-001]
+    surfaces: [agent-sdk, memory, dreaming]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-DEPLOYMENT-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/deployment/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:440b203de5002d440e9700d392fda188d68ce48f21c28e4262d8103f985f497d
+    snapshot_scope: Exact body of the indexed Agent SDK deployment page retrieved through the ETag-checked official docs route.
+    claim_ids: [LMB-LIFECYCLE-001]
+    surfaces: [agent-sdk, local-backend, cloud-backend, remote-app-server, computers, managed-sandboxes]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-MCP-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/mcp/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:1b833bd817159758af7be9cdbfdd724628fa2ac79e0af48d60119f7169e6464c
+    snapshot_scope: Exact body of the indexed Agent SDK MCP and client tools page retrieved through the ETag-checked official docs route.
+    claim_ids: []
+    surfaces: [agent-sdk, client-tools, mcp]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-PERMISSIONS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/permissions/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:29fa00420e9ab7d0aa0ddc541fa825adbf7c39777fd3a73f9bea5c0492fadd55
+    snapshot_scope: Exact body of the indexed Agent SDK permissions page retrieved through the ETag-checked official docs route.
+    claim_ids: []
+    surfaces: [agent-sdk, permissions, approvals]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SDK-REPOSITORIES-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/agent-sdk/repositories/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:a85fd7c153eb0522385c86d1fa4fec67f001952d3fac3204be5b8f3b0cebbd0e
+    snapshot_scope: Exact body of the indexed Agent SDK shared repository page retrieved through the ETag-checked official docs route.
+    claim_ids: []
+    surfaces: [agent-sdk, shared-memory-repositories]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-TEAM-PERMISSIONS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/teams/permissions/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:d92968c52d0352d6cd6add12158f85335bf01930677d434da19d73891017ae8b
+    snapshot_scope: Exact body of the indexed organization and sharing permissions page retrieved through the ETag-checked official docs route.
+    claim_ids: []
+    surfaces: [organization-roles, agent-sharing, conversation-access, tool-permissions]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SECRETS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/configuration/secrets/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:2eff0687985378236d5f2bebe7e73c5aae1255cbade8f308530b400afce1acb5
+    snapshot_scope: Exact body of the indexed Letta Code secrets page retrieved through the ETag-checked official docs route.
+    claim_ids: []
+    surfaces: [secrets, shell-execution, output-scrubbing]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-DOCS-SUBAGENTS-20260916
+    type: official-docs-snapshot
+    publisher: Letta
+    url: https://docs.letta.com/configuration/subagents/index.md
+    retrieved_at: 2026-09-16
+    revision: sha256:3047e3dccb13128aed392d78efa7093a80ffdfeb6e97ee8d12c690cb63c33257
+    snapshot_scope: Exact body of the indexed subagents page retrieved through the ETag-checked official docs route; known docs-versus-0.32.11 differences are registered separately.
+    claim_ids: []
+    surfaces: [subagents, forks, persistent-agent-delegation]
+    versions: []
+    freshness: fast
+    status: current
+  - id: SRC-SDK-NPM-0.8.9
+    type: npm-artifact
+    publisher: Letta
+    url: https://registry.npmjs.org/%40letta-ai%2Fletta-agent-sdk/0.8.9
+    retrieved_at: 2026-09-16
+    revision: sha512-duWxq92PMTtPnxmMSP3y1J0ytm9Cmyc7nqD1mGYsI3A79rD9bJr664Vxkq9c0vr/QbA4b/1QW6YW1K26tIQWzQ==
+    snapshot_scope: Exact npm package metadata and immutable tarball identity; package behavior was not executed.
+    claim_ids: [LMB-VERSION-001]
+    surfaces: [agent-sdk]
+    versions: [0.8.9]
+    freshness: fast
+    status: current
+  - id: SRC-SDK-SOURCE-0.8.9
+    type: immutable-source
+    publisher: Letta
+    url: https://github.com/letta-ai/letta-agent-sdk/tree/v0.8.9
+    retrieved_at: 2026-09-16
+    revision: c8afbaa7bd38f2831631f4ae175a37969300ef4d
+    snapshot_scope: Public source tag used for static API and package-delta review.
+    claim_ids: [LMB-VERSION-001]
+    surfaces: [agent-sdk]
+    versions: [0.8.9]
+    freshness: fast
+    status: current
+  - id: SRC-CODE-NPM-0.32.11
+    type: npm-artifact
+    publisher: Letta
+    url: https://registry.npmjs.org/%40letta-ai%2Fletta-code/0.32.11
+    retrieved_at: 2026-09-16
+    revision: sha512-8EMj0zt3U/kvQ+L05w4wPRAY/PWNIinmf4ESo4CfFIBbCtWuTBvau381P79xFdoBtzJwx/ChEFHl0YvbQWmoOA==
+    snapshot_scope: Exact npm package metadata and immutable tarball identity; runtime behavior was not executed.
+    claim_ids: [LMB-VERSION-001, LMB-VERSION-002]
+    surfaces: [sdk-declared-runtime, standalone-runtime]
+    versions: [0.32.11]
+    freshness: fast
+    status: current
+  - id: SRC-CODE-SOURCE-0.32.11
+    type: immutable-source
+    publisher: Letta
+    url: https://github.com/letta-ai/letta-code/tree/v0.32.11
+    retrieved_at: 2026-09-16
+    revision: aa41b19438c18f1341ea044deedde7ec8ce8afce
+    snapshot_scope: Public source tag used for static runtime-surface and release-delta review.
+    claim_ids: [LMB-VERSION-001, LMB-VERSION-002]
+    surfaces: [sdk-declared-runtime, standalone-runtime]
+    versions: [0.32.11]
+    freshness: fast
+    status: current
+  - id: SRC-DESIGN-SYNTHESIS
+    type: maintainer-synthesis
+    publisher: Letta Master Builder maintainers
+    url: ./DESIGN_SPEC.md
+    retrieved_at: 2026-09-16
+    revision: revision-0.4
+    snapshot_scope: null
+    claim_ids: [LMB-CURRICULUM-001, LMB-LIFECYCLE-001, LMB-AUTONOMY-001, LMB-FOUNDRY-001, LMB-READER-001, LMB-OWNERSHIP-001]
+    surfaces: [curriculum-policy, autonomous-agent-method]
+    versions: []
+    freshness: stable
+    status: current
+  - id: SRC-PRODUCTION-HEURISTIC
+    type: production-heuristic
+    publisher: Letta Master Builder maintainers
+    url: ./DESIGN_SPEC.md
+    retrieved_at: 2026-09-16
+    revision: revision-0.4
+    snapshot_scope: null
+    claim_ids: [LMB-SECURITY-001, LMB-AUTONOMY-001, LMB-OWNERSHIP-001]
+    surfaces: [autonomy-governance-policy]
+    versions: []
+    freshness: stable
+    status: current

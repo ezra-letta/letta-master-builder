@@ -1,0 +1,24 @@
+schema_version: 1.0.0
+id: REL-DRIFT-0-8-6-TO-0-8-9
+status: complete
+upstream_sdk_published_at: 2026-09-15T23:33:24Z
+started_at: 2026-09-16T10:52:24Z
+completed_at: 2026-09-16T12:06:49Z
+elapsed_minutes: 75
+maintenance_ceiling_hours: 8
+release_response_target_days: 7
+from: {agent_sdk: 0.8.6, sdk_declared_runtime: 0.32.8, standalone_runtime: 0.32.8}
+to: {agent_sdk: 0.8.9, sdk_declared_runtime: 0.32.11, standalone_runtime: 0.32.11}
+static_changes:
+  - Agent SDK 0.8.7 through 0.8.9 changes package versions and exact Letta Code pins without an SDK API delta.
+  - Letta Code 0.32.9 changes execution-owner recovery and subagent completion identity behavior.
+  - Letta Code 0.32.10 adds bounded locally recorded interrupted-turn recovery and teleport sender-role correction.
+  - Letta Code 0.32.11 updates Channels route persistence and MemFS Git retry behavior.
+affected_capability_ids: [CAP-QUEUES-ENQUEUE, CAP-RECOVERY-APPROVALS, CAP-SHARED-REPOSITORIES, CAP-MULTI-AGENT, CAP-CHANNELS, CAP-CONCURRENCY-CONSISTENCY]
+checks:
+  - Update exact npm integrity and immutable source tags.
+  - Regenerate dual-entry export inventory and compare API symbols.
+  - Recompile the provisioning vertical slice against the new exact closure.
+  - Keep lifecycle Channels and hosted behavior as static or unknown until scoped runtime evidence exists.
+runtime_claim: false
+maintenance_result: within-budget

@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lmb.invalid/practicum/specs/01/artifact-bundle.schema.json",
+  "title": "SCN-PROVISIONING artifact bundle",
+  "type": "object",
+  "required": [
+    "provisioning-result.json",
+    "reconciliation-report.json",
+    "cleanup-plan.json",
+    "controller-trace.jsonl"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "provisioning-result.json": {
+      "$ref": "#/$defs/provisioningResult"
+    },
+    "reconciliation-report.json": {
+      "$ref": "#/$defs/reconciliationReport"
+    },
+    "cleanup-plan.json": {
+      "$ref": "#/$defs/cleanupPlan"
+    },
+    "controller-trace.jsonl": {
+      "type": "array",
+      "description": "Ordered parsed JSONL entries; array position is line order.",
+      "minItems": 1,
+      "maxItems": 32,
+      "items": {
+        "$ref": "#/$defs/traceEntry"
+      }
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "operationKey": {
+      "type": "string",
+      "pattern": "^lmb\\.practicum\\.v1\\.provisioning/[a-z-]+/[a-z0-9-]+$",
+      "maxLength": 160
+    },
+    "canonicalId": {
+      "type": "string",
+      "pattern": "^[a-z]+_[a-z0-9_]+$",
+      "maxLength": 128
+    },
+    "provenance": {
+      "enum": [
+        "package-derived-public-shape",
+        "documented-behavior-fixture",
+        "project-method-only"
+      ]
+    },
+    "assertionResult": {
+      "type": "object",
+      "required": [
+        "id",
+        "passed",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^S01-[CN][0-9]{2}$"
+        },
+        "passed": {
+          "const": true
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "assertions": {
+      "type": "object",
+      "required": [
+        "critical",
+        "noncritical"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "critical": {
+          "type": "array",
+          "prefixItems": [
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-C01"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-C02"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-C03"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-C04"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-C05"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-C06"}}}]}
+          ],
+          "items": false,
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "noncritical": {
+          "type": "array",
+          "prefixItems": [
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-N01"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-N02"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-N03"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-N04"}}}]},
+            {"allOf": [{"$ref": "#/$defs/assertionResult"}, {"type": "object", "properties": {"id": {"const": "S01-N05"}}}]}
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        }
+      }
+    },
+    "effectResult": {
+      "type": "object",
+      "required": [
+        "order",
+        "operationKey",
+        "effect",
+        "state",
+        "canonicalId",
+        "provenance",
+        "diagnostic"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order": {"type": "integer", "minimum": 1, "maximum": 16},
+        "operationKey": {"$ref": "#/$defs/operationKey"},
+        "effect": {
+          "enum": [
+            "agent",
+            "conversation",
+            "repository-attachment",
+            "repository-recompile",
+            "skill-manifest",
+            "skill-support-file"
+          ]
+        },
+        "state": {
+          "enum": [
+            "accepted",
+            "ambiguous",
+            "created",
+            "failed",
+            "recorded",
+            "rejected",
+            "uncertain"
+          ]
+        },
+        "canonicalId": {
+          "anyOf": [
+            {"$ref": "#/$defs/canonicalId"},
+            {"type": "null"}
+          ]
+        },
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "diagnostic": {"$ref": "#/$defs/text"}
+      }
+    },
+    "controllerMapping": {
+      "type": "object",
+      "required": [
+        "order",
+        "mappingKind",
+        "canonicalId",
+        "state",
+        "reasonCode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order": {"type": "integer", "minimum": 1, "maximum": 2},
+        "mappingKind": {"enum": ["agent", "conversation"]},
+        "canonicalId": {"$ref": "#/$defs/canonicalId"},
+        "state": {"const": "failed"},
+        "reasonCode": {"$ref": "#/$defs/text"}
+      }
+    },
+    "provisioningResult": {
+      "type": "object",
+      "required": [
+        "scenarioId",
+        "namespace",
+        "runtimeClaim",
+        "canonicalIdentities",
+        "effects",
+        "controllerMappings",
+        "assertions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scenarioId": {"const": "SCN-PROVISIONING"},
+        "namespace": {"const": "lmb.practicum.v1.provisioning"},
+        "runtimeClaim": {"const": false},
+        "canonicalIdentities": {
+          "type": "object",
+          "required": ["agentId", "conversationId"],
+          "additionalProperties": false,
+          "properties": {
+            "agentId": {"$ref": "#/$defs/canonicalId"},
+            "conversationId": {"$ref": "#/$defs/canonicalId"}
+          }
+        },
+        "effects": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 16,
+          "items": {"$ref": "#/$defs/effectResult"}
+        },
+        "controllerMappings": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {"$ref": "#/$defs/controllerMapping"}
+        },
+        "assertions": {"$ref": "#/$defs/assertions"}
+      }
+    },
+    "lookup": {
+      "type": "object",
+      "required": [
+        "order",
+        "operationKey",
+        "target",
+        "candidateIds",
+        "matchCount",
+        "decision",
+        "retryPermitted",
+        "prerequisite"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order": {"type": "integer", "minimum": 1, "maximum": 16},
+        "operationKey": {"$ref": "#/$defs/operationKey"},
+        "target": {"enum": ["agent", "conversation", "repository-attachment", "skill-component"]},
+        "candidateIds": {
+          "type": "array",
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/canonicalId"}
+        },
+        "matchCount": {"type": "integer", "minimum": 0, "maximum": 3},
+        "decision": {"enum": ["exactly-one", "none", "ambiguous"]},
+        "retryPermitted": {"type": "boolean"},
+        "prerequisite": {"$ref": "#/$defs/text"}
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "required": [
+        "order",
+        "operationKey",
+        "controllerOwnership",
+        "syntheticAuthoritativeState",
+        "canonicalId"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order": {"type": "integer", "minimum": 1, "maximum": 8},
+        "operationKey": {"$ref": "#/$defs/operationKey"},
+        "controllerOwnership": {"enum": ["intended", "recorded", "unrecorded"]},
+        "syntheticAuthoritativeState": {"enum": ["exists", "partial", "unknown"]},
+        "canonicalId": {
+          "anyOf": [
+            {"$ref": "#/$defs/canonicalId"},
+            {"type": "null"}
+          ]
+        }
+      }
+    },
+    "reconciliationReport": {
+      "type": "object",
+      "required": [
+        "scenarioId",
+        "runtimeClaim",
+        "lookups",
+        "ownership",
+        "allowedNextAction",
+        "stopReason",
+        "assertions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scenarioId": {"const": "SCN-PROVISIONING"},
+        "runtimeClaim": {"const": false},
+        "lookups": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "items": {"$ref": "#/$defs/lookup"}
+        },
+        "ownership": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/ownership"}
+        },
+        "allowedNextAction": {"enum": ["operator-disposition", "retry-failed-sub-effect", "stop"]},
+        "stopReason": {
+          "anyOf": [
+            {"$ref": "#/$defs/text"},
+            {"type": "null"}
+          ]
+        },
+        "assertions": {"$ref": "#/$defs/assertions"}
+      }
+    },
+    "cleanupCandidate": {
+      "type": "object",
+      "required": [
+        "order",
+        "operationKey",
+        "targetKind",
+        "canonicalId",
+        "action",
+        "ownershipCertain",
+        "preconditions",
+        "stopIf",
+        "rationale"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order": {"type": "integer", "minimum": 1, "maximum": 4},
+        "operationKey": {"$ref": "#/$defs/operationKey"},
+        "targetKind": {"enum": ["agent", "conversation", "repository-attachment", "skill-support-file"]},
+        "canonicalId": {
+          "anyOf": [
+            {"$ref": "#/$defs/canonicalId"},
+            {"type": "null"}
+          ]
+        },
+        "action": {"enum": ["delete", "detach", "retry-support-file", "none"]},
+        "ownershipCertain": {"type": "boolean"},
+        "preconditions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/text"}
+        },
+        "stopIf": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/text"}
+        },
+        "rationale": {"$ref": "#/$defs/text"}
+      }
+    },
+    "cleanupPlan": {
+      "type": "object",
+      "required": [
+        "scenarioId",
+        "runtimeClaim",
+        "candidates",
+        "globalStopReasons",
+        "assertions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "scenarioId": {"const": "SCN-PROVISIONING"},
+        "runtimeClaim": {"const": false},
+        "candidates": {
+          "type": "array",
+          "maxItems": 4,
+          "items": {"$ref": "#/$defs/cleanupCandidate"}
+        },
+        "globalStopReasons": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {"$ref": "#/$defs/text"}
+        },
+        "assertions": {"$ref": "#/$defs/assertions"}
+      }
+    },
+    "traceEntry": {
+      "type": "object",
+      "required": [
+        "sequence",
+        "kind",
+        "provenance",
+        "operationKey",
+        "state",
+        "canonicalId",
+        "diagnostic"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1, "maximum": 32},
+        "kind": {
+          "type": "string",
+          "pattern": "^lmb\\.practicum\\.v1\\.[a-z0-9_.-]+$",
+          "maxLength": 160
+        },
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "operationKey": {"$ref": "#/$defs/operationKey"},
+        "state": {"$ref": "#/$defs/text"},
+        "canonicalId": {
+          "anyOf": [
+            {"$ref": "#/$defs/canonicalId"},
+            {"type": "null"}
+          ]
+        },
+        "diagnostic": {"$ref": "#/$defs/text"}
+      }
+    }
+  }
+}

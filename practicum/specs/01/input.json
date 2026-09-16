@@ -1,0 +1,142 @@
+{
+  "scenarioId": "SCN-PROVISIONING",
+  "namespace": "lmb.practicum.v1.provisioning",
+  "submissionDirectory": "submission/SCN-PROVISIONING",
+  "executionAuthorized": false,
+  "scoringAuthorized": false,
+  "protectedPerturbations": {
+    "valuesIncluded": false,
+    "custodian": "identified-independent-evaluator",
+    "slots": [
+      {"id": "PP-S01-A", "insertionPoint": "after-canonical-identity-before-controller-store-outcome"},
+      {"id": "PP-S01-B", "insertionPoint": "adjacent-to-authoritative-match-array"}
+    ]
+  },
+  "fixtureId": "lmb.practicum.v1.provisioning.base",
+  "normalization": {
+    "recordOrder": "sequence-ascending",
+    "setLikeArrays": "unicode-code-point-ascending",
+    "objectKeys": "unicode-code-point-ascending",
+    "timestamps": "fixed-fixture-values-only"
+  },
+  "bounds": {
+    "maxRecords": 7,
+    "maxAuthoritativeMatchesPerLookup": 3,
+    "maxCleanupCandidates": 4,
+    "maxTraceEntries": 32
+  },
+  "intents": {
+    "agent": {
+      "operationKey": "lmb.practicum.v1.provisioning/agent/atlas-triage",
+      "name": "atlas-triage",
+      "description": "Synthetic practicum agent; no live creation requested.",
+      "tags": [
+        "lmb.practicum.v1.provisioning",
+        "op:atlas-triage"
+      ]
+    },
+    "conversation": {
+      "operationKey": "lmb.practicum.v1.provisioning/conversation/atlas-triage-primary",
+      "name": "atlas-triage-primary"
+    },
+    "skill": {
+      "operationKey": "lmb.practicum.v1.provisioning/skill/power-fault-triage",
+      "name": "power-fault-triage",
+      "manifestPath": "skills/power-fault-triage/SKILL.md",
+      "supportFilePaths": [
+        "skills/power-fault-triage/checklists/isolation.txt"
+      ]
+    },
+    "repositoryAttachment": {
+      "operationKey": "lmb.practicum.v1.provisioning/repository/atlas-runbooks",
+      "repositoryId": "repo_lmb_atlas_runbooks_001",
+      "repositoryName": "atlas-runbooks",
+      "permission": "read"
+    }
+  },
+  "controllerState": {
+    "agentId": null,
+    "conversationId": null,
+    "ownedOperationKeys": [
+      "lmb.practicum.v1.provisioning/agent/atlas-triage",
+      "lmb.practicum.v1.provisioning/conversation/atlas-triage-primary",
+      "lmb.practicum.v1.provisioning/repository/atlas-runbooks",
+      "lmb.practicum.v1.provisioning/skill/power-fault-triage"
+    ]
+  },
+  "records": [
+    {
+      "sequence": 1,
+      "kind": "lmb.practicum.v1.provisioning.agent_observation",
+      "provenance": "package-derived-public-shape",
+      "operationKey": "lmb.practicum.v1.provisioning/agent/atlas-triage",
+      "outcome": "created",
+      "canonicalAgentId": "agent_lmb_atlas_001",
+      "authoritativeMatches": [
+        "agent_lmb_atlas_001"
+      ]
+    },
+    {
+      "sequence": 2,
+      "kind": "lmb.practicum.v1.provisioning.conversation_observation",
+      "provenance": "package-derived-public-shape",
+      "operationKey": "lmb.practicum.v1.provisioning/conversation/atlas-triage-primary",
+      "outcome": "created",
+      "canonicalAgentId": "agent_lmb_atlas_001",
+      "canonicalConversationId": "conversation_lmb_atlas_001",
+      "authoritativeMatches": [
+        "conversation_lmb_atlas_001"
+      ]
+    },
+    {
+      "sequence": 3,
+      "kind": "lmb.practicum.v1.provisioning.skill_component_outcome",
+      "provenance": "documented-behavior-fixture",
+      "operationKey": "lmb.practicum.v1.provisioning/skill/power-fault-triage",
+      "component": "manifest",
+      "componentPath": "skills/power-fault-triage/SKILL.md",
+      "outcome": "accepted"
+    },
+    {
+      "sequence": 4,
+      "kind": "lmb.practicum.v1.provisioning.skill_component_outcome",
+      "provenance": "documented-behavior-fixture",
+      "operationKey": "lmb.practicum.v1.provisioning/skill/power-fault-triage",
+      "component": "support-file",
+      "componentPath": "skills/power-fault-triage/checklists/isolation.txt",
+      "outcome": "rejected",
+      "reasonCode": "synthetic-support-file-rejected"
+    },
+    {
+      "sequence": 5,
+      "kind": "lmb.practicum.v1.provisioning.repository_attachment_outcome",
+      "provenance": "documented-behavior-fixture",
+      "operationKey": "lmb.practicum.v1.provisioning/repository/atlas-runbooks",
+      "canonicalAgentId": "agent_lmb_atlas_001",
+      "repositoryId": "repo_lmb_atlas_runbooks_001",
+      "attachmentOutcome": "recorded",
+      "recompileOutcome": "failed",
+      "reasonCode": "synthetic-recompile-failed"
+    },
+    {
+      "sequence": 6,
+      "kind": "lmb.practicum.v1.controller_store.write_outcome",
+      "provenance": "project-method-only",
+      "operationKey": "lmb.practicum.v1.provisioning/agent/atlas-triage",
+      "mappingKind": "agent",
+      "canonicalId": "agent_lmb_atlas_001",
+      "outcome": "failed",
+      "reasonCode": "synthetic-controller-store-unavailable"
+    },
+    {
+      "sequence": 7,
+      "kind": "lmb.practicum.v1.controller_store.write_outcome",
+      "provenance": "project-method-only",
+      "operationKey": "lmb.practicum.v1.provisioning/conversation/atlas-triage-primary",
+      "mappingKind": "conversation",
+      "canonicalId": "conversation_lmb_atlas_001",
+      "outcome": "failed",
+      "reasonCode": "synthetic-controller-store-unavailable"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "typeRoots": ["../vertical-slice/node_modules/@types"],
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "baseUrl": "..",
+    "paths": {
+      "@letta-ai/letta-agent-sdk": ["vertical-slice/node_modules/@letta-ai/letta-agent-sdk"]
+    }
+  },
+  "include": ["specs/*/contracts.d.ts"]
+}

@@ -1,0 +1,266 @@
+schema_version: 1.1.0
+kind: curriculum
+curriculum_id: letta-master-builder
+curriculum_version: 0.4.0
+design_revision: '0.4'
+repository_stage: release-candidate
+status: release-candidate
+publication_status: blocked
+publication_non_claim: Release-candidate content status does not authorize publication; unresolved dependency advisories and transitive license metadata remain release blockers.
+implementation_baseline: exact-package-static
+graduate_claim: A successful learner can design implement and supervise a bounded persistent autonomous agent through the Agent SDK while separating static package evidence runtime observations evaluation results and production qualification.
+entrypoint: START_HERE.md
+operating_contract: AGENTS.md
+design_spec: DESIGN_SPEC.md
+terminal_contract: terminal-contract.yml
+control_files:
+  - .gitignore
+  - .npmrc
+  - .nvmrc
+  - LICENSE
+  - .github/workflows/ci.yml
+  - .github/workflows/network-evidence.yml
+  - .security/audit-exceptions.json
+  - .security/audit-exceptions.test.mjs
+  - .security/check-audit-exceptions.mjs
+  - curriculum.yml
+  - curriculum.lock.yml
+  - INTEGRITY.SHA256
+  - modules/AUTHORING_CONTRACT.md
+  - modules/README.md
+  - modules/MOD-00.md
+  - modules/MOD-01.md
+  - modules/MOD-02.md
+  - modules/MOD-03.md
+  - modules/MOD-04.md
+  - modules/MOD-05.md
+  - modules/MOD-06.md
+  - modules/MOD-07.md
+  - modules/MOD-08.md
+  - modules/MOD-09.md
+  - modules/MOD-10.md
+  - modules/MOD-11.md
+  - modules/MOD-12.md
+  - modules/MOD-13.md
+  - dossier/README.md
+  - dossier/template.yml
+  - traceability/README.md
+  - traceability/registry.yml
+  - README.md
+  - SOURCE_USE_POLICY.md
+  - SECURITY.md
+  - SECURITY_CHECKS.md
+  - CONTRIBUTING.md
+  - ATTRIBUTION.md
+  - package.json
+  - package-lock.json
+  - pointers/registry.yml
+  - sources/registry.yml
+  - sources/claims.yml
+  - sources/discrepancies.yml
+  - sources/UPDATE_POLICY.md
+  - compatibility/versions.yml
+  - compatibility/features.yml
+  - compatibility/surfaces.yml
+  - capabilities/core.yml
+  - capabilities/adjacent.yml
+  - capabilities/sdk-exports.yml
+  - assessments/contract.yml
+  - assessments/PUBLIC_RUBRIC.md
+  - assessments/FORMATIVE_CHECKPOINTS.md
+  - assessments/formative/MOD-00.md
+  - assessments/formative/MOD-01.md
+  - assessments/formative/MOD-02.md
+  - assessments/formative/MOD-03.md
+  - assessments/formative/MOD-04.md
+  - assessments/formative/MOD-05.md
+  - assessments/formative/MOD-06.md
+  - assessments/formative/MOD-07.md
+  - assessments/formative/MOD-08.md
+  - assessments/formative/MOD-09.md
+  - assessments/formative/MOD-10.md
+  - assessments/formative/MOD-11.md
+  - assessments/formative/MOD-12.md
+  - assessments/formative/MOD-13.md
+  - assessments/misconceptions.yml
+  - assessments/evaluator-report.template.yml
+  - practicum/registry.yml
+  - practicum/tsconfig.json
+  - practicum/scenarios/01-provisioning-partial-success.md
+  - practicum/scenarios/02-stream-transcript-queue-recovery.md
+  - practicum/scenarios/03-tools-mcp-permissions-effects.md
+  - practicum/scenarios/04-topology-concurrency-supervision-improvement.md
+  - practicum/specs/01/input.json
+  - practicum/specs/01/contracts.d.ts
+  - practicum/specs/01/artifact-bundle.schema.json
+  - practicum/specs/02/input.json
+  - practicum/specs/02/contracts.d.ts
+  - practicum/specs/02/artifact-bundle.schema.json
+  - practicum/specs/03/input.json
+  - practicum/specs/03/contracts.d.ts
+  - practicum/specs/03/artifact-bundle.schema.json
+  - practicum/specs/04/input.json
+  - practicum/specs/04/contracts.d.ts
+  - practicum/specs/04/artifact-bundle.schema.json
+  - runtime-claims/registry.yml
+  - runtime-claims/README.md
+  - release/manifest.yml
+  - release/dependency-review.yml
+  - maintenance/drift-rehearsal.yml
+  - maintenance/RELEASE_WORKFLOW.md
+  - canaries/registry.yml
+  - vertical-slice/package.json
+  - vertical-slice/package-lock.json
+  - vertical-slice/tsconfig.json
+  - vertical-slice/src/agent-provisioning.ts
+  - vertical-slice/API_CARD.md
+  - vertical-slice/FAILURE_LESSON.md
+  - vertical-slice/fixtures/provisioning-partial-success.json
+  - vertical-slice/README.md
+  - scripts/check-clean-copy.mjs
+  - scripts/check-cold-reader.mjs
+  - scripts/check-modules.mjs
+  - scripts/check-practicum-specs.mjs
+  - scripts/check-formative.mjs
+  - scripts/check-drift-rehearsal.mjs
+  - scripts/check-external-links.mjs
+  - scripts/check-package-evidence.mjs
+  - scripts/check-vertical-slice.mjs
+  - scripts/generate-integrity.mjs
+  - scripts/generate-lock.mjs
+  - scripts/generate-sdk-export-ledger.mjs
+  - scripts/validate.mjs
+  - scripts/lib/core.mjs
+  - scripts/lib/generators.mjs
+  - scripts/lib/validate-repository.mjs
+  - scripts/tests/network-checks.test.mjs
+  - scripts/tests/network-policy.test.mjs
+  - scripts/tests/offline-validator.test.mjs
+  - scripts/tests/phase1-gates.test.mjs
+  - scripts/tests/revision04-contracts.test.mjs
+  - schemas/curriculum.schema.json
+  - schemas/terminal-contract.schema.json
+  - schemas/pointers.schema.json
+  - schemas/registry.schema.json
+  - schemas/compatibility.schema.json
+  - schemas/canary-registry.schema.json
+  - schemas/legacy-denylist.schema.json
+  - schemas/lock.schema.json
+  - schemas/core-capabilities.schema.json
+  - schemas/adjacent-capabilities.schema.json
+  - schemas/sdk-exports.schema.json
+  - schemas/release-manifest.schema.json
+  - schemas/dependency-review.schema.json
+  - schemas/assessment.schema.json
+  - schemas/misconceptions.schema.json
+  - schemas/evaluator-report.schema.json
+  - schemas/practicum.schema.json
+  - schemas/dossier.schema.json
+  - schemas/traceability.schema.json
+  - schemas/runtime-claims.schema.json
+  - schemas/drift-rehearsal.schema.json
+target_contract:
+  primary_persona: technically-proficient-coding-agent
+  domain_baseline: zero-prior-letta-knowledge
+  language: en
+  teaching_mode: read-only
+  implementation_language: TypeScript
+  mandatory_path: agent-sdk
+  primary_runtime_lane: agent-sdk-node-local
+  contrast_runtime_lane: agent-sdk-node-cloud
+  direct_app_server: awareness
+  remote_client: awareness
+  agent_foundry: conceptual-only
+  evidence_cutoff_semantics: latest-exactly-verified-at-release-cutoff
+  side_effects: forbidden-without-separate-explicit-authorization
+  word_budget: {mandatory_prose_min: 70000, mandatory_prose_max: 74000, current_prose: 70891, complete: true}
+  completion: true
+  runtime_claims: false
+  autonomous_execution: false
+registries:
+  core_capabilities: capabilities/core.yml
+  adjacent_capabilities: capabilities/adjacent.yml
+  sdk_exports: capabilities/sdk-exports.yml
+  practicum: practicum/registry.yml
+  assessment: assessments/contract.yml
+  runtime_claims: runtime-claims/registry.yml
+  release: release/manifest.yml
+  traceability: traceability/registry.yml
+  dossier: dossier/template.yml
+mandatory_modules:
+  - {id: MOD-00, order: 0, slug: 00-contract-evidence-release, title: Contract Evidence and Release Discipline, status: ready, depth: implement, prerequisites: [], required_files: [modules/MOD-00.md]}
+  - {id: MOD-01, order: 1, slug: 01-mission-autonomy-acceptance, title: Mission Autonomy and Acceptance, status: ready, depth: implement, prerequisites: [MOD-00], required_files: [modules/MOD-01.md]}
+  - {id: MOD-02, order: 2, slug: 02-objects-ownership-locality, title: Objects Ownership and Locality, status: ready, depth: implement, prerequisites: [MOD-01], required_files: [modules/MOD-02.md]}
+  - {id: MOD-03, order: 3, slug: 03-capabilities-topology-models, title: Capability Topology and Model Selection, status: ready, depth: select, prerequisites: [MOD-02], required_files: [modules/MOD-03.md]}
+  - {id: MOD-04, order: 4, slug: 04-agent-provisioning-management, title: Agent Provisioning and Management, status: ready, depth: implement, prerequisites: [MOD-03], required_files: [modules/MOD-04.md]}
+  - {id: MOD-05, order: 5, slug: 05-conversations-sessions-recovery, title: Conversations Sessions Turns and Recovery, status: ready, depth: implement, prerequisites: [MOD-04], required_files: [modules/MOD-05.md]}
+  - {id: MOD-06, order: 6, slug: 06-memory-context-skills-knowledge, title: Memory Context Skills and Shared Knowledge, status: ready, depth: implement, prerequisites: [MOD-05], required_files: [modules/MOD-06.md]}
+  - {id: MOD-07, order: 7, slug: 07-tools-mcp-permissions-effects, title: Tools MCP Permissions and Effects, status: ready, depth: implement, prerequisites: [MOD-06], required_files: [modules/MOD-07.md]}
+  - {id: MOD-08, order: 8, slug: 08-bounded-work-loops-triggers, title: Bounded Work Loops and Triggers, status: ready, depth: implement, prerequisites: [MOD-07], required_files: [modules/MOD-08.md]}
+  - {id: MOD-09, order: 9, slug: 09-multi-agent-orchestration, title: Multi-Agent Orchestration, status: ready, depth: design, prerequisites: [MOD-08], required_files: [modules/MOD-09.md]}
+  - {id: MOD-10, order: 10, slug: 10-improvement-evaluation-rollback, title: Improvement Evaluation Promotion and Rollback, status: ready, depth: implement, prerequisites: [MOD-09], required_files: [modules/MOD-10.md]}
+  - {id: MOD-11, order: 11, slug: 11-supervision-security-observability, title: Supervision Security and Observability, status: ready, depth: implement, prerequisites: [MOD-10], required_files: [modules/MOD-11.md]}
+  - {id: MOD-12, order: 12, slug: 12-deployment-reliability-upgrades, title: Deployment Reliability and Upgrades, status: ready, depth: design, prerequisites: [MOD-11], required_files: [modules/MOD-12.md]}
+  - {id: MOD-13, order: 13, slug: 13-transfer-offline-practicum, title: Transfer and Offline Practicum, status: ready, depth: implement, prerequisites: [MOD-12], required_files: [modules/MOD-13.md]}
+elective_tracks: []
+reader_sequence:
+  - START_HERE.md
+  - curriculum.yml
+  - SOURCE_USE_POLICY.md
+  - DESIGN_SPEC.md
+  - dossier/README.md
+  - dossier/template.yml
+  - traceability/README.md
+  - traceability/registry.yml
+  - assessments/FORMATIVE_CHECKPOINTS.md
+  - modules/MOD-00.md
+  - assessments/formative/MOD-00.md
+  - modules/MOD-01.md
+  - assessments/formative/MOD-01.md
+  - modules/MOD-02.md
+  - assessments/formative/MOD-02.md
+  - modules/MOD-03.md
+  - assessments/formative/MOD-03.md
+  - modules/MOD-04.md
+  - assessments/formative/MOD-04.md
+  - modules/MOD-05.md
+  - assessments/formative/MOD-05.md
+  - modules/MOD-06.md
+  - assessments/formative/MOD-06.md
+  - modules/MOD-07.md
+  - assessments/formative/MOD-07.md
+  - modules/MOD-08.md
+  - assessments/formative/MOD-08.md
+  - modules/MOD-09.md
+  - assessments/formative/MOD-09.md
+  - modules/MOD-10.md
+  - assessments/formative/MOD-10.md
+  - modules/MOD-11.md
+  - assessments/formative/MOD-11.md
+  - modules/MOD-12.md
+  - assessments/formative/MOD-12.md
+  - modules/MOD-13.md
+  - assessments/formative/MOD-13.md
+  - practicum/registry.yml
+  - practicum/scenarios/01-provisioning-partial-success.md
+  - practicum/specs/01/input.json
+  - practicum/specs/01/contracts.d.ts
+  - practicum/specs/01/artifact-bundle.schema.json
+  - practicum/scenarios/02-stream-transcript-queue-recovery.md
+  - practicum/specs/02/input.json
+  - practicum/specs/02/contracts.d.ts
+  - practicum/specs/02/artifact-bundle.schema.json
+  - practicum/scenarios/03-tools-mcp-permissions-effects.md
+  - practicum/specs/03/input.json
+  - practicum/specs/03/contracts.d.ts
+  - practicum/specs/03/artifact-bundle.schema.json
+  - practicum/scenarios/04-topology-concurrency-supervision-improvement.md
+  - practicum/specs/04/input.json
+  - practicum/specs/04/contracts.d.ts
+  - practicum/specs/04/artifact-bundle.schema.json
+  - assessments/contract.yml
+  - assessments/PUBLIC_RUBRIC.md
+  - assessments/evaluator-report.template.yml
+  - assessments/misconceptions.yml
+  - terminal-contract.yml
+  - INTEGRITY.SHA256

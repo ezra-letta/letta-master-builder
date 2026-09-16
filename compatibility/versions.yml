@@ -1,0 +1,55 @@
+schema_version: 1.0.0
+kind: versions
+entries:
+  - id: VER-AGENT-SDK-0-8-9
+    status: exact-evidence
+    package: '@letta-ai/letta-agent-sdk'
+    version: 0.8.9
+    integrity: sha512-duWxq92PMTtPnxmMSP3y1J0ytm9Cmyc7nqD1mGYsI3A79rD9bJr664Vxkq9c0vr/QbA4b/1QW6YW1K26tIQWzQ==
+    source_repository: https://github.com/letta-ai/letta-agent-sdk
+    source_tag: v0.8.9
+    source_commit: c8afbaa7bd38f2831631f4ae175a37969300ef4d
+    relations: [declares VER-SDK-DECLARED-RUNTIME-0-32-11]
+    source_ids: [SRC-SDK-NPM-0.8.9, SRC-SDK-SOURCE-0.8.9]
+    claim_ids: [LMB-VERSION-001]
+    runtime_observed: false
+    does_not_prove: [No Agent SDK runtime behavior was executed or observed.]
+  - id: VER-SDK-DECLARED-RUNTIME-0-32-11
+    status: exact-evidence
+    package: '@letta-ai/letta-code'
+    version: 0.32.11
+    integrity: sha512-8EMj0zt3U/kvQ+L05w4wPRAY/PWNIinmf4ESo4CfFIBbCtWuTBvau381P79xFdoBtzJwx/ChEFHl0YvbQWmoOA==
+    source_repository: https://github.com/letta-ai/letta-code
+    source_tag: v0.32.11
+    source_commit: aa41b19438c18f1341ea044deedde7ec8ce8afce
+    relations: [declared by VER-AGENT-SDK-0-8-9, same artifact identity as VER-STANDALONE-0-32-11 but retained as a separate evidence lane]
+    source_ids: [SRC-CODE-NPM-0.32.11, SRC-CODE-SOURCE-0.32.11]
+    claim_ids: [LMB-VERSION-001]
+    runtime_observed: false
+    does_not_prove: [Package evidence does not prove SDK-declared runtime behavior.]
+  - id: VER-STANDALONE-0-32-11
+    status: exact-evidence
+    package: '@letta-ai/letta-code'
+    version: 0.32.11
+    integrity: sha512-8EMj0zt3U/kvQ+L05w4wPRAY/PWNIinmf4ESo4CfFIBbCtWuTBvau381P79xFdoBtzJwx/ChEFHl0YvbQWmoOA==
+    source_repository: https://github.com/letta-ai/letta-code
+    source_tag: v0.32.11
+    source_commit: aa41b19438c18f1341ea044deedde7ec8ce8afce
+    relations: [same artifact identity as VER-SDK-DECLARED-RUNTIME-0-32-11 but retained as a separately interpreted standalone lane]
+    source_ids: [SRC-CODE-NPM-0.32.11, SRC-CODE-SOURCE-0.32.11]
+    claim_ids: [LMB-VERSION-001, LMB-VERSION-002]
+    runtime_observed: false
+    does_not_prove: [Standalone artifact evidence does not prove Agent SDK or hosted behavior.]
+  - id: VER-HOSTED-RUNTIME-UNKNOWN
+    status: unknown-not-tested
+    package: null
+    version: null
+    integrity: null
+    source_repository: null
+    source_tag: null
+    source_commit: null
+    relations: [must be observed independently]
+    source_ids: []
+    claim_ids: [LMB-VERSION-001]
+    runtime_observed: false
+    does_not_prove: [No hosted runtime version or capability is known.]

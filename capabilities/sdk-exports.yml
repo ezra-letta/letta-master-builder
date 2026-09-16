@@ -1,0 +1,4737 @@
+schema_version: 1.0.0
+kind: sdk-export-ledger
+package: "@letta-ai/letta-agent-sdk"
+version: 0.8.9
+integrity: sha512-duWxq92PMTtPnxmMSP3y1J0ytm9Cmyc7nqD1mGYsI3A79rD9bJr664Vxkq9c0vr/QbA4b/1QW6YW1K26tIQWzQ==
+generated_from:
+  - .
+  - ./client
+generator: scripts/generate-sdk-export-ledger.mjs
+entries:
+  - id: EXP-ROOT-0001
+    entrypoint: .
+    symbol: AgentFreeQueryOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - canUseTool
+      - computer
+      - contextWindowLimit
+      - cwd
+      - env
+      - environment
+      - mcpServers
+      - model
+      - modelSettings
+      - permissionMode
+      - sandbox
+      - skillSources
+      - system
+      - tools
+      - toolset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0002
+    entrypoint: .
+    symbol: AgentRepositoriesClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - attach
+      - detach
+      - list
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0003
+    entrypoint: .
+    symbol: AgentRepository
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - id
+      - isPrimary
+      - name
+      - permissions
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0004
+    entrypoint: .
+    symbol: AgentRepositoryPermissions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0005
+    entrypoint: .
+    symbol: AgentRepositoryRecompileTarget
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0006
+    entrypoint: .
+    symbol: AgentsClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - delete
+      - list
+      - repositories
+      - retrieve
+      - update
+    disposition: claim-bearing
+    capability_ids: &a1
+      - CAP-AGENT-MANAGEMENT
+    rationale: Management methods list and retrieve are used for reconciliation.
+  - id: EXP-ROOT-0007
+    entrypoint: .
+    symbol: AgentSkill
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - description
+      - files
+      - instructions
+      - name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0008
+    entrypoint: .
+    symbol: AgentTool
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - description
+      - execute
+      - label
+      - name
+      - parameters
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0009
+    entrypoint: .
+    symbol: AgentToolResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - details
+      - isError
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0010
+    entrypoint: .
+    symbol: AgentToolResultContent
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - data
+      - mimeType
+      - text
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0011
+    entrypoint: .
+    symbol: AgentToolUpdateCallback
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0012
+    entrypoint: .
+    symbol: AnyAgentTool
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0013
+    entrypoint: .
+    symbol: AttachAgentRepositoryOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - permissions
+      - recompile
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0014
+    entrypoint: .
+    symbol: BootstrapStateOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - limit
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0015
+    entrypoint: .
+    symbol: BootstrapStateResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - conversationId
+      - hasMore
+      - hasPendingApproval
+      - memfsEnabled
+      - messages
+      - model
+      - nextBefore
+      - timings
+      - tools
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0016
+    entrypoint: .
+    symbol: CanUseToolCallback
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0017
+    entrypoint: .
+    symbol: CanUseToolContext
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - blockedPath
+      - diffs
+      - permissionSuggestions
+      - requestId
+      - toolCallId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0018
+    entrypoint: .
+    symbol: CanUseToolPermissionSuggestion
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - id
+      - text
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0019
+    entrypoint: .
+    symbol: CanUseToolResponse
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0020
+    entrypoint: .
+    symbol: CanUseToolResponseAllow
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - message
+      - updatedInput
+      - updatedPermissions
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0021
+    entrypoint: .
+    symbol: CanUseToolResponseDeny
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - interrupt
+      - message
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0022
+    entrypoint: .
+    symbol: ChangeDeviceStateOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - cwd
+      - permissionMode
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0023
+    entrypoint: .
+    symbol: CloudManagedSandboxExpiredError
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - cause
+      - code
+      - conversationId
+      - message
+      - name
+      - sandboxId
+      - stack
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0024
+    entrypoint: .
+    symbol: Computer
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - connectedAt
+      - connectionId
+      - deviceId
+      - id
+      - lastSeenAt
+      - metadata
+      - name
+      - status
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0025
+    entrypoint: .
+    symbol: ComputerMetadata
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - gitBranch
+      - lettaCodeVersion
+      - nodeVersion
+      - os
+      - workingDirectory
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0026
+    entrypoint: .
+    symbol: ComputersClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - get
+      - list
+      - resolve
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0027
+    entrypoint: .
+    symbol: ComputerSelector
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0028
+    entrypoint: .
+    symbol: ConversationForkHydrationError
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - cause
+      - conversationId
+      - message
+      - name
+      - stack
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0029
+    entrypoint: .
+    symbol: ConversationMessagesOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - before
+      - limit
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0030
+    entrypoint: .
+    symbol: ConversationMessagesResult
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0031
+    entrypoint: .
+    symbol: ConversationsClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - create
+      - enqueue
+      - fork
+      - list
+      - listMessages
+      - retrieve
+      - update
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0032
+    entrypoint: .
+    symbol: createAgent
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: claim-bearing
+    capability_ids:
+      - CAP-AGENT-MANAGEMENT
+    rationale: Top-level creation helper is part of the operation inventory even though the slice uses the client method.
+  - id: EXP-ROOT-0033
+    entrypoint: .
+    symbol: CreateAgentOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - baseTools
+      - canUseTool
+      - cwd
+      - description
+      - disallowedTools
+      - dreaming
+      - embedding
+      - hidden
+      - human
+      - memfs
+      - memory
+      - model
+      - name
+      - permissionMode
+      - persona
+      - personality
+      - skillSources
+      - skills
+      - systemInfoReminder
+      - systemPrompt
+      - tags
+      - tools
+    disposition: claim-bearing
+    capability_ids: &a2
+      - CAP-AGENT-MANAGEMENT
+    rationale: Used by the Revision 0.4 provisioning vertical slice with a backend-safe subset.
+  - id: EXP-ROOT-0034
+    entrypoint: .
+    symbol: CreateConversationOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - contextWindowLimit
+      - description
+      - hidden
+      - model
+      - modelSettings
+      - summary
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0035
+    entrypoint: .
+    symbol: createReactNativeWebSocketConstructor
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0036
+    entrypoint: .
+    symbol: CreateRepositoryFileParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0037
+    entrypoint: .
+    symbol: CreateRepositoryParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0038
+    entrypoint: .
+    symbol: createSession
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0039
+    entrypoint: .
+    symbol: CreateSessionOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - canUseTool
+      - cwd
+      - dreaming
+      - mcpServers
+      - model
+      - permissionMode
+      - reasoningEffort
+      - resources
+      - skillSources
+      - stateless
+      - tools
+      - toolset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0040
+    entrypoint: .
+    symbol: createTranscriptAccumulator
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0041
+    entrypoint: .
+    symbol: DeleteRepositoryFileParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0042
+    entrypoint: .
+    symbol: DeleteRepositoryFileResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - commitSha
+      - success
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0043
+    entrypoint: .
+    symbol: DetachAgentRepositoryOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - recompile
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0044
+    entrypoint: .
+    symbol: downloadSandboxFile
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0045
+    entrypoint: .
+    symbol: DreamingBehavior
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0046
+    entrypoint: .
+    symbol: DreamingOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - stepCount
+      - trigger
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0047
+    entrypoint: .
+    symbol: DreamingTrigger
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0048
+    entrypoint: .
+    symbol: EffectiveDreamingSettings
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - stepCount
+      - trigger
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0049
+    entrypoint: .
+    symbol: EnqueueMessageOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - clientMessageId
+      - permissionMode
+      - workingDirectory
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0050
+    entrypoint: .
+    symbol: EnqueueMessageResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - clientMessageId
+      - superRunId
+      - workflowId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0051
+    entrypoint: .
+    symbol: extractStreamTextDelta
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0052
+    entrypoint: .
+    symbol: ForkConversationOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - hidden
+      - messageId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0053
+    entrypoint: .
+    symbol: GetDeviceStatusOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - timeoutMs
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0054
+    entrypoint: .
+    symbol: GetRepositoryVersionParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0055
+    entrypoint: .
+    symbol: GitHubRepositoryRef
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - commit
+      - owner
+      - repo
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0056
+    entrypoint: .
+    symbol: ImageContent
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - source
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0057
+    entrypoint: .
+    symbol: imageFromBase64
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0058
+    entrypoint: .
+    symbol: imageFromFile
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0059
+    entrypoint: .
+    symbol: imageFromURL
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0060
+    entrypoint: .
+    symbol: jsonResult
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0061
+    entrypoint: .
+    symbol: LettaAgent
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: bundled-supporting
+    capability_ids: &a3
+      - CAP-AGENT-MANAGEMENT
+    rationale: Typed agent state supports reconciliation without expanding the taught operation.
+  - id: EXP-ROOT-0062
+    entrypoint: .
+    symbol: LettaAgentClient
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - agentRepositoriesClient
+      - agents
+      - appServerSessionOptions
+      - assertOpen
+      - assertSessionBackend
+      - backend
+      - close
+      - closePromise
+      - closed
+      - cloudClient
+      - cloudOptions
+      - computer
+      - computers
+      - computersClient
+      - conversations
+      - createAgent
+      - createAgentFreeSession
+      - createLocalAgent
+      - createLocalAgentFreeSession
+      - createLocalManagementTransport
+      - createLocalSession
+      - createSession
+      - environment
+      - getAgentRepositoriesClient
+      - getCloudClient
+      - getCloudManagementTransport
+      - getComputersClient
+      - getManagementTransport
+      - getRepositoriesClient
+      - localBackendUnavailableError
+      - managementTransport
+      - models
+      - options
+      - prompt
+      - query
+      - remoteOptions
+      - repositories
+      - repositoriesClient
+      - resumeLocalSession
+      - resumeSession
+      - skillNodeSupport
+    disposition: claim-bearing
+    capability_ids: &a4
+      - CAP-AGENT-MANAGEMENT
+    rationale: Used by the Revision 0.4 provisioning vertical slice.
+  - id: EXP-ROOT-0063
+    entrypoint: .
+    symbol: LettaCodeBackend
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0064
+    entrypoint: .
+    symbol: LettaCodeClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0065
+    entrypoint: .
+    symbol: LettaCodeClientSessionOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - canUseTool
+      - computer
+      - cwd
+      - dreaming
+      - env
+      - environment
+      - filesystemConfinement
+      - mcpServers
+      - model
+      - permissionMode
+      - reasoningEffort
+      - resources
+      - sandbox
+      - skillSources
+      - stateless
+      - tools
+      - toolset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0066
+    entrypoint: .
+    symbol: LettaCodeCloudClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - WebSocket
+      - apiBaseUrl
+      - apiKey
+      - backend
+      - computer
+      - environment
+      - fetch
+      - headers
+      - pingIntervalMs
+      - requestTimeoutMs
+      - sandbox
+      - webSocketAuth
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0067
+    entrypoint: .
+    symbol: LettaCodeCloudSandboxOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - githubRepositories
+      - readyPollIntervalMs
+      - readyTimeoutMs
+      - refreshIntervalMs
+      - terminateOnClose
+      - ttlMinutes
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0068
+    entrypoint: .
+    symbol: LettaCodeEnvironment
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0069
+    entrypoint: .
+    symbol: LettaCodeLocalAppServerOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - WebSocket
+      - harnessBackend
+      - listen
+      - pinGlobalAgent
+      - requestTimeoutMs
+      - startupTimeoutMs
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0070
+    entrypoint: .
+    symbol: LettaCodeLocalClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - appServer
+      - backend
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0071
+    entrypoint: .
+    symbol: LettaCodeModelEntry
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0072
+    entrypoint: .
+    symbol: LettaCodePersonalityId
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0073
+    entrypoint: .
+    symbol: LettaCodeReactNativeSocketConstructor
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0074
+    entrypoint: .
+    symbol: LettaCodeRemoteClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - WebSocket
+      - authToken
+      - backend
+      - pinGlobalAgent
+      - requestTimeoutMs
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0075
+    entrypoint: .
+    symbol: LettaCodeSession
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - abort
+      - agentId
+      - bootstrapState
+      - changeDeviceState
+      - close
+      - conversationId
+      - getDeviceStatus
+      - listMessages
+      - listModels
+      - onDeviceStatus
+      - ready
+      - recoverPendingApprovals
+      - removeQueuedMessage
+      - sandbox
+      - send
+      - sendCommand
+      - sessionId
+      - stream
+      - updateModel
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0076
+    entrypoint: .
+    symbol: LettaCodeSocketConstructor
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0077
+    entrypoint: .
+    symbol: LettaCodeSocketLike
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - addEventListener
+      - close
+      - off
+      - on
+      - once
+      - readyState
+      - removeEventListener
+      - send
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0078
+    entrypoint: .
+    symbol: LettaConversation
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0079
+    entrypoint: .
+    symbol: LettaConversationMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0080
+    entrypoint: .
+    symbol: ListAgentsOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - before
+      - include
+      - limit
+      - matchAllTags
+      - name
+      - order
+      - orderBy
+      - query
+      - tags
+    disposition: bundled-supporting
+    capability_ids: &a5
+      - CAP-AGENT-MANAGEMENT
+    rationale: Typed list filters support request-tag reconciliation.
+  - id: EXP-ROOT-0081
+    entrypoint: .
+    symbol: ListComputersOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - limit
+      - onlineOnly
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0082
+    entrypoint: .
+    symbol: ListComputersResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - computers
+      - hasNextPage
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0083
+    entrypoint: .
+    symbol: ListConversationsOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - agentId
+      - archiveStatus
+      - limit
+      - order
+      - orderBy
+      - summarySearch
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0084
+    entrypoint: .
+    symbol: listMessagesDirect
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0085
+    entrypoint: .
+    symbol: ListMessagesOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - before
+      - conversationId
+      - limit
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0086
+    entrypoint: .
+    symbol: ListMessagesResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - hasMore
+      - messages
+      - nextBefore
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0087
+    entrypoint: .
+    symbol: ListModelsResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - availableHandles
+      - byokProviderAliases
+      - entries
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0088
+    entrypoint: .
+    symbol: ListRepositoriesParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - limit
+      - offset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0089
+    entrypoint: .
+    symbol: ListRepositoriesResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - hasNextPage
+      - repositories
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0090
+    entrypoint: .
+    symbol: ListRepositoryFilesParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - depth
+      - pathPrefix
+      - ref
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0091
+    entrypoint: .
+    symbol: ListRepositoryFilesResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - files
+      - ref
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0092
+    entrypoint: .
+    symbol: ListRepositoryVersionsParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - limit
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0093
+    entrypoint: .
+    symbol: McpHttpServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - headers
+      - type
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0094
+    entrypoint: .
+    symbol: McpServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0095
+    entrypoint: .
+    symbol: McpServers
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0096
+    entrypoint: .
+    symbol: McpSseServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - headers
+      - type
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0097
+    entrypoint: .
+    symbol: McpStdioServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - args
+      - command
+      - cwd
+      - env
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0098
+    entrypoint: .
+    symbol: MessageContentItem
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0099
+    entrypoint: .
+    symbol: ModelsClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - list
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0100
+    entrypoint: .
+    symbol: PermissionMode
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0101
+    entrypoint: .
+    symbol: prompt
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0102
+    entrypoint: .
+    symbol: query
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0103
+    entrypoint: .
+    symbol: Query
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - __@asyncIterator@286
+      - close
+      - interrupt
+      - next
+      - return
+      - throw
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0104
+    entrypoint: .
+    symbol: QueryParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - options
+      - prompt
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0105
+    entrypoint: .
+    symbol: readBooleanParam
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0106
+    entrypoint: .
+    symbol: readNumberParam
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0107
+    entrypoint: .
+    symbol: readStringArrayParam
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0108
+    entrypoint: .
+    symbol: readStringParam
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0109
+    entrypoint: .
+    symbol: ReasoningEffort
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0110
+    entrypoint: .
+    symbol: RecoverPendingApprovalsOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - timeoutMs
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0111
+    entrypoint: .
+    symbol: RecoverPendingApprovalsResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - detail
+      - pendingApproval
+      - recovered
+      - unsupported
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0112
+    entrypoint: .
+    symbol: RemoveQueuedMessageResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - itemId
+      - removed
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0113
+    entrypoint: .
+    symbol: RepositoriesClient
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - assertOpen
+      - client
+      - create
+      - delete
+      - files
+      - get
+      - list
+      - request
+      - requestUrl
+      - url
+      - versions
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0114
+    entrypoint: .
+    symbol: Repository
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - createdAt
+      - id
+      - name
+      - updatedAt
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0115
+    entrypoint: .
+    symbol: RepositoryFile
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - contentSha256
+      - path
+      - ref
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0116
+    entrypoint: .
+    symbol: RepositoryFileEntry
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - path
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0117
+    entrypoint: .
+    symbol: RepositoryFileMutationResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - commitSha
+      - contentSha256
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0118
+    entrypoint: .
+    symbol: RepositoryResource
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - recompile
+      - repositoryId
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0119
+    entrypoint: .
+    symbol: RepositoryVersion
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - author_name
+      - message
+      - sha
+      - timestamp
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0120
+    entrypoint: .
+    symbol: ResolvedComputer
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - computer
+      - connectionId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0121
+    entrypoint: .
+    symbol: resumeSession
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0122
+    entrypoint: .
+    symbol: SandboxFilesClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - downloadFile
+      - uploadFiles
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0123
+    entrypoint: .
+    symbol: SandboxFileUpload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - data
+      - name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0124
+    entrypoint: .
+    symbol: SandboxFileUploadResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - files
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0125
+    entrypoint: .
+    symbol: SandboxUploadedFile
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - mimeType
+      - name
+      - path
+      - size
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0126
+    entrypoint: .
+    symbol: SDKAssistantMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - otid
+      - runId
+      - seqId
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0127
+    entrypoint: .
+    symbol: SDKErrorCode
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0128
+    entrypoint: .
+    symbol: SDKErrorMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - apiError
+      - approvalConflict
+      - errorCode
+      - errorDetail
+      - message
+      - recoverable
+      - runId
+      - stopReason
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0129
+    entrypoint: .
+    symbol: SDKInitMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - conversationId
+      - dreaming
+      - memfsEnabled
+      - model
+      - sessionId
+      - skillSources
+      - systemInfoReminderEnabled
+      - tools
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0130
+    entrypoint: .
+    symbol: SDKLoopStatusMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - activeRunIds
+      - status
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0131
+    entrypoint: .
+    symbol: SDKMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0132
+    entrypoint: .
+    symbol: SDKProtocolCommand
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0133
+    entrypoint: .
+    symbol: SDKProtocolMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0134
+    entrypoint: .
+    symbol: SDKQueueItem
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - clientMessageId
+      - content
+      - enqueuedAt
+      - id
+      - kind
+      - source
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0135
+    entrypoint: .
+    symbol: SDKQueueUpdateMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - queue
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0136
+    entrypoint: .
+    symbol: SDKReasoningMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - otid
+      - runId
+      - seqId
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0137
+    entrypoint: .
+    symbol: SDKResultMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - approvalConflict
+      - conversationId
+      - durationMs
+      - error
+      - errorCode
+      - errorDetail
+      - recoverable
+      - recoveryAttempts
+      - result
+      - runIds
+      - stopReason
+      - success
+      - totalCostUsd
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0138
+    entrypoint: .
+    symbol: SDKRetryMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - attempt
+      - delayMs
+      - maxAttempts
+      - reason
+      - runId
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0139
+    entrypoint: .
+    symbol: SDKStreamEventDeltaPayload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content_block
+      - delta
+      - index
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0140
+    entrypoint: .
+    symbol: SDKStreamEventMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - event
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0141
+    entrypoint: .
+    symbol: SDKStreamEventMessagePayload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - id
+      - message_type
+      - name
+      - otid
+      - reasoning
+      - run_id
+      - seq_id
+      - status
+      - tool_call
+      - tool_call_id
+      - tool_calls
+      - tool_return
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0142
+    entrypoint: .
+    symbol: SDKStreamEventPayload
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0143
+    entrypoint: .
+    symbol: SDKToolCallMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - rawArguments
+      - runId
+      - toolCallId
+      - toolInput
+      - toolName
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0144
+    entrypoint: .
+    symbol: SDKToolResultMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - isError
+      - runId
+      - toolCallId
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0145
+    entrypoint: .
+    symbol: SDKUnknownStreamEventPayload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - message_type
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0146
+    entrypoint: .
+    symbol: SendCommandOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - predicate
+      - responseType
+      - timeoutMs
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0147
+    entrypoint: .
+    symbol: SendMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0148
+    entrypoint: .
+    symbol: SendOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - otid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0149
+    entrypoint: .
+    symbol: SessionDeviceStatus
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - isOnline
+      - isProcessing
+      - memoryDirectory
+      - pendingControlRequests
+      - permissionMode
+      - raw
+      - workingDirectory
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0150
+    entrypoint: .
+    symbol: SessionDiffHunk
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0151
+    entrypoint: .
+    symbol: SessionDiffHunkLine
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0152
+    entrypoint: .
+    symbol: SessionDiffPreview
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0153
+    entrypoint: .
+    symbol: SessionDreamingOptions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0154
+    entrypoint: .
+    symbol: SessionPendingControlRequest
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - blockedPath
+      - diffs
+      - permissionSuggestions
+      - requestId
+      - toolCallId
+      - toolInput
+      - toolName
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0155
+    entrypoint: .
+    symbol: SessionPermissionSuggestion
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0156
+    entrypoint: .
+    symbol: SessionReadyInfo
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - conversationId
+      - model
+      - tools
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0157
+    entrypoint: .
+    symbol: SkillItem
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0158
+    entrypoint: .
+    symbol: SkillSource
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0159
+    entrypoint: .
+    symbol: TextContent
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - text
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0160
+    entrypoint: .
+    symbol: TranscriptAccumulator
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - apply
+      - rebase
+      - reset
+      - rows
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0161
+    entrypoint: .
+    symbol: TranscriptHistoryPage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0162
+    entrypoint: .
+    symbol: TranscriptRebaseOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0163
+    entrypoint: .
+    symbol: TranscriptRow
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0164
+    entrypoint: .
+    symbol: TranscriptRowIdentity
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - key
+      - otid
+      - runId
+      - seqId
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0165
+    entrypoint: .
+    symbol: TranscriptRowKind
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0166
+    entrypoint: .
+    symbol: TranscriptTextKind
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0167
+    entrypoint: .
+    symbol: TranscriptTextRow
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - key
+      - kind
+      - otid
+      - runId
+      - seqId
+      - text
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0168
+    entrypoint: .
+    symbol: TranscriptToolCallRow
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - argumentsComplete
+      - key
+      - kind
+      - otid
+      - rawArguments
+      - result
+      - runId
+      - seqId
+      - status
+      - toolCallId
+      - toolInput
+      - toolName
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0169
+    entrypoint: .
+    symbol: TranscriptToolCallStatus
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0170
+    entrypoint: .
+    symbol: TranscriptToolResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - isError
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0171
+    entrypoint: .
+    symbol: UpdateAgentOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - contextWindowLimit
+      - description
+      - hidden
+      - model
+      - modelSettings
+      - name
+      - system
+      - tags
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0172
+    entrypoint: .
+    symbol: UpdateConversationOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - archived
+      - contextWindowLimit
+      - description
+      - model
+      - modelSettings
+      - summary
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0173
+    entrypoint: .
+    symbol: UpdateModelOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - model
+      - modelHandle
+      - modelId
+      - reasoningEffort
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0174
+    entrypoint: .
+    symbol: UpdateModelResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - appliedTo
+      - modelHandle
+      - modelId
+      - modelSettings
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0175
+    entrypoint: .
+    symbol: UpdateRepositoryFileParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - newPath
+      - path
+      - precondition
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-ROOT-0176
+    entrypoint: .
+    symbol: uploadSandboxFiles
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0001
+    entrypoint: ./client
+    symbol: AgentFreeQueryOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - canUseTool
+      - computer
+      - contextWindowLimit
+      - cwd
+      - env
+      - environment
+      - mcpServers
+      - model
+      - modelSettings
+      - permissionMode
+      - sandbox
+      - skillSources
+      - system
+      - tools
+      - toolset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0002
+    entrypoint: ./client
+    symbol: AgentRepositoriesClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - attach
+      - detach
+      - list
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0003
+    entrypoint: ./client
+    symbol: AgentRepository
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - id
+      - isPrimary
+      - name
+      - permissions
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0004
+    entrypoint: ./client
+    symbol: AgentRepositoryPermissions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0005
+    entrypoint: ./client
+    symbol: AgentRepositoryRecompileTarget
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0006
+    entrypoint: ./client
+    symbol: AgentsClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - delete
+      - list
+      - repositories
+      - retrieve
+      - update
+    disposition: claim-bearing
+    capability_ids: *a1
+    rationale: Management methods list and retrieve are used for reconciliation.
+  - id: EXP-CLIENT-0007
+    entrypoint: ./client
+    symbol: AgentSkill
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - description
+      - files
+      - instructions
+      - name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0008
+    entrypoint: ./client
+    symbol: AgentTool
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - description
+      - execute
+      - label
+      - name
+      - parameters
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0009
+    entrypoint: ./client
+    symbol: AgentToolResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - details
+      - isError
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0010
+    entrypoint: ./client
+    symbol: AgentToolResultContent
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - data
+      - mimeType
+      - text
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0011
+    entrypoint: ./client
+    symbol: AgentToolUpdateCallback
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0012
+    entrypoint: ./client
+    symbol: AnyAgentTool
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0013
+    entrypoint: ./client
+    symbol: AttachAgentRepositoryOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - permissions
+      - recompile
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0014
+    entrypoint: ./client
+    symbol: BlockReference
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - blockId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0015
+    entrypoint: ./client
+    symbol: BootstrapStateOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - limit
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0016
+    entrypoint: ./client
+    symbol: BootstrapStateResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - conversationId
+      - hasMore
+      - hasPendingApproval
+      - memfsEnabled
+      - messages
+      - model
+      - nextBefore
+      - timings
+      - tools
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0017
+    entrypoint: ./client
+    symbol: CanUseToolCallback
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0018
+    entrypoint: ./client
+    symbol: CanUseToolContext
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - blockedPath
+      - diffs
+      - permissionSuggestions
+      - requestId
+      - toolCallId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0019
+    entrypoint: ./client
+    symbol: CanUseToolPermissionSuggestion
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - id
+      - text
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0020
+    entrypoint: ./client
+    symbol: CanUseToolResponse
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0021
+    entrypoint: ./client
+    symbol: CanUseToolResponseAllow
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - message
+      - updatedInput
+      - updatedPermissions
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0022
+    entrypoint: ./client
+    symbol: CanUseToolResponseDeny
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - interrupt
+      - message
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0023
+    entrypoint: ./client
+    symbol: ChangeDeviceStateOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - cwd
+      - permissionMode
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0024
+    entrypoint: ./client
+    symbol: ClientToolsetBase
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0025
+    entrypoint: ./client
+    symbol: ClientToolsetConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - base
+      - include
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0026
+    entrypoint: ./client
+    symbol: CloudManagedSandboxExpiredError
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - cause
+      - code
+      - conversationId
+      - message
+      - name
+      - sandboxId
+      - stack
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0027
+    entrypoint: ./client
+    symbol: Computer
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - connectedAt
+      - connectionId
+      - deviceId
+      - id
+      - lastSeenAt
+      - metadata
+      - name
+      - status
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0028
+    entrypoint: ./client
+    symbol: ComputerMetadata
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - gitBranch
+      - lettaCodeVersion
+      - nodeVersion
+      - os
+      - workingDirectory
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0029
+    entrypoint: ./client
+    symbol: ComputersClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - get
+      - list
+      - resolve
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0030
+    entrypoint: ./client
+    symbol: ComputerSelector
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0031
+    entrypoint: ./client
+    symbol: ConversationForkHydrationError
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - cause
+      - conversationId
+      - message
+      - name
+      - stack
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0032
+    entrypoint: ./client
+    symbol: ConversationMessagesOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - before
+      - limit
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0033
+    entrypoint: ./client
+    symbol: ConversationMessagesResult
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0034
+    entrypoint: ./client
+    symbol: ConversationsClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - create
+      - enqueue
+      - fork
+      - list
+      - listMessages
+      - retrieve
+      - update
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0035
+    entrypoint: ./client
+    symbol: CreateAgentOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - baseTools
+      - canUseTool
+      - cwd
+      - description
+      - disallowedTools
+      - dreaming
+      - embedding
+      - hidden
+      - human
+      - memfs
+      - memory
+      - model
+      - name
+      - permissionMode
+      - persona
+      - personality
+      - skillSources
+      - skills
+      - systemInfoReminder
+      - systemPrompt
+      - tags
+      - tools
+    disposition: claim-bearing
+    capability_ids: *a2
+    rationale: Used by the Revision 0.4 provisioning vertical slice with a backend-safe subset.
+  - id: EXP-CLIENT-0036
+    entrypoint: ./client
+    symbol: CreateBlock
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - base_template_id
+      - deployment_id
+      - description
+      - entity_id
+      - hidden
+      - is_template
+      - label
+      - limit
+      - metadata
+      - preserve_on_migration
+      - project_id
+      - read_only
+      - tags
+      - template_id
+      - template_name
+      - value
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0037
+    entrypoint: ./client
+    symbol: CreateConversationOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - contextWindowLimit
+      - description
+      - hidden
+      - model
+      - modelSettings
+      - summary
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0038
+    entrypoint: ./client
+    symbol: createReactNativeWebSocketConstructor
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0039
+    entrypoint: ./client
+    symbol: CreateRepositoryFileParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0040
+    entrypoint: ./client
+    symbol: CreateRepositoryParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0041
+    entrypoint: ./client
+    symbol: CreateSessionOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - canUseTool
+      - cwd
+      - dreaming
+      - mcpServers
+      - model
+      - permissionMode
+      - reasoningEffort
+      - resources
+      - skillSources
+      - stateless
+      - tools
+      - toolset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0042
+    entrypoint: ./client
+    symbol: createTranscriptAccumulator
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0043
+    entrypoint: ./client
+    symbol: DeleteRepositoryFileParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0044
+    entrypoint: ./client
+    symbol: DeleteRepositoryFileResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - commitSha
+      - success
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0045
+    entrypoint: ./client
+    symbol: DetachAgentRepositoryOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - recompile
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0046
+    entrypoint: ./client
+    symbol: downloadSandboxFile
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0047
+    entrypoint: ./client
+    symbol: DreamingBehavior
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0048
+    entrypoint: ./client
+    symbol: DreamingOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - stepCount
+      - trigger
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0049
+    entrypoint: ./client
+    symbol: DreamingTrigger
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0050
+    entrypoint: ./client
+    symbol: EffectiveDreamingSettings
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - behavior
+      - stepCount
+      - trigger
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0051
+    entrypoint: ./client
+    symbol: EnqueueMessageOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - clientMessageId
+      - permissionMode
+      - workingDirectory
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0052
+    entrypoint: ./client
+    symbol: EnqueueMessageResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - clientMessageId
+      - superRunId
+      - workflowId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0053
+    entrypoint: ./client
+    symbol: ExecuteExternalToolRequest
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - input
+      - subtype
+      - tool_call_id
+      - tool_name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0054
+    entrypoint: ./client
+    symbol: extractStreamTextDelta
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0055
+    entrypoint: ./client
+    symbol: ForkConversationOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - hidden
+      - messageId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0056
+    entrypoint: ./client
+    symbol: GetDeviceStatusOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - timeoutMs
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0057
+    entrypoint: ./client
+    symbol: GetRepositoryVersionParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0058
+    entrypoint: ./client
+    symbol: GitHubRepositoryRef
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - commit
+      - owner
+      - repo
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0059
+    entrypoint: ./client
+    symbol: ImageContent
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - source
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0060
+    entrypoint: ./client
+    symbol: LettaAgent
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: bundled-supporting
+    capability_ids: *a3
+    rationale: Typed agent state supports reconciliation without expanding the taught operation.
+  - id: EXP-CLIENT-0061
+    entrypoint: ./client
+    symbol: LettaAgentClient
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - agentRepositoriesClient
+      - agents
+      - appServerSessionOptions
+      - assertOpen
+      - assertSessionBackend
+      - backend
+      - close
+      - closePromise
+      - closed
+      - cloudClient
+      - cloudOptions
+      - computer
+      - computers
+      - computersClient
+      - conversations
+      - createAgent
+      - createAgentFreeSession
+      - createLocalAgent
+      - createLocalAgentFreeSession
+      - createLocalManagementTransport
+      - createLocalSession
+      - createSession
+      - environment
+      - getAgentRepositoriesClient
+      - getCloudClient
+      - getCloudManagementTransport
+      - getComputersClient
+      - getManagementTransport
+      - getRepositoriesClient
+      - localBackendUnavailableError
+      - managementTransport
+      - models
+      - options
+      - prompt
+      - query
+      - remoteOptions
+      - repositories
+      - repositoriesClient
+      - resumeLocalSession
+      - resumeSession
+      - skillNodeSupport
+    disposition: claim-bearing
+    capability_ids: *a4
+    rationale: Used by the Revision 0.4 provisioning vertical slice.
+  - id: EXP-CLIENT-0062
+    entrypoint: ./client
+    symbol: LettaCodeBackend
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0063
+    entrypoint: ./client
+    symbol: LettaCodeClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0064
+    entrypoint: ./client
+    symbol: LettaCodeClientSessionOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - allowedTools
+      - canUseTool
+      - computer
+      - cwd
+      - dreaming
+      - env
+      - environment
+      - filesystemConfinement
+      - mcpServers
+      - model
+      - permissionMode
+      - reasoningEffort
+      - resources
+      - sandbox
+      - skillSources
+      - stateless
+      - tools
+      - toolset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0065
+    entrypoint: ./client
+    symbol: LettaCodeCloudClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - WebSocket
+      - apiBaseUrl
+      - apiKey
+      - backend
+      - computer
+      - environment
+      - fetch
+      - headers
+      - pingIntervalMs
+      - requestTimeoutMs
+      - sandbox
+      - webSocketAuth
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0066
+    entrypoint: ./client
+    symbol: LettaCodeCloudSandboxOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - githubRepositories
+      - readyPollIntervalMs
+      - readyTimeoutMs
+      - refreshIntervalMs
+      - terminateOnClose
+      - ttlMinutes
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0067
+    entrypoint: ./client
+    symbol: LettaCodeEnvironment
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0068
+    entrypoint: ./client
+    symbol: LettaCodeLocalAppServerOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - WebSocket
+      - harnessBackend
+      - listen
+      - pinGlobalAgent
+      - requestTimeoutMs
+      - startupTimeoutMs
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0069
+    entrypoint: ./client
+    symbol: LettaCodeLocalClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - appServer
+      - backend
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0070
+    entrypoint: ./client
+    symbol: LettaCodeModelEntry
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0071
+    entrypoint: ./client
+    symbol: LettaCodePersonalityId
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0072
+    entrypoint: ./client
+    symbol: LettaCodeReactNativeSocketConstructor
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0073
+    entrypoint: ./client
+    symbol: LettaCodeRemoteClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - WebSocket
+      - authToken
+      - backend
+      - pinGlobalAgent
+      - requestTimeoutMs
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0074
+    entrypoint: ./client
+    symbol: LettaCodeSession
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - abort
+      - agentId
+      - bootstrapState
+      - changeDeviceState
+      - close
+      - conversationId
+      - getDeviceStatus
+      - listMessages
+      - listModels
+      - onDeviceStatus
+      - ready
+      - recoverPendingApprovals
+      - removeQueuedMessage
+      - sandbox
+      - send
+      - sendCommand
+      - sessionId
+      - stream
+      - updateModel
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0075
+    entrypoint: ./client
+    symbol: LettaCodeSocketConstructor
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0076
+    entrypoint: ./client
+    symbol: LettaCodeSocketLike
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - addEventListener
+      - close
+      - off
+      - on
+      - once
+      - readyState
+      - removeEventListener
+      - send
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0077
+    entrypoint: ./client
+    symbol: LettaCodeSocketOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - headers
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0078
+    entrypoint: ./client
+    symbol: LettaConversation
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0079
+    entrypoint: ./client
+    symbol: LettaConversationMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0080
+    entrypoint: ./client
+    symbol: ListAgentsOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - before
+      - include
+      - limit
+      - matchAllTags
+      - name
+      - order
+      - orderBy
+      - query
+      - tags
+    disposition: bundled-supporting
+    capability_ids: *a5
+    rationale: Typed list filters support request-tag reconciliation.
+  - id: EXP-CLIENT-0081
+    entrypoint: ./client
+    symbol: ListComputersOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - limit
+      - onlineOnly
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0082
+    entrypoint: ./client
+    symbol: ListComputersResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - computers
+      - hasNextPage
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0083
+    entrypoint: ./client
+    symbol: ListConversationsOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - agentId
+      - archiveStatus
+      - limit
+      - order
+      - orderBy
+      - summarySearch
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0084
+    entrypoint: ./client
+    symbol: ListMessagesOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - after
+      - before
+      - conversationId
+      - limit
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0085
+    entrypoint: ./client
+    symbol: ListMessagesResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - hasMore
+      - messages
+      - nextBefore
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0086
+    entrypoint: ./client
+    symbol: ListModelsResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - availableHandles
+      - byokProviderAliases
+      - entries
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0087
+    entrypoint: ./client
+    symbol: ListRepositoriesParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - limit
+      - offset
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0088
+    entrypoint: ./client
+    symbol: ListRepositoriesResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - hasNextPage
+      - repositories
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0089
+    entrypoint: ./client
+    symbol: ListRepositoryFilesParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - depth
+      - pathPrefix
+      - ref
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0090
+    entrypoint: ./client
+    symbol: ListRepositoryFilesResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - files
+      - ref
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0091
+    entrypoint: ./client
+    symbol: ListRepositoryVersionsParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - limit
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0092
+    entrypoint: ./client
+    symbol: McpHttpServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - headers
+      - type
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0093
+    entrypoint: ./client
+    symbol: McpServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0094
+    entrypoint: ./client
+    symbol: McpServers
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0095
+    entrypoint: ./client
+    symbol: McpSseServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - headers
+      - type
+      - url
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0096
+    entrypoint: ./client
+    symbol: McpStdioServerConfig
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - args
+      - command
+      - cwd
+      - env
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0097
+    entrypoint: ./client
+    symbol: MemoryItem
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0098
+    entrypoint: ./client
+    symbol: MemoryPreset
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0099
+    entrypoint: ./client
+    symbol: MessageContentItem
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0100
+    entrypoint: ./client
+    symbol: ModelsClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - list
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0101
+    entrypoint: ./client
+    symbol: PermissionMode
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0102
+    entrypoint: ./client
+    symbol: PortableLettaAgentClientOptions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0103
+    entrypoint: ./client
+    symbol: Query
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - __@asyncIterator@286
+      - close
+      - interrupt
+      - next
+      - return
+      - throw
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0104
+    entrypoint: ./client
+    symbol: QueryParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - options
+      - prompt
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0105
+    entrypoint: ./client
+    symbol: ReasoningEffort
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0106
+    entrypoint: ./client
+    symbol: RecoverPendingApprovalsOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - timeoutMs
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0107
+    entrypoint: ./client
+    symbol: RecoverPendingApprovalsResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - detail
+      - pendingApproval
+      - recovered
+      - unsupported
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0108
+    entrypoint: ./client
+    symbol: RemoveQueuedMessageResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - itemId
+      - removed
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0109
+    entrypoint: ./client
+    symbol: RepositoriesClient
+    runtime_value: true
+    declaration_kinds:
+      - ClassDeclaration
+    members:
+      - assertOpen
+      - client
+      - create
+      - delete
+      - files
+      - get
+      - list
+      - request
+      - requestUrl
+      - url
+      - versions
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0110
+    entrypoint: ./client
+    symbol: Repository
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - createdAt
+      - id
+      - name
+      - updatedAt
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0111
+    entrypoint: ./client
+    symbol: RepositoryFile
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - contentSha256
+      - path
+      - ref
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0112
+    entrypoint: ./client
+    symbol: RepositoryFileEntry
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - path
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0113
+    entrypoint: ./client
+    symbol: RepositoryFileMutationResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - commitSha
+      - contentSha256
+      - path
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0114
+    entrypoint: ./client
+    symbol: RepositoryResource
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - recompile
+      - repositoryId
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0115
+    entrypoint: ./client
+    symbol: RepositoryVersion
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - author_name
+      - message
+      - sha
+      - timestamp
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0116
+    entrypoint: ./client
+    symbol: ResolvedComputer
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - computer
+      - connectionId
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0117
+    entrypoint: ./client
+    symbol: SandboxFilesClient
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - downloadFile
+      - uploadFiles
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0118
+    entrypoint: ./client
+    symbol: SandboxFileUpload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - data
+      - name
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0119
+    entrypoint: ./client
+    symbol: SandboxFileUploadResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - files
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0120
+    entrypoint: ./client
+    symbol: SandboxUploadedFile
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - mimeType
+      - name
+      - path
+      - size
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0121
+    entrypoint: ./client
+    symbol: SDKAssistantMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - otid
+      - runId
+      - seqId
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0122
+    entrypoint: ./client
+    symbol: SDKErrorCode
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0123
+    entrypoint: ./client
+    symbol: SDKErrorMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - apiError
+      - approvalConflict
+      - errorCode
+      - errorDetail
+      - message
+      - recoverable
+      - runId
+      - stopReason
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0124
+    entrypoint: ./client
+    symbol: SDKInitMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - conversationId
+      - dreaming
+      - memfsEnabled
+      - model
+      - sessionId
+      - skillSources
+      - systemInfoReminderEnabled
+      - tools
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0125
+    entrypoint: ./client
+    symbol: SDKLoopStatusMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - activeRunIds
+      - status
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0126
+    entrypoint: ./client
+    symbol: SDKMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0127
+    entrypoint: ./client
+    symbol: SDKProtocolCommand
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0128
+    entrypoint: ./client
+    symbol: SDKProtocolMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0129
+    entrypoint: ./client
+    symbol: SDKQueueItem
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - clientMessageId
+      - content
+      - enqueuedAt
+      - id
+      - kind
+      - source
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0130
+    entrypoint: ./client
+    symbol: SDKQueueUpdateMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - queue
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0131
+    entrypoint: ./client
+    symbol: SDKReasoningMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - otid
+      - runId
+      - seqId
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0132
+    entrypoint: ./client
+    symbol: SDKResultMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - approvalConflict
+      - conversationId
+      - durationMs
+      - error
+      - errorCode
+      - errorDetail
+      - recoverable
+      - recoveryAttempts
+      - result
+      - runIds
+      - stopReason
+      - success
+      - totalCostUsd
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0133
+    entrypoint: ./client
+    symbol: SDKRetryMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - attempt
+      - delayMs
+      - maxAttempts
+      - reason
+      - runId
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0134
+    entrypoint: ./client
+    symbol: SDKStreamEventDeltaPayload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content_block
+      - delta
+      - index
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0135
+    entrypoint: ./client
+    symbol: SDKStreamEventMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - event
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0136
+    entrypoint: ./client
+    symbol: SDKStreamEventMessagePayload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - id
+      - message_type
+      - name
+      - otid
+      - reasoning
+      - run_id
+      - seq_id
+      - status
+      - tool_call
+      - tool_call_id
+      - tool_calls
+      - tool_return
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0137
+    entrypoint: ./client
+    symbol: SDKStreamEventPayload
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0138
+    entrypoint: ./client
+    symbol: SDKToolCallMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - rawArguments
+      - runId
+      - toolCallId
+      - toolInput
+      - toolName
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0139
+    entrypoint: ./client
+    symbol: SDKToolResultMessage
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - isError
+      - runId
+      - toolCallId
+      - type
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0140
+    entrypoint: ./client
+    symbol: SDKUnknownStreamEventPayload
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - message_type
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0141
+    entrypoint: ./client
+    symbol: SendCommandOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - predicate
+      - responseType
+      - timeoutMs
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0142
+    entrypoint: ./client
+    symbol: SendMessage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0143
+    entrypoint: ./client
+    symbol: SendOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - otid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0144
+    entrypoint: ./client
+    symbol: SessionDeviceStatus
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - isOnline
+      - isProcessing
+      - memoryDirectory
+      - pendingControlRequests
+      - permissionMode
+      - raw
+      - workingDirectory
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0145
+    entrypoint: ./client
+    symbol: SessionDiffHunk
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0146
+    entrypoint: ./client
+    symbol: SessionDiffHunkLine
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0147
+    entrypoint: ./client
+    symbol: SessionDiffPreview
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0148
+    entrypoint: ./client
+    symbol: SessionDreamingOptions
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0149
+    entrypoint: ./client
+    symbol: SessionPendingControlRequest
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - blockedPath
+      - diffs
+      - permissionSuggestions
+      - requestId
+      - toolCallId
+      - toolInput
+      - toolName
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0150
+    entrypoint: ./client
+    symbol: SessionPermissionSuggestion
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0151
+    entrypoint: ./client
+    symbol: SessionReadyInfo
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - agentId
+      - conversationId
+      - model
+      - tools
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0152
+    entrypoint: ./client
+    symbol: SkillItem
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0153
+    entrypoint: ./client
+    symbol: SkillSource
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0154
+    entrypoint: ./client
+    symbol: SystemPromptConfig
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0155
+    entrypoint: ./client
+    symbol: SystemPromptPreset
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0156
+    entrypoint: ./client
+    symbol: SystemPromptPresetConfigSDK
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - append
+      - preset
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0157
+    entrypoint: ./client
+    symbol: TextContent
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - text
+      - type
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0158
+    entrypoint: ./client
+    symbol: TranscriptAccumulator
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - apply
+      - rebase
+      - reset
+      - rows
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0159
+    entrypoint: ./client
+    symbol: TranscriptHistoryPage
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0160
+    entrypoint: ./client
+    symbol: TranscriptRebaseOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - order
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0161
+    entrypoint: ./client
+    symbol: TranscriptRow
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0162
+    entrypoint: ./client
+    symbol: TranscriptRowIdentity
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - key
+      - otid
+      - runId
+      - seqId
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0163
+    entrypoint: ./client
+    symbol: TranscriptRowKind
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0164
+    entrypoint: ./client
+    symbol: TranscriptTextKind
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0165
+    entrypoint: ./client
+    symbol: TranscriptTextRow
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - key
+      - kind
+      - otid
+      - runId
+      - seqId
+      - text
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0166
+    entrypoint: ./client
+    symbol: TranscriptToolCallRow
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - argumentsComplete
+      - key
+      - kind
+      - otid
+      - rawArguments
+      - result
+      - runId
+      - seqId
+      - status
+      - toolCallId
+      - toolInput
+      - toolName
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0167
+    entrypoint: ./client
+    symbol: TranscriptToolCallStatus
+    runtime_value: false
+    declaration_kinds:
+      - TypeAliasDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0168
+    entrypoint: ./client
+    symbol: TranscriptToolResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - isError
+      - uuid
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0169
+    entrypoint: ./client
+    symbol: UpdateAgentOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - contextWindowLimit
+      - description
+      - hidden
+      - model
+      - modelSettings
+      - name
+      - system
+      - tags
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0170
+    entrypoint: ./client
+    symbol: UpdateConversationOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - archived
+      - contextWindowLimit
+      - description
+      - model
+      - modelSettings
+      - summary
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0171
+    entrypoint: ./client
+    symbol: UpdateModelOptions
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - model
+      - modelHandle
+      - modelId
+      - reasoningEffort
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0172
+    entrypoint: ./client
+    symbol: UpdateModelResult
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - appliedTo
+      - modelHandle
+      - modelId
+      - modelSettings
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0173
+    entrypoint: ./client
+    symbol: UpdateRepositoryFileParams
+    runtime_value: false
+    declaration_kinds:
+      - InterfaceDeclaration
+    members:
+      - content
+      - newPath
+      - path
+      - precondition
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.
+  - id: EXP-CLIENT-0174
+    entrypoint: ./client
+    symbol: uploadSandboxFiles
+    runtime_value: true
+    declaration_kinds:
+      - FunctionDeclaration
+    members: []
+    disposition: review-pending
+    capability_ids: []
+    rationale: Mechanically inventoried; release maintainer has not promoted this symbol into a claim-bearing curriculum capability.

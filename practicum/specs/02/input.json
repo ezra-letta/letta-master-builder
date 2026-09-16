@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "scenarioId": "SCN-SESSION-RECOVERY",
+  "submissionDirectory": "submission/SCN-SESSION-RECOVERY",
+  "namespace": "lmb.practicum.v1.stream_recovery",
+  "fixtureAuthority": "project-method-only",
+  "executionAuthorized": false,
+  "scoringAuthorized": false,
+  "normalization": {
+    "unicode": "NFC",
+    "lineEndings": "LF",
+    "jsonObjectKeys": "lexicographic-code-point-order",
+    "jsonlRepresentation": "ordered-array-in-artifact-bundle",
+    "recordOrder": "ascending-sequence",
+    "transcriptOrder": [
+      "canonicalOrdinal",
+      "firstObservedSequence",
+      "entryId"
+    ],
+    "fragmentDeduplicationKey": [
+      "turnKey",
+      "fragmentId"
+    ],
+    "historyDeduplicationKey": "messageId",
+    "unorderedStringArrays": "ascending-lexicographic-code-point-order"
+  },
+  "recoveryPolicy": {
+    "maximumAttempts": 2,
+    "blindResendAllowed": false,
+    "pendingApprovalBlocksContinuation": true,
+    "terminalStopReasonWhenInsufficient": "evidence-insufficient-at-recovery-bound"
+  },
+  "protectedPerturbations": {
+    "minimumCount": 2,
+    "valuesIncluded": false,
+    "learnerAccess": "none",
+    "insertionPoints": [
+      {
+        "id": "PP-S02-A",
+        "afterSequence": 4,
+        "beforeSequence": 5,
+        "custodian": "independent-evaluator",
+        "disclosure": "withheld"
+      },
+      {
+        "id": "PP-S02-B",
+        "afterSequence": 6,
+        "beforeSequence": 7,
+        "custodian": "independent-evaluator",
+        "disclosure": "withheld"
+      }
+    ],
+    "custody": {
+      "contentOwner": "assessment-administrator",
+      "insertionAuthority": "independent-evaluator",
+      "integrityReviewer": "independent-integrity-reviewer",
+      "learnerVisibleCopyMayContainValues": false,
+      "answerArtifactsMayContainValues": false
+    }
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "kind": "lmb.practicum.v1.stream_recovery.queue.input_arrived",
+      "inputId": "input-001",
+      "turnKey": "turn-001",
+      "text": "Summarize the recovery checklist."
+    },
+    {
+      "sequence": 2,
+      "kind": "lmb.practicum.v1.stream_recovery.stream.fragment_observed",
+      "turnKey": "turn-001",
+      "fragmentId": "fragment-001",
+      "provisionalMessageId": "provisional-assistant-001",
+      "ordinal": 1,
+      "text": "First, preserve "
+    },
+    {
+      "sequence": 3,
+      "kind": "lmb.practicum.v1.stream_recovery.stream.fragment_observed",
+      "turnKey": "turn-001",
+      "fragmentId": "fragment-002",
+      "provisionalMessageId": "provisional-assistant-001",
+      "ordinal": 2,
+      "text": "the turn identity."
+    },
+    {
+      "sequence": 4,
+      "kind": "lmb.practicum.v1.stream_recovery.stream.fragment_observed",
+      "turnKey": "turn-001",
+      "fragmentId": "fragment-002",
+      "provisionalMessageId": "provisional-assistant-001",
+      "ordinal": 2,
+      "text": "the turn identity."
+    },
+    {
+      "sequence": 5,
+      "kind": "lmb.practicum.v1.stream_recovery.transport.disconnected",
+      "turnKey": "turn-001",
+      "terminalOutcomeObserved": false,
+      "transportState": "unknown"
+    },
+    {
+      "sequence": 6,
+      "kind": "lmb.practicum.v1.stream_recovery.bootstrap.snapshot",
+      "snapshotId": "bootstrap-001",
+      "turnKey": "turn-001",
+      "turnState": "active",
+      "hasPendingApproval": true,
+      "device": {
+        "isOnline": true,
+        "isProcessing": true
+      }
+    },
+    {
+      "sequence": 7,
+      "kind": "lmb.practicum.v1.stream_recovery.history.message_observed",
+      "snapshotId": "history-001",
+      "messageId": "message-user-001",
+      "turnKey": "turn-001",
+      "role": "user",
+      "canonicalOrdinal": 1,
+      "text": "Summarize the recovery checklist."
+    },
+    {
+      "sequence": 8,
+      "kind": "lmb.practicum.v1.stream_recovery.history.message_observed",
+      "snapshotId": "history-001",
+      "messageId": "message-assistant-001",
+      "turnKey": "turn-001",
+      "role": "assistant",
+      "canonicalOrdinal": 2,
+      "text": "First, preserve the canonical turn identity."
+    },
+    {
+      "sequence": 9,
+      "kind": "lmb.practicum.v1.stream_recovery.approval.pending_observed",
+      "approvalId": "approval-001",
+      "turnKey": "turn-001",
+      "authorityState": "unresolved",
+      "continuationAllowed": false
+    },
+    {
+      "sequence": 10,
+      "kind": "lmb.practicum.v1.stream_recovery.queue.input_arrived",
+      "inputId": "input-002",
+      "turnKey": "turn-002",
+      "text": "Then list the stop conditions."
+    }
+  ]
+}

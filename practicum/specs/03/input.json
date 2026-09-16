@@ -1,0 +1,162 @@
+{
+  "scenarioId": "SCN-TOOLS-EFFECTS",
+  "specificationStatus": "ready-read-only",
+  "namespace": "lmb.practicum.v1.tool_effect",
+  "submissionDirectory": "submission/SCN-TOOLS-EFFECTS",
+  "executionAuthorized": false,
+  "scoringAuthorized": false,
+  "proposal": {
+    "kind": "lmb.practicum.v1.tool.proposed",
+    "proposalId": "proposal-0001",
+    "toolName": "project.synthetic.ticket.create",
+    "declaredPolicy": {
+      "locality": "client",
+      "effectClass": "idempotent",
+      "credentialCustody": "host-only",
+      "credentialReference": "project-secret-ref-0001"
+    },
+    "requestedInput": {
+      "project": "LMB-SYNTHETIC",
+      "summary": "Investigate synthetic controller timeout",
+      "labels": [
+        "practicum",
+        "uncertain-effect"
+      ],
+      "priority": "normal"
+    },
+    "proposedInputDigest": "sha256:20cd5eb420191778fc530708dc3b6639327eb5a7194d36fd58ca27df25c7c95b"
+  },
+  "permissionDecision": {
+    "kind": "lmb.practicum.v1.permission.decision",
+    "decisionId": "permission-0001",
+    "proposalId": "proposal-0001",
+    "behavior": "allow",
+    "editedInput": {
+      "project": "LMB-SYNTHETIC",
+      "summary": "Investigate synthetic controller timeout",
+      "labels": [
+        "practicum",
+        "uncertain-effect",
+        "approved"
+      ],
+      "priority": "low"
+    },
+    "authorizedInputDigest": "sha256:6de50d14ce6704f047952be091f5c6a0b6d1a5437d833d6ca81e320f4e229ea6",
+    "validFrom": "2030-01-01T00:00:00.000Z",
+    "expiresAt": "2030-01-01T00:05:00.000Z",
+    "authorityState": "valid"
+  },
+  "mcpState": {
+    "kind": "lmb.practicum.v1.mcp.transport_state",
+    "serverName": "project-synthetic-ticket-service",
+    "transport": "stdio",
+    "lifecycle": [
+      {
+        "sequence": 1,
+        "state": "available",
+        "observedAt": "2030-01-01T00:00:01.000Z"
+      },
+      {
+        "sequence": 2,
+        "state": "unavailable-after-dispatch",
+        "observedAt": "2030-01-01T00:00:04.000Z"
+      }
+    ],
+    "resourceClose": {
+      "requested": true,
+      "state": "synthetically-closed",
+      "observedAt": "2030-01-01T00:00:08.000Z"
+    }
+  },
+  "dispatchObservation": {
+    "kind": "lmb.practicum.v1.effect.dispatch_observation",
+    "requestKey": "lmb-s03-request-0001",
+    "proposalId": "proposal-0001",
+    "authorizedInputDigest": "sha256:6de50d14ce6704f047952be091f5c6a0b6d1a5437d833d6ca81e320f4e229ea6",
+    "dispatchedAt": "2030-01-01T00:00:02.000Z",
+    "deadlineAt": "2030-01-01T00:00:03.000Z",
+    "observation": "timeout-after-dispatch",
+    "abortObserved": true,
+    "effectState": "uncertain"
+  },
+  "receiptObservation": {
+    "kind": "lmb.practicum.v1.effect.receipt_observed",
+    "requestKey": "lmb-s03-request-0001",
+    "observedAt": "2030-01-01T00:00:05.000Z",
+    "receipt": {
+      "externalEffectId": "synthetic-ticket-0042",
+      "requestKey": "lmb-s03-request-0001",
+      "status": "created"
+    },
+    "authority": "non-authoritative-receipt"
+  },
+  "authoritativeLookup": {
+    "kind": "lmb.practicum.v1.effect.authoritative_lookup",
+    "requestKey": "lmb-s03-request-0001",
+    "attempt": 1,
+    "maximumAttempts": 2,
+    "observedAt": "2030-01-01T00:00:06.000Z",
+    "matches": [
+      {
+        "externalEffectId": "synthetic-ticket-0042",
+        "requestKey": "lmb-s03-request-0001",
+        "status": "created"
+      }
+    ]
+  },
+  "digestContract": {
+    "algorithm": "sha256",
+    "representation": "utf8-json",
+    "canonicalization": "recursively sort object property names by Unicode code point; preserve array order; emit no insignificant whitespace; encode as UTF-8; prefix lowercase hexadecimal digest with sha256:",
+    "proposedInputPath": "/proposal/requestedInput",
+    "authorizedInputPath": "/permissionDecision/editedInput",
+    "artifactDigestOrder": [
+      "tool-authority.json",
+      "effect-ledger.json",
+      "reconciliation-report.json",
+      "controller-trace.jsonl"
+    ]
+  },
+  "protectedPerturbations": [
+    {
+      "id": "S03-P01",
+      "insertionPoint": "/permissionDecision",
+      "custodian": "authorized-evaluator",
+      "valueCustody": "withheld-from-read-only-specification"
+    },
+    {
+      "id": "S03-P02",
+      "insertionPoint": "/mcpState/lifecycle/1",
+      "custodian": "authorized-evaluator",
+      "valueCustody": "withheld-from-read-only-specification"
+    },
+    {
+      "id": "S03-P03",
+      "insertionPoint": "/dispatchObservation",
+      "custodian": "authorized-evaluator",
+      "valueCustody": "withheld-from-read-only-specification"
+    },
+    {
+      "id": "S03-P04",
+      "insertionPoint": "/authoritativeLookup/matches",
+      "custodian": "authorized-evaluator",
+      "valueCustody": "withheld-from-read-only-specification"
+    }
+  ],
+  "publicAssertions": [
+    "S03-C01",
+    "S03-C02",
+    "S03-C03",
+    "S03-C04",
+    "S03-C05",
+    "S03-C06",
+    "S03-C07",
+    "S03-C08",
+    "S03-N01",
+    "S03-N02",
+    "S03-N03",
+    "S03-N04",
+    "S03-N05",
+    "S03-N06"
+  ]
+}

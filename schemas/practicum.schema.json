@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/practicum.schema.json",
+  "x-target": "practicum/registry.yml",
+  "$defs": {
+    "capabilityIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^CAP-[A-Z0-9-]+$"}
+    },
+    "provenance": {
+      "enum": ["package-derived-public-shape", "documented-behavior-fixture", "project-method-only"]
+    },
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^S0[1-4]-[CN][0-9]{2}$"},
+        "statement": {"type": "string", "minLength": 1}
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "format", "digest_required"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^S0[1-4]-A[0-9]{2}$"},
+        "path": {"type": "string", "pattern": "^[a-z0-9][a-z0-9.-]*\\.(json|jsonl)$"},
+        "format": {"enum": ["json", "jsonl"]},
+        "digest_required": {"const": true}
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "status", "execution_authorized", "brief_path", "specification_files", "implementation_entry", "synthetic_namespace", "provenance_labels", "capability_ids", "critical_assertions", "noncritical_assertions", "artifacts", "forbidden_effects", "runtime_claim", "production_claim", "non_claims"],
+      "properties": {
+        "id": {"enum": ["SCN-PROVISIONING", "SCN-SESSION-RECOVERY", "SCN-TOOLS-EFFECTS", "SCN-SUPERVISED-IMPROVEMENT"]},
+        "name": {"type": "string", "minLength": 1},
+        "status": {"const": "ready"},
+        "execution_authorized": {"const": false},
+        "brief_path": {"type": "string", "pattern": "^practicum/scenarios/0[1-4]-[a-z0-9-]+\\.md$"},
+        "specification_files": {"type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^practicum/specs/0[1-4]/(?:input\\.json|contracts\\.d\\.ts|artifact-bundle\\.schema\\.json)$"}},
+        "implementation_entry": {"const": "src/controller.ts"},
+        "synthetic_namespace": {"type": "string", "pattern": "^lmb\\.practicum\\.v1\\.[a-z][a-z0-9_]*$"},
+        "provenance_labels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/provenance"}
+        },
+        "capability_ids": {"$ref": "#/$defs/capabilityIds"},
+        "critical_assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/assertion"}
+        },
+        "noncritical_assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/assertion"}
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/artifact"}
+        },
+        "forbidden_effects": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z][a-z0-9-]+$"}
+        },
+        "runtime_claim": {"const": false},
+        "production_claim": {"const": false},
+        "non_claims": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "revision", "reader_execution_authorized", "scored_execution_authorized", "status", "exact_tuple", "runner_contract", "provenance_labels", "scoring_contract", "fixtures", "scenarios", "registry_non_claims"],
+  "properties": {
+    "schema_version": {"const": "2.0.0"},
+    "kind": {"const": "practicum-registry"},
+    "revision": {"const": "0.4"},
+    "reader_execution_authorized": {"const": false},
+    "scored_execution_authorized": {"const": false},
+    "status": {"const": "ready-offline-suite-not-executed"},
+    "exact_tuple": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_sdk", "sdk_declared_runtime", "standalone_runtime", "implementation_language", "compiler_version", "node_range"],
+      "properties": {
+        "agent_sdk": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["package", "version", "version_id"],
+          "properties": {
+            "package": {"const": "@letta-ai/letta-agent-sdk"},
+            "version": {"const": "0.8.9"},
+            "version_id": {"const": "VER-AGENT-SDK-0-8-9"}
+          }
+        },
+        "sdk_declared_runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["package", "version", "version_id"],
+          "properties": {
+            "package": {"const": "@letta-ai/letta-code"},
+            "version": {"const": "0.32.11"},
+            "version_id": {"const": "VER-SDK-DECLARED-RUNTIME-0-32-11"}
+          }
+        },
+        "standalone_runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["package", "version", "version_id"],
+          "properties": {
+            "package": {"const": "@letta-ai/letta-code"},
+            "version": {"const": "0.32.11"},
+            "version_id": {"const": "VER-STANDALONE-0-32-11"}
+          }
+        },
+        "implementation_language": {"const": "TypeScript"},
+        "compiler_version": {"const": "5.9.3"},
+        "node_range": {"const": ">=22.19.0"}
+      }
+    },
+    "runner_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "disposable_environment_required", "offline_during_scored_execution", "package_closure_locked_before_execution", "exact_package_compilation_required", "compile_and_fixture_results_separate", "deterministic_rerun_required", "workspace_write_scope", "secrets_available", "external_effects_allowed", "in_process_sandbox_claimed", "instrumentation_requirements", "note"],
+      "properties": {
+        "status": {"const": "specified-not-executed"},
+        "disposable_environment_required": {"const": true},
+        "offline_during_scored_execution": {"const": true},
+        "package_closure_locked_before_execution": {"const": true},
+        "exact_package_compilation_required": {"const": true},
+        "compile_and_fixture_results_separate": {"const": true},
+        "deterministic_rerun_required": {"const": true},
+        "workspace_write_scope": {"const": "practicum-workspace-only"},
+        "secrets_available": {"const": false},
+        "external_effects_allowed": {"const": false},
+        "in_process_sandbox_claimed": {"const": false},
+        "instrumentation_requirements": {
+          "type": "array",
+          "minItems": 4,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "note": {"type": "string", "minLength": 1}
+      }
+    },
+    "provenance_labels": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "meaning"],
+        "properties": {
+          "label": {"$ref": "#/$defs/provenance"},
+          "meaning": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "scoring_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact_package_compilation_required_percent", "schema_validation_required_percent", "critical_assertions_required_percent", "noncritical_assertions_minimum_percent", "deterministic_rerun_required", "artifact_digests_required", "machine_statuses_available", "machine_statuses_unavailable"],
+      "properties": {
+        "exact_package_compilation_required_percent": {"const": 100},
+        "schema_validation_required_percent": {"const": 100},
+        "critical_assertions_required_percent": {"const": 100},
+        "noncritical_assertions_minimum_percent": {"const": 90},
+        "deterministic_rerun_required": {"const": true},
+        "artifact_digests_required": {"const": true},
+        "machine_statuses_available": {
+          "const": ["compile-verified", "offline-conformance-verified"]
+        },
+        "machine_statuses_unavailable": {
+          "const": ["architecture-verified", "transfer-verified", "runtime-verified", "production-qualified"]
+        }
+      }
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "evidence_class", "provenance", "capability_ids", "path", "runtime_claim", "production_claim", "scored_scenario", "status", "separation_note"],
+        "properties": {
+          "id": {"const": "FIX-PROVISIONING-PARTIAL-SUCCESS"},
+          "name": {"type": "string", "minLength": 1},
+          "evidence_class": {"const": "verified-vertical-slice"},
+          "provenance": {"$ref": "#/$defs/provenance"},
+          "capability_ids": {"$ref": "#/$defs/capabilityIds"},
+          "path": {"const": "vertical-slice/fixtures/provisioning-partial-success.json"},
+          "runtime_claim": {"const": false},
+          "production_claim": {"const": false},
+          "scored_scenario": {"const": false},
+          "status": {"const": "verified-static"},
+          "separation_note": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/scenario"}
+    },
+    "registry_non_claims": {
+      "type": "array",
+      "minItems": 7,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

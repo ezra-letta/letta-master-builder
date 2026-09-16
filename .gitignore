@@ -1,0 +1,28 @@
+# Operating systems and editors
+.DS_Store
+*.swp
+*.tmp
+*.log
+.idea/
+.vscode/
+
+# Node
+node_modules/
+coverage/
+npm-debug.log*
+
+# Validator and network-check output
+reports/
+.cache/
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Temporary clean-room copies
+.phase1-clean-room/

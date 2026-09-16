@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/drift-rehearsal.schema.json",
+  "x-target": "maintenance/drift-rehearsal.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "upstream_sdk_published_at", "started_at", "completed_at", "elapsed_minutes", "maintenance_ceiling_hours", "release_response_target_days", "from", "to", "static_changes", "affected_capability_ids", "checks", "runtime_claim", "maintenance_result"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"const": "REL-DRIFT-0-8-6-TO-0-8-9"},
+    "status": {"enum": ["in-progress", "complete"]},
+    "upstream_sdk_published_at": {"type": "string", "format": "date-time"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "elapsed_minutes": {"type": "integer", "minimum": 1},
+    "maintenance_ceiling_hours": {"const": 8},
+    "release_response_target_days": {"const": 7},
+    "from": {"type": "object"},
+    "to": {"type": "object"},
+    "static_changes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "affected_capability_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^CAP-"}},
+    "checks": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "runtime_claim": {"const": false},
+    "maintenance_result": {"enum": ["pending-measurement", "within-budget", "over-budget"]}
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "kind": "lmb.practicum.v1.supervised_improvement.input",
+  "scenarioId": "SCN-SUPERVISED-IMPROVEMENT",
+  "specificationStatus": "ready-read-only",
+  "executionAuthorized": false,
+  "scoringAuthorized": false,
+  "submissionDirectory": "submission/SCN-SUPERVISED-IMPROVEMENT",
+  "namespace": "lmb.practicum.v1.supervised_improvement",
+  "clock": {
+    "basis": "synthetic-logical",
+    "initial_tick": 100
+  },
+  "topology_constraints": {
+    "kind": "lmb.practicum.v1.topology.constraints",
+    "mission_id": "mission-04-bounded-index",
+    "primary_lane": "node-local",
+    "candidate_lanes": [
+      "node-local",
+      "cloud-managed"
+    ],
+    "requirements": {
+      "source_locality": "local-project-directory",
+      "source_path": "fixtures/project-alpha",
+      "persistent_output_required": true,
+      "output_destination": "submission/SCN-SUPERVISED-IMPROVEMENT",
+      "file_movement_allowed": false,
+      "network_allowed": false,
+      "credentials_allowed": false,
+      "live_session_allowed": false,
+      "authority": "synthetic-controller-only"
+    },
+    "facts": [
+      "node-local can read the project-owned source fixture without file movement",
+      "cloud-managed would require movement of the source fixture, which this mission forbids"
+    ],
+    "unknowns": [
+      "local and cloud filesystem durability parity",
+      "local and cloud sandbox lifetime parity",
+      "local and cloud concurrent scheduling parity"
+    ],
+    "no_parity_inference": true
+  },
+  "workspace_expiry": {
+    "kind": "lmb.practicum.v1.workspace.expiry_observation",
+    "workspace_id": "workspace-cloud-04",
+    "lane": "cloud-managed",
+    "observed_tick": 101,
+    "state": "expired",
+    "recoverable_files": false,
+    "scope": "this-synthetic-fixture-only"
+  },
+  "work": {
+    "work_key": "project-alpha/index-segment-07",
+    "authoritative_version": 8,
+    "completed_versions": [7],
+    "tie_break_rule": "lowest-controller-id"
+  },
+  "controllers": [
+    {
+      "controller_id": "controller-a",
+      "work_key": "project-alpha/index-segment-07",
+      "observed_version": 7,
+      "claim_expected_version": 7,
+      "observation_tick": 102
+    },
+    {
+      "controller_id": "controller-b",
+      "work_key": "project-alpha/index-segment-07",
+      "observed_version": 8,
+      "claim_expected_version": 8,
+      "observation_tick": 102
+    }
+  ],
+  "leases": [
+    {
+      "kind": "lmb.practicum.v1.controller.lease_observation",
+      "controller_id": "controller-a",
+      "lease_id": "lease-a",
+      "tick": 102,
+      "state": "active",
+      "valid_through_tick": 104
+    },
+    {
+      "kind": "lmb.practicum.v1.controller.lease_observation",
+      "controller_id": "controller-b",
+      "lease_id": "lease-b",
+      "tick": 102,
+      "state": "active",
+      "valid_through_tick": 106
+    },
+    {
+      "kind": "lmb.practicum.v1.controller.lease_observation",
+      "controller_id": "controller-b",
+      "lease_id": "lease-b",
+      "tick": 105,
+      "state": "lost",
+      "valid_through_tick": 104
+    }
+  ],
+  "budgets": [
+    {
+      "controller_id": "controller-a",
+      "tick": 102,
+      "limit": 2,
+      "consumed": 0,
+      "remaining": 2
+    },
+    {
+      "controller_id": "controller-b",
+      "tick": 102,
+      "limit": 2,
+      "consumed": 0,
+      "remaining": 2
+    },
+    {
+      "controller_id": "controller-b",
+      "tick": 104,
+      "limit": 2,
+      "consumed": 2,
+      "remaining": 0
+    }
+  ],
+  "signals": [
+    {
+      "kind": "lmb.practicum.v1.supervision.signal",
+      "signal_id": "signal-continue",
+      "tick": 103,
+      "controller_id": "controller-b",
+      "action": "continue",
+      "reason": "claim-precondition-may-be-evaluated"
+    },
+    {
+      "kind": "lmb.practicum.v1.supervision.signal",
+      "signal_id": "signal-pause",
+      "tick": 104,
+      "controller_id": "controller-b",
+      "action": "pause",
+      "reason": "budget-exhausted"
+    },
+    {
+      "kind": "lmb.practicum.v1.supervision.signal",
+      "signal_id": "signal-intervene",
+      "tick": 105,
+      "controller_id": "controller-b",
+      "action": "intervene",
+      "reason": "lease-lost"
+    },
+    {
+      "kind": "lmb.practicum.v1.supervision.signal",
+      "signal_id": "signal-stop",
+      "tick": 106,
+      "controller_id": "controller-b",
+      "action": "stop",
+      "reason": "supervisor-authority-revoked"
+    }
+  ],
+  "candidate_improvement": {
+    "proposal_id": "proposal-deterministic-cas-v2",
+    "proposer_id": "controller-a",
+    "candidate_version": "candidate-2",
+    "baseline_version": "baseline-1",
+    "claim": "reduce duplicate authoritative completion under stale observations",
+    "rollback_target": "baseline-1",
+    "self_promotion_allowed": false
+  },
+  "frozen_evaluation": {
+    "evaluation_id": "evaluation-frozen-04",
+    "evaluator_id": "evaluator-independent-04",
+    "frozen_case_digest": "sha256:8cbfc61d0d0b26a7194d7e178f64fa5d6793baa8cbd1c4308159f201fbea4d75",
+    "proposer_is_evaluator": false,
+    "mandatory_gates": [
+      {
+        "gate_id": "single-owner",
+        "passed": true
+      },
+      {
+        "gate_id": "authority-stop",
+        "passed": true
+      },
+      {
+        "gate_id": "deterministic-rerun",
+        "passed": true
+      }
+    ],
+    "decision": "promotion-eligible",
+    "evaluated_tick": 107
+  },
+  "monitoring": {
+    "monitoring_id": "monitor-04",
+    "candidate_version": "candidate-2",
+    "baseline_version": "baseline-1",
+    "metric": "uncertain-effect-rate",
+    "retention_threshold": {
+      "operator": "less-than-or-equal",
+      "value": 0.02
+    },
+    "observations": [
+      {
+        "tick": 108,
+        "value": 0.01,
+        "certainty": "certain"
+      },
+      {
+        "tick": 109,
+        "value": 0.03,
+        "certainty": "certain"
+      }
+    ],
+    "regression_action": "rollback",
+    "uncertain_action": "safe-stop"
+  },
+  "determinism": {
+    "record_order": [
+      "topology",
+      "workspace-expiry",
+      "controller-observation",
+      "lease",
+      "budget",
+      "cas-decision",
+      "supervision",
+      "checkpoint",
+      "improvement",
+      "monitoring",
+      "terminal"
+    ],
+    "sort_keys": [
+      "tick ascending",
+      "record-kind precedence",
+      "controller_id ascending",
+      "stable record id ascending"
+    ],
+    "cas": {
+      "precondition": "claim_expected_version equals current authoritative_version",
+      "winner_if_multiple_valid": "lowest-controller-id",
+      "losers": "record stale-or-contended and dispatch no effect",
+      "authoritative_completion": "requires winning claim version and authority valid at completion tick"
+    }
+  },
+  "protectedPerturbations": {
+    "minimum_count": 2,
+    "insertion_points": [
+      {
+        "slot_id": "protected-slot-1",
+        "after_public_tick": 103,
+        "before_public_tick": 104
+      },
+      {
+        "slot_id": "protected-slot-2",
+        "after_public_tick": 107,
+        "before_public_tick": 108
+      }
+    ],
+    "values_in_public_specification": false,
+    "custody": {
+      "owner_role": "assessment-integrity-administrator",
+      "learner_access": "withheld",
+      "evaluator_access_before_authorized_scoring": "withheld",
+      "binding_method": "integrity-controlled-id-and-digest-annex"
+    }
+  },
+  "public_assertion_ids": [
+    "S04-C01",
+    "S04-C02",
+    "S04-C03",
+    "S04-C04",
+    "S04-C05",
+    "S04-C06",
+    "S04-C07",
+    "S04-C08",
+    "S04-N01",
+    "S04-N02",
+    "S04-N03",
+    "S04-N04",
+    "S04-N05",
+    "S04-N06"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "letta-master-builder-control-plane",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fail-closed control plane for the independent Letta Master Builder curriculum.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "scripts": {
+    "test": "node --test scripts/tests/*.test.mjs",
+    "validate": "node scripts/validate.mjs",
+    "lock:generate": "node scripts/generate-lock.mjs",
+    "lock:check": "node scripts/generate-lock.mjs --check",
+    "integrity:generate": "node scripts/generate-integrity.mjs",
+    "integrity:check": "node scripts/generate-integrity.mjs --check",
+    "sdk-exports:generate": "node scripts/generate-sdk-export-ledger.mjs",
+    "sdk-exports:check": "node scripts/generate-sdk-export-ledger.mjs --check",
+    "vertical-slice:install": "npm ci --ignore-scripts --prefix vertical-slice",
+    "vertical-slice:check": "node scripts/check-vertical-slice.mjs",
+    "drift:check": "node scripts/check-drift-rehearsal.mjs",
+    "cold-reader:check": "node scripts/check-cold-reader.mjs",
+    "modules:check": "node scripts/check-modules.mjs",
+    "practicum:check": "node scripts/check-practicum-specs.mjs",
+    "practicum:types": "vertical-slice/node_modules/.bin/tsc -p practicum/tsconfig.json",
+    "formative:check": "node scripts/check-formative.mjs",
+    "clean-copy:check": "node scripts/check-clean-copy.mjs",
+    "check:links": "node scripts/check-external-links.mjs",
+    "check:packages": "node scripts/check-package-evidence.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "yaml": "2.9.0"
+  },
+  "license": "MIT"
+}

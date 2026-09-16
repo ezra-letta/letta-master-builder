@@ -1,0 +1,431 @@
+schema_version: 1.1.0
+execution_allowed: false
+pointers:
+  - id: PTR-START-001
+    intent: consult the current official Letta documentation index
+    prerequisites: []
+    target_type: official-docs
+    target: https://docs.letta.com/
+    authority_class: official-product-docs
+    freshness: medium
+    requirement: stage-gated
+    owner_module: MOD-00
+    expected_takeaway: Locate the canonical current page for a volatile Letta fact before relying on it.
+    unavailable_behavior: Continue only with stable local method and mark the product fact unavailable or stale.
+    non_authority: Documentation access does not authorize commands, agents, credentials, paid use, or runtime claims.
+    grants_authority: false
+  - id: PTR-SDK-001
+    intent: inspect exact Agent SDK artifact metadata
+    prerequisites: []
+    target_type: sdk-reference
+    target: https://registry.npmjs.org/%40letta-ai%2Fletta-agent-sdk/0.8.9
+    authority_class: released-artifact
+    freshness: fast
+    requirement: required
+    owner_module: MOD-04
+    source_ids:
+      - SRC-SDK-NPM-0.8.9
+    claim_ids:
+      - LMB-VERSION-001
+    expected_takeaway: Verify the exact published SDK version and immutable package identity used by examples.
+    unavailable_behavior: Block exact-version SDK claims and retain the last verified record as historical evidence only.
+    non_authority: Package metadata does not prove hosted runtime behavior or authorize installation.
+    grants_authority: false
+  - id: PTR-APP-SERVER-001
+    intent: recognize the planned direct App Server advanced track
+    prerequisites: []
+    target_type: advanced-track
+    target: DESIGN_SPEC.md#53-advanced-elective-direct-app-server-protocol
+    authority_class: project-method
+    freshness: stable
+    requirement: optional
+    owner_module: MOD-03
+    expected_takeaway: Direct protocol work is an advanced elective rather than the default Agent SDK path.
+    unavailable_behavior: Use the mandatory Agent SDK architecture path and omit the elective.
+    non_authority: The pointer does not authorize starting App Server or opening a connection.
+    grants_authority: false
+  - id: PTR-REMOTE-001
+    intent: recognize the planned Remote Client advanced track
+    prerequisites: []
+    target_type: advanced-track
+    target: DESIGN_SPEC.md#54-advanced-elective-remote-client-api
+    authority_class: project-method
+    freshness: stable
+    requirement: optional
+    owner_module: MOD-03
+    expected_takeaway: Remote Client is a distinct advanced transport and lifecycle boundary.
+    unavailable_behavior: Omit the elective and preserve Remote Client behavior as unknown.
+    non_authority: The pointer does not authorize relay access, environment control, or credentials.
+    grants_authority: false
+  - id: PTR-AUTONOMY-001
+    intent: inspect the read-only work improvement and supervisor loop method
+    prerequisites: []
+    target_type: control-contract
+    target: DESIGN_SPEC.md#65-three-loop-model
+    authority_class: project-method
+    freshness: stable
+    requirement: required
+    owner_module: MOD-08
+    source_ids:
+      - SRC-DESIGN-SYNTHESIS
+      - SRC-PRODUCTION-HEURISTIC
+    claim_ids:
+      - LMB-AUTONOMY-001
+    expected_takeaway: Keep bounded work, candidate improvement, and external supervision as separate authority loops.
+    unavailable_behavior: Stop the module because this local invariant is mandatory.
+    non_authority: Understanding loop design does not authorize executing or modifying an agent.
+    grants_authority: false
+  - id: PTR-CANARY-001
+    intent: locate separately authorized runtime canaries
+    prerequisites: []
+    target_type: runtime-canary
+    target: canaries/registry.yml
+    authority_class: scaffold-control
+    freshness: live
+    requirement: stage-gated
+    owner_module: MOD-10
+    expected_takeaway: Determine whether an exact target has any scoped runtime evidence.
+    unavailable_behavior: Report runtime behavior as unknown-not-tested.
+    non_authority: A canary record never authorizes execution and applies only to its exact target and scope.
+    grants_authority: false
+  - id: PTR-LEGACY-001
+    intent: identify quarantined legacy patterns
+    prerequisites: []
+    target_type: legacy-boundary
+    target: legacy-boundary/README.md
+    authority_class: project-method
+    freshness: fast
+    requirement: required
+    owner_module: MOD-00
+    expected_takeaway: Recognize prohibited greenfield patterns without teaching their implementation.
+    unavailable_behavior: Stop before making compatibility or legacy recommendations.
+    non_authority: Recognition does not authorize using a retired or deprecated surface.
+    grants_authority: false
+  - id: PTR-AGENT-MANAGEMENT-001
+    intent: consult current official Agent SDK creation and management details
+    prerequisites:
+      - PTR-SDK-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/agents/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-04
+    source_ids:
+      - SRC-DOCS-SDK-AGENTS-20260916
+    claim_ids:
+      - LMB-SDK-002
+    expected_takeaway: Use current documented creation and existing-agent management options while preserving backend restrictions from exact package source.
+    unavailable_behavior: Block exact API examples and retain only local ownership and recovery reasoning.
+    non_authority: The page does not authorize creating updating or deleting an agent.
+    grants_authority: false
+  - id: PTR-STATEFUL-AGENTS-001
+    intent: consult the current persistent agent conversation and session model
+    prerequisites: []
+    target_type: official-docs
+    target: https://docs.letta.com/concepts/stateful-agents/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-02
+    source_ids:
+      - SRC-DOCS-STATEFUL-AGENTS-20260911
+    claim_ids:
+      - LMB-SDK-002
+    expected_takeaway: Treat the agent as the persistent entity while conversations and sessions have distinct scopes.
+    unavailable_behavior: Use the local ownership matrix and block current product persistence claims.
+    non_authority: The concept page does not prove a particular runtime or authorize agent operations.
+    grants_authority: false
+  - id: PTR-SESSIONS-001
+    intent: consult current session turn persistence and cleanup semantics
+    prerequisites:
+      - PTR-SDK-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/reference/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-05
+    source_ids:
+      - SRC-DOCS-SDK-REFERENCE-20260916
+    claim_ids:
+      - LMB-SDK-002
+    expected_takeaway: Distinguish persistent agent and conversation state from SDK session and turn lifecycle.
+    unavailable_behavior: Block lifecycle guarantees and mark exact persistence behavior unknown.
+    non_authority: SDK reference documentation does not prove behavior for an untested version or topology.
+    grants_authority: false
+  - id: PTR-MESSAGES-001
+    intent: consult current message streaming and turn event details
+    prerequisites:
+      - PTR-SESSIONS-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/reference/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-05
+    source_ids:
+      - SRC-DOCS-SDK-REFERENCE-20260916
+    claim_ids:
+      - LMB-SDK-002
+    expected_takeaway: Design turn progress and terminal handling from current SDK reference semantics.
+    unavailable_behavior: Block exact event handling and preserve delivery/completion guarantees as unknown.
+    non_authority: A streaming reference does not authorize sending a model turn.
+    grants_authority: false
+  - id: PTR-MEMORY-001
+    intent: consult current official memory and dreaming details
+    prerequisites:
+      - PTR-SDK-001
+    target_type: official-docs
+    target: https://docs.letta.com/configuration/memory/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-06
+    source_ids:
+      - SRC-DOCS-MEMORY-20260911
+    claim_ids:
+      - LMB-MEMORY-001
+    expected_takeaway: Treat dreaming as a memory workflow rather than proof of improvement or promotion.
+    unavailable_behavior: Use local memory governance only and block exact API or dreaming claims.
+    non_authority: Memory documentation does not authorize writes, reflection, or promotion.
+    grants_authority: false
+  - id: PTR-MEMFS-001
+    intent: consult the current git-backed MemFS ownership and synchronization model
+    prerequisites:
+      - PTR-STATEFUL-AGENTS-001
+    target_type: official-docs
+    target: https://docs.letta.com/concepts/memfs/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-06
+    source_ids:
+      - SRC-DOCS-MEMFS-20260911
+    claim_ids:
+      - LMB-MEMORY-001
+    expected_takeaway: Distinguish local checkout edits, commits, synchronization, and agent-owned durable knowledge.
+    unavailable_behavior: Use the local memory placement method and block exact synchronization claims.
+    non_authority: The page does not authorize reading, committing, pushing, or modifying memory.
+    grants_authority: false
+  - id: PTR-SKILLS-001
+    intent: consult current skill creation discovery and resolution details
+    prerequisites:
+      - PTR-MEMORY-001
+    target_type: official-docs
+    target: https://docs.letta.com/configuration/skills/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-06
+    expected_takeaway: Design agent-owned reusable procedures against the current skill contract.
+    unavailable_behavior: Block exact skill format or resolution claims and keep the conceptual procedure boundary.
+    non_authority: The page does not authorize installing or executing a skill.
+    grants_authority: false
+  - id: PTR-REPOSITORIES-001
+    intent: consult current shared repository relationships and ownership
+    prerequisites:
+      - PTR-MEMORY-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/repositories/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-06
+    expected_takeaway: Distinguish agent-owned MemFS from shared repository resources and attachment scope.
+    unavailable_behavior: Omit shared-repository design and do not infer cross-agent availability.
+    non_authority: The page does not authorize repository creation, attachment, or mutation.
+    grants_authority: false
+  - id: PTR-PERMISSIONS-001
+    intent: consult current harness permission and approval behavior
+    prerequisites:
+      - PTR-SDK-001
+    target_type: official-docs
+    target: https://docs.letta.com/configuration/permissions/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-07
+    expected_takeaway: Separate SDK session approvals and harness permission rules from controller authorization and effect policy.
+    unavailable_behavior: Block exact permission modes and design fail-closed controller policy only.
+    non_authority: Permission documentation does not grant tool or side-effect authority.
+    grants_authority: false
+  - id: PTR-MCP-001
+    intent: consult current client tool and MCP integration details
+    prerequisites:
+      - PTR-PERMISSIONS-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/mcp/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-07
+    expected_takeaway: Choose tool ownership and MCP hosting with explicit trust and lifecycle boundaries.
+    unavailable_behavior: Omit MCP-specific implementation and preserve generic capability policy.
+    non_authority: The page does not authorize connecting to an MCP server or exposing credentials.
+    grants_authority: false
+  - id: PTR-SCHEDULES-001
+    intent: consult current schedule placement and execution details
+    prerequisites:
+      - PTR-SESSIONS-001
+    target_type: official-docs
+    target: https://docs.letta.com/configuration/schedules/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-08
+    expected_takeaway: Treat schedules as one trigger mechanism whose clock and execution placement require current evidence.
+    unavailable_behavior: Use an abstract trigger contract and make no placement or durability claim.
+    non_authority: The page does not authorize creating a schedule or running a task.
+    grants_authority: false
+  - id: PTR-APP-SERVER-DOCS-001
+    intent: consult current App Server purpose topology and direct-access boundary
+    prerequisites:
+      - PTR-SDK-001
+    target_type: official-docs
+    target: https://docs.letta.com/platform/app-server/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-03
+    source_ids:
+      - SRC-DOCS-APP-SERVER-20260911
+    claim_ids:
+      - LMB-APP-SERVER-001
+    expected_takeaway: Understand App Server as a maintained runtime/control surface behind supported programmatic topologies.
+    unavailable_behavior: Block exact topology claims and retain only the local SDK-versus-runtime ownership model.
+    non_authority: The page does not authorize starting, exposing, or authenticating an App Server.
+    grants_authority: false
+  - id: PTR-APP-SERVER-LIFECYCLE-001
+    intent: consult current direct App Server protocol lifecycle
+    prerequisites:
+      - PTR-APP-SERVER-DOCS-001
+    target_type: official-docs
+    target: https://docs.letta.com/platform/app-server/protocol-lifecycle/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-03
+    expected_takeaway: Design direct protocol recovery only from current version-scoped lifecycle semantics.
+    unavailable_behavior: Omit direct protocol implementation and use the Agent SDK path.
+    non_authority: The page does not prove runtime behavior outside its documented version and topology.
+    grants_authority: false
+  - id: PTR-APP-SERVER-TOOLS-001
+    intent: consult current App Server external-tool ownership
+    prerequisites:
+      - PTR-APP-SERVER-DOCS-001
+    target_type: official-docs
+    target: https://docs.letta.com/platform/app-server/external-tools/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-07
+    expected_takeaway: Place external tool execution and result delivery on the correct controller connection.
+    unavailable_behavior: Block direct external-tool claims and use generic effect governance.
+    non_authority: The page does not grant a tool or approve any effect.
+    grants_authority: false
+  - id: PTR-REMOTE-CLIENT-DOCS-001
+    intent: consult current Remote Client relay and recovery contract
+    prerequisites:
+      - PTR-SDK-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/remote-client/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-03
+    source_ids:
+      - SRC-DOCS-REMOTE-CLIENT-20260911
+    claim_ids:
+      - LMB-REMOTE-001
+    expected_takeaway: Treat hosted remote control as a distinct dual-channel lifecycle with explicit recovery duties.
+    unavailable_behavior: Omit Remote Client design and do not infer relay behavior.
+    non_authority: The page does not authorize remote environment control or credentials.
+    grants_authority: false
+  - id: PTR-DEPLOYMENT-001
+    intent: consult current Agent SDK deployment topology guidance
+    prerequisites:
+      - PTR-APP-SERVER-DOCS-001
+    target_type: official-docs
+    target: https://docs.letta.com/agent-sdk/deployment/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-12
+    expected_takeaway: Choose a topology while preserving SDK host runtime host file tool and credential locality.
+    unavailable_behavior: Block deployment recommendations and keep the topology as planned and unknown.
+    non_authority: The page does not authorize deployment, network exposure, or infrastructure spend.
+    grants_authority: false
+  - id: PTR-COMPUTERS-001
+    intent: consult current connected-computer execution boundary
+    prerequisites:
+      - PTR-DEPLOYMENT-001
+    target_type: official-docs
+    target: https://docs.letta.com/platform/computers/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-12
+    expected_takeaway: Distinguish cloud-hosted agent state from the computer that executes runtime tools.
+    unavailable_behavior: Omit connected-computer placement and mark execution locality unknown.
+    non_authority: The page does not authorize registering or selecting a computer.
+    grants_authority: false
+  - id: PTR-SELF-HOSTING-001
+    intent: consult current self-hosting boundaries
+    prerequisites:
+      - PTR-DEPLOYMENT-001
+    target_type: official-docs
+    target: https://docs.letta.com/self-hosting/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-12
+    expected_takeaway: Select maintained self-hosted surfaces without reviving retired server architecture.
+    unavailable_behavior: Do not recommend a self-hosted topology without current documentation.
+    non_authority: The page does not authorize installation, deployment, or data migration.
+    grants_authority: false
+  - id: PTR-SECRETS-001
+    intent: consult current agent-secret storage and runtime availability
+    prerequisites:
+      - PTR-PERMISSIONS-001
+    target_type: official-docs
+    target: https://docs.letta.com/configuration/secrets/
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: required
+    owner_module: MOD-11
+    expected_takeaway: Keep secret values outside memory, prompts, examples, logs, and model-controlled policy.
+    unavailable_behavior: Use secret names only and block exact storage or injection recommendations.
+    non_authority: The page does not authorize reading, writing, or exposing a credential.
+    grants_authority: false
+  - id: PTR-API-AGENTS-001
+    intent: consult current low-level Agents API operations when the SDK abstraction is insufficient
+    prerequisites:
+      - PTR-AGENT-MANAGEMENT-001
+    target_type: official-docs
+    target: https://docs.letta.com/api/resources/agents
+    authority_class: official-product-docs
+    freshness: fast
+    requirement: optional
+    owner_module: MOD-03
+    source_ids:
+      - SRC-DOCS-API-AGENTS-20260911
+    claim_ids:
+      - LMB-API-001
+    expected_takeaway: Use only documented current operations and distinguish them from application-owned Agent Foundry endpoints.
+    unavailable_behavior: Use the Agent SDK route and do not invent an endpoint.
+    non_authority: The reference does not authorize an API call, mutation, or credential use.
+    grants_authority: false
+  - id: PTR-NEXT-PHASE-001
+    intent: consult Letta product-direction rationale for greenfield surface choices
+    prerequisites: []
+    target_type: official-docs
+    target: https://www.letta.com/blog/our-next-phase/
+    authority_class: official-product-docs
+    freshness: medium
+    requirement: required
+    owner_module: MOD-00
+    expected_takeaway: Prefer current client/runtime-native Agent SDK, skills, and filesystem-memory direction over retired patterns.
+    unavailable_behavior: Rely on the exact compatibility and legacy registries and avoid extrapolating product direction.
+    non_authority: A direction post does not prove that every adjacent feature is already removed or authorize migration.
+    grants_authority: false

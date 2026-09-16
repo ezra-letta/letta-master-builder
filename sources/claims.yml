@@ -1,0 +1,157 @@
+schema_version: 1.0.0
+kind: claim-registry
+claims:
+  - id: LMB-VERSION-001
+    statement: Agent SDK package, its exact declared runtime dependency, standalone runtime, docs snapshot, and hosted observed runtime are separate evidence axes.
+    classification: maintainer-synthesis
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [agent-sdk, sdk-declared-runtime, standalone-runtime, official-docs], backends: [unspecified], versions: [0.8.9, 0.32.11]}
+    evidence_ids: [SRC-DOCS-20260916, SRC-SDK-NPM-0.8.9, SRC-SDK-SOURCE-0.8.9, SRC-CODE-NPM-0.32.11, SRC-CODE-SOURCE-0.32.11]
+    non_claims: [Standalone runtime behavior does not prove Agent SDK-declared runtime behavior., Artifact evidence does not prove live runtime behavior.]
+    verified_at: 2026-09-16
+    discrepancy_ids: [DISC-VERSION-001]
+    recheck_when: [Any relevant package or documentation snapshot changes., Before release.]
+  - id: LMB-VERSION-002
+    statement: Standalone Letta Code 0.32.11 is the Revision 0.4 implementation-start artifact baseline.
+    classification: standalone-runtime-exact
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [standalone-runtime], backends: [unspecified], versions: [0.32.11]}
+    evidence_ids: [SRC-CODE-NPM-0.32.11, SRC-CODE-SOURCE-0.32.11]
+    non_claims: [No standalone runtime was executed., No runtime canary was performed., No hosted runtime version was observed.]
+    verified_at: 2026-09-16
+    discrepancy_ids: [DISC-VERSION-001]
+    recheck_when: [The standalone package latest version changes., Before release.]
+  - id: LMB-CURRICULUM-001
+    statement: Agent SDK is the mandatory implementation path for the read-only autonomous-agent Master Builder curriculum; direct App Server Remote Client and other adjacent surfaces require selection literacy but are not v1 implementation substitutes.
+    classification: maintainer-synthesis
+    owner: sources/claims.yml
+    freshness: stable
+    applies_to: {surfaces: [curriculum-policy], backends: [all], versions: []}
+    evidence_ids: [SRC-DESIGN-SYNTHESIS]
+    non_claims: [This is a curriculum design decision, not a Letta product guarantee or internal architecture claim., The repository does not implement or run Agent Foundry.]
+    verified_at: 2026-09-16
+    discrepancy_ids: []
+    recheck_when: [The curriculum architecture is revised.]
+  - id: LMB-FOUNDRY-001
+    statement: Agent Foundry is a conceptual read-only case study and application-owned architecture vocabulary; it is not implemented software or a documented Letta product API.
+    classification: maintainer-synthesis
+    owner: sources/claims.yml
+    freshness: stable
+    applies_to: {surfaces: [agent-foundry-case-study], backends: [none], versions: []}
+    evidence_ids: [SRC-DESIGN-SYNTHESIS]
+    non_claims: [No Agent Foundry service route runtime or deployment exists in this scaffold., Conceptual endpoint names must not be attributed to Letta.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [The case-study form or executable boundary changes.]
+  - id: LMB-READER-001
+    statement: A bare repository pointer authorizes deterministic read-only traversal only and cannot launch commands agents evaluators canaries APIs models or deployments.
+    classification: maintainer-synthesis
+    owner: sources/claims.yml
+    freshness: stable
+    applies_to: {surfaces: [reader-contract], backends: [all], versions: []}
+    evidence_ids: [SRC-DESIGN-SYNTHESIS]
+    non_claims: [Maintainer test execution uses a separate explicit authorization domain., Reading does not create evidence of implementation behavior.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [Reader sequence pointer schema or authorization policy changes.]
+  - id: LMB-OWNERSHIP-001
+    statement: The Master Builder method separates agent-owned adaptive knowledge runtime-owned execution state and controller-owned authority leases budgets evaluations releases and audit records.
+    classification: production-heuristic
+    owner: sources/claims.yml
+    freshness: stable
+    applies_to: {surfaces: [autonomous-agent-method], backends: [controller-owned], versions: []}
+    evidence_ids: [SRC-DESIGN-SYNTHESIS, SRC-PRODUCTION-HEURISTIC]
+    non_claims: [This is project governance guidance rather than a claim that Letta supplies every controller record or transition., Exact persistence remains topology and version scoped.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [Ownership or lifecycle invariants change.]
+  - id: LMB-SDK-002
+    statement: Current official docs define agents as persistent entities distinct from conversations and sessions, and document Agent SDK operations for creating and managing them through session-scoped runtime control.
+    classification: documented-current
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [agent-sdk, stateful-agents], backends: [documented], versions: []}
+    evidence_ids: [SRC-DOCS-STATEFUL-AGENTS-20260911, SRC-DOCS-SDK-AGENTS-20260916, SRC-DOCS-SDK-REFERENCE-20260916]
+    non_claims: [This does not prove behavior for an unobserved hosted runtime or independently installed version., A documentation pointer does not authorize agent creation or mutation.]
+    verified_at: 2026-09-16
+    discrepancy_ids: [DISC-CREATE-OPTIONS-001, DISC-SDK-REFERENCE-EXPORTS-001]
+    recheck_when: [The indexed stateful-agent or Agent SDK reference page changes., Before exact SDK examples are published.]
+  - id: LMB-MEMORY-001
+    statement: Current official docs describe MemFS as git-backed agent memory and dreaming as background reflection that reviews conversations and can update memory.
+    classification: documented-current
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [memfs, memory, dreaming], backends: [documented], versions: []}
+    evidence_ids: [SRC-DOCS-MEMFS-20260911, SRC-DOCS-MEMORY-20260911, SRC-DOCS-SDK-MEMORY-20260916]
+    non_claims: [An uncommitted checkout edit is not claimed to be synchronized durable memory., Dreaming or a memory commit alone does not establish measured improvement or authorize promotion.]
+    verified_at: 2026-09-16
+    discrepancy_ids: []
+    recheck_when: [The indexed MemFS or memory page changes., Dreaming ownership or review behavior changes.]
+  - id: LMB-APP-SERVER-001
+    statement: Current official docs describe App Server as a maintained programmatic runtime surface for remote access to cloud-hosted or self-hosted agents, with Agent SDK as the recommended high-level client and direct protocol access as lower level.
+    classification: documented-current
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [app-server, agent-sdk], backends: [local, remote, cloud], versions: []}
+    evidence_ids: [SRC-DOCS-APP-SERVER-20260911]
+    non_claims: [Local Remote and Cloud lifecycle or ownership are not claimed to be identical., This does not prove an untested runtime capability or authorize network exposure.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [The indexed App Server page changes., Before direct protocol examples are published.]
+  - id: LMB-REMOTE-001
+    statement: Current official docs define Remote Client as a lower-level hosted discovery authentication relay and recovery path for controlling registered remote environments.
+    classification: documented-current
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [remote-client], backends: [cloud-relay], versions: []}
+    evidence_ids: [SRC-DOCS-REMOTE-CLIENT-20260911]
+    non_claims: [No hosted or connected-runtime version was observed., This does not authorize remote environment control or credentials.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [The indexed Remote Client page changes., Before Remote Client examples are published.]
+  - id: LMB-API-001
+    statement: The current Letta REST API exposes documented agent resource operations and is an optional low-level controller surface distinct from the mandatory Agent SDK curriculum path.
+    classification: documented-current
+    owner: sources/claims.yml
+    freshness: fast
+    applies_to: {surfaces: [direct-rest-api], backends: [documented], versions: []}
+    evidence_ids: [SRC-DOCS-API-AGENTS-20260911]
+    non_claims: [No package family is categorically classified as V1 by name alone., An API reference does not authorize a request or imply that every endpoint is appropriate for every backend.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [The indexed Agents API reference changes., A direct REST operation enters a mandatory lesson.]
+  - id: LMB-SECURITY-001
+    statement: Autonomous-agent governance keeps lifecycle leases, budgets, effect authority, independent evaluation, promotion, rollback, and immutable audit state outside model-editable memory.
+    classification: production-heuristic
+    owner: sources/claims.yml
+    freshness: stable
+    applies_to: {surfaces: [autonomy-governance-policy], backends: [controller-owned], versions: []}
+    evidence_ids: [SRC-PRODUCTION-HEURISTIC]
+    non_claims: [This is a project safety method, not an SDK guarantee., This does not Production Qualify an autonomous-agent implementation.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [Security architecture changes., External security review identifies a correction.]
+  - id: LMB-AUTONOMY-001
+    statement: The curriculum separates bounded work, improvement, and supervisor loops; a proposing agent is not the sole evaluator or promoter of its own changes.
+    classification: maintainer-synthesis
+    owner: sources/claims.yml
+    freshness: stable
+    applies_to: {surfaces: [autonomous-agent-method], backends: [all], versions: []}
+    evidence_ids: [SRC-DESIGN-SYNTHESIS, SRC-PRODUCTION-HEURISTIC]
+    non_claims: [This is the Master Builder method, not a claim that Letta supplies a complete Agent Foundry control plane., Dreaming or a memory commit alone does not prove improvement.]
+    verified_at: 2026-09-11
+    discrepancy_ids: []
+    recheck_when: [The autonomous-agent curriculum graph or promotion policy changes.]
+  - id: LMB-LIFECYCLE-001
+    statement: Reconnect, replay, approval recovery, queue, abort, tool lifetime, and persistence claims must fail closed until proven for an exact surface and runtime.
+    classification: maintainer-synthesis
+    owner: sources/claims.yml
+    freshness: medium
+    applies_to: {surfaces: [all], backends: [all], versions: []}
+    evidence_ids: [SRC-DESIGN-SYNTHESIS, SRC-DOCS-SDK-SESSIONS-20260916, SRC-DOCS-SDK-DEPLOYMENT-20260916]
+    non_claims: [The policy does not assert that any listed capability exists or behaves uniformly.]
+    verified_at: 2026-09-16
+    discrepancy_ids: []
+    recheck_when: [A capability claim is added or changed., Runtime evidence is registered.]

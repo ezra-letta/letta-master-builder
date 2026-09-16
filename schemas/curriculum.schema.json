@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/curriculum.schema.json",
+  "title": "Letta Master Builder Revision 0.4 curriculum contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "curriculum_id", "curriculum_version", "design_revision", "repository_stage", "status", "publication_status", "publication_non_claim", "implementation_baseline", "graduate_claim", "entrypoint", "operating_contract", "design_spec", "terminal_contract", "control_files", "target_contract", "registries", "mandatory_modules", "elective_tracks", "reader_sequence"],
+  "properties": {
+    "schema_version": {"const": "1.1.0"},
+    "kind": {"const": "curriculum"},
+    "curriculum_id": {"const": "letta-master-builder"},
+    "curriculum_version": {"const": "0.4.0"},
+    "design_revision": {"const": "0.4"},
+    "repository_stage": {"enum": ["pre-content", "authoring", "release-candidate", "published"]},
+    "status": {"enum": ["unavailable", "authoring", "release-candidate", "available"]},
+    "publication_status": {"const": "blocked"},
+    "publication_non_claim": {"type": "string", "minLength": 1},
+    "implementation_baseline": {"enum": ["exact-package-static", "runtime-qualified", "production-qualified"]},
+    "graduate_claim": {"type": "string", "minLength": 1},
+    "entrypoint": {"const": "START_HERE.md"},
+    "operating_contract": {"const": "AGENTS.md"},
+    "design_spec": {"const": "DESIGN_SPEC.md"},
+    "terminal_contract": {"const": "terminal-contract.yml"},
+    "control_files": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "target_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["primary_persona", "domain_baseline", "language", "teaching_mode", "implementation_language", "mandatory_path", "primary_runtime_lane", "contrast_runtime_lane", "direct_app_server", "remote_client", "agent_foundry", "evidence_cutoff_semantics", "side_effects", "word_budget", "completion", "runtime_claims", "autonomous_execution"],
+      "properties": {
+        "primary_persona": {"const": "technically-proficient-coding-agent"},
+        "domain_baseline": {"const": "zero-prior-letta-knowledge"},
+        "language": {"const": "en"},
+        "teaching_mode": {"const": "read-only"},
+        "implementation_language": {"const": "TypeScript"},
+        "mandatory_path": {"const": "agent-sdk"},
+        "primary_runtime_lane": {"const": "agent-sdk-node-local"},
+        "contrast_runtime_lane": {"const": "agent-sdk-node-cloud"},
+        "direct_app_server": {"const": "awareness"},
+        "remote_client": {"const": "awareness"},
+        "agent_foundry": {"const": "conceptual-only"},
+        "evidence_cutoff_semantics": {"const": "latest-exactly-verified-at-release-cutoff"},
+        "side_effects": {"const": "forbidden-without-separate-explicit-authorization"},
+        "word_budget": {"type": "object", "additionalProperties": false, "required": ["mandatory_prose_min", "mandatory_prose_max", "current_prose", "complete"], "properties": {"mandatory_prose_min": {"const": 70000}, "mandatory_prose_max": {"const": 74000}, "current_prose": {"type": "integer", "minimum": 0}, "complete": {"type": "boolean"}}},
+        "completion": {"type": "boolean"},
+        "runtime_claims": {"type": "boolean"},
+        "autonomous_execution": {"type": "boolean"}
+      }
+    },
+    "registries": {"type": "object", "additionalProperties": false, "required": ["core_capabilities", "adjacent_capabilities", "sdk_exports", "practicum", "assessment", "runtime_claims", "release", "traceability", "dossier"], "properties": {"core_capabilities": {"const": "capabilities/core.yml"}, "adjacent_capabilities": {"const": "capabilities/adjacent.yml"}, "sdk_exports": {"const": "capabilities/sdk-exports.yml"}, "practicum": {"const": "practicum/registry.yml"}, "assessment": {"const": "assessments/contract.yml"}, "runtime_claims": {"const": "runtime-claims/registry.yml"}, "release": {"const": "release/manifest.yml"}, "traceability": {"const": "traceability/registry.yml"}, "dossier": {"const": "dossier/template.yml"}}},
+    "mandatory_modules": {"type": "array", "minItems": 14, "maxItems": 14, "items": {"$ref": "#/$defs/module"}},
+    "elective_tracks": {"type": "array", "maxItems": 0},
+    "reader_sequence": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "$defs": {
+    "module": {"type": "object", "additionalProperties": false, "required": ["id", "order", "slug", "title", "status", "depth", "prerequisites", "required_files"], "properties": {"id": {"type": "string", "pattern": "^MOD-(0[0-9]|1[0-3])$"}, "order": {"type": "integer", "minimum": 0, "maximum": 13}, "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}, "title": {"type": "string", "minLength": 1}, "status": {"enum": ["planned", "draft", "ready"]}, "depth": {"enum": ["implement", "design", "select", "recognize"]}, "prerequisites": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^MOD-(0[0-9]|1[0-3])$"}}, "required_files": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}}
+  }
+}
