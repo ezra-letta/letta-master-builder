@@ -15,12 +15,24 @@
     "elapsed_minutes": {"type": "integer", "minimum": 1},
     "maintenance_ceiling_hours": {"const": 8},
     "release_response_target_days": {"const": 7},
-    "from": {"type": "object"},
-    "to": {"type": "object"},
+    "from": {"$ref": "#/$defs/versionTuple"},
+    "to": {"$ref": "#/$defs/versionTuple"},
     "static_changes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "affected_capability_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^CAP-"}},
     "checks": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "runtime_claim": {"const": false},
     "maintenance_result": {"enum": ["pending-measurement", "within-budget", "over-budget"]}
+  },
+  "$defs": {
+    "versionTuple": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_sdk", "sdk_declared_runtime", "standalone_runtime"],
+      "properties": {
+        "agent_sdk": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "sdk_declared_runtime": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "standalone_runtime": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+      }
+    }
   }
 }

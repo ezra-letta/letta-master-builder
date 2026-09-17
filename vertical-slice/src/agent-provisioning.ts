@@ -20,6 +20,14 @@ export interface ProvisionAgentInput {
 
 export type ProvisionAgentResult =
   | { state: "already-recorded"; agentId: string }
+  | {
+      state: "verification-pending";
+      source: "already-recorded" | "created";
+      agentId: string;
+      retryWithSameRequestKey: true;
+      prohibitBlindRecreation: true;
+      warning: string;
+    }
   | { state: "reconciled"; agentId: string }
   | { state: "created"; agentId: string }
   | {
@@ -93,8 +101,20 @@ export async function provisionAgent(
 ): Promise<ProvisionAgentResult> {
   const recorded = await store.getAgentId(input.requestKey);
   if (recorded) {
-    await client.agents.retrieve(recorded);
-    return { state: "already-recorded", agentId: recorded };
+    try {
+      await client.agents.retrieve(recorded);
+      return { state: "already-recorded", agentId: recorded };
+    } catch {
+      return {
+        state: "verification-pending",
+        source: "already-recorded",
+        agentId: recorded,
+        retryWithSameRequestKey: true,
+        prohibitBlindRecreation: true,
+        warning:
+          "The recorded canonical agent ID could not be retrieved. Preserve the mapping and retry verification with the same requestKey; do not create a replacement blindly.",
+      };
+    }
   }
 
   const tag = requestTag(input.requestKey);
@@ -110,6 +130,18 @@ export async function provisionAgent(
     tags: [...(input.tags ?? []), tag],
   };
   const agentId = await client.createAgent(createOptions);
-  await client.agents.retrieve(agentId);
+  try {
+    await client.agents.retrieve(agentId);
+  } catch {
+    return {
+      state: "verification-pending",
+      source: "created",
+      agentId,
+      retryWithSameRequestKey: true,
+      prohibitBlindRecreation: true,
+      warning:
+        "Creation returned a canonical agent ID, but retrieval could not verify it. Preserve this ID and retry verification or reconcile by tag with the same requestKey; do not create again blindly.",
+    };
+  }
   return persistOrReport(store, input.requestKey, agentId, "created");
 }

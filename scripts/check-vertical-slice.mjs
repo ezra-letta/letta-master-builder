@@ -27,6 +27,16 @@ assert(fixture.provenance === 'project-method-only' && fixture.runtime_claim ===
 assert(fixture.steps.some((step) => step.operation === 'createAgent' && step.result_agent_id === fixture.expected_result.agentId), 'fixture must preserve canonical created ID');
 assert(fixture.steps.some((step) => step.operation === 'store.saveAgentId' && typeof step.error === 'string'), 'fixture must contain controller persistence failure');
 assert(fixture.expected_result.state === 'created-unrecorded' && fixture.expected_result.retryWithSameRequestKey === true, 'fixture must require same-key reconciliation');
+const creationRetrieval = fixture.creation_retrieval_failure;
+assert(creationRetrieval.steps.some((step) => step.operation === 'createAgent' && step.result_agent_id === creationRetrieval.expected_result.agentId), 'retrieval-failure fixture must preserve the canonical ID returned by creation');
+assert(creationRetrieval.steps.some((step) => step.operation === 'agents.retrieve' && step.agent_id === creationRetrieval.expected_result.agentId && typeof step.error === 'string'), 'retrieval-failure fixture must fail verification of that canonical ID');
+assert(creationRetrieval.expected_result.state === 'verification-pending' && creationRetrieval.expected_result.source === 'created', 'creation retrieval failure must be typed verification-pending');
+assert(creationRetrieval.expected_result.retryWithSameRequestKey === true && creationRetrieval.expected_result.prohibitBlindRecreation === true, 'creation retrieval failure must require same-key recovery and prohibit blind recreation');
+assert(creationRetrieval.store_save_attempted === false, 'unverified created ID must not be persisted as verified');
+const recordedRetrieval = fixture.already_recorded_retrieval_failure;
+assert(recordedRetrieval.expected_result.state === 'verification-pending' && recordedRetrieval.expected_result.source === 'already-recorded', 'recorded retrieval failure must be typed verification-pending');
+assert(recordedRetrieval.expected_result.agentId === recordedRetrieval.store_mapping, 'recorded retrieval failure must preserve the stored canonical ID');
+assert(recordedRetrieval.expected_result.retryWithSameRequestKey === true && recordedRetrieval.expected_result.prohibitBlindRecreation === true && recordedRetrieval.create_attempted === false, 'recorded retrieval failure must prohibit replacement creation');
 assert(fixture.next_retry.tag_match_ids.length === 1 && fixture.next_retry.expected_state_after_save === 'reconciled', 'fixture must demonstrate unambiguous retry recovery');
 assert(fixture.alternate_retry_persistence_failure.expected_state === 'reconciled-unrecorded' && fixture.alternate_retry_persistence_failure.creation_claim === false, 'fixture must not mislabel failed reconciliation persistence as a new creation');
 

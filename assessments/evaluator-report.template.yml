@@ -2,6 +2,9 @@ schema_version: 1.0.0
 kind: evaluator-report-template
 template_id: AER-REVISION-0-4
 contract_id: ASM-REVISION-0-4
+# For a separately authorized run, copy this template and set kind to evaluator-report,
+# report_status to executed-attested-report, and execution_authorized to true. The
+# schema then requires a genuine attestation and enforces every promotion prerequisite.
 report_status: unexecuted-template
 execution_authorized: false
 awards_learner_status: false

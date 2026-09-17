@@ -24,6 +24,8 @@
     "practicum:check": "node scripts/check-practicum-specs.mjs",
     "practicum:types": "vertical-slice/node_modules/.bin/tsc -p practicum/tsconfig.json",
     "formative:check": "node scripts/check-formative.mjs",
+    "release:inner": "node scripts/check-release-candidate.mjs --inner",
+    "release:check": "node scripts/check-release-candidate.mjs",
     "clean-copy:check": "node scripts/check-clean-copy.mjs",
     "check:links": "node scripts/check-external-links.mjs",
     "check:packages": "node scripts/check-package-evidence.mjs"

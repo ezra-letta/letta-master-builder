@@ -1,0 +1,32 @@
+schema_version: 1.0.0
+id: REL-DRIFT-REVIEW-0-8-11
+status: reviewed-retain-baseline
+reviewed_at: 2026-09-17
+baseline: {agent_sdk: 0.8.9, sdk_declared_runtime: 0.32.11, standalone_runtime: 0.32.11}
+observed:
+  agent_sdk:
+    version: 0.8.11
+    published_at: 2026-09-16T23:56:32.095Z
+    integrity: sha512-iwJweBycqkAl0hMSMRfSc0Gv62XnTsNceR9er+ntW6fc/bRlQ+i0zSUPWdZY7BtUWMCzQvDj5GXyB5i3C9zlwg==
+    source_commit: 9c8e854d9deeb72725b284967b7f07bf791106c1
+    declared_runtime: 0.32.12
+  letta_code:
+    version: 0.32.12
+    published_at: 2026-09-16T18:43:30.522Z
+    integrity: sha512-D5MHvCBubNedH3cjZSq12Yd4zQUFwzXIaW5EV7a0360vM4XOsS+DF6jFWi+T7q8CCFa01Ft50XU1AXF0kyrv+Q==
+    source_commit: 69254ef0a20975a2d7d68464285c752ac55614c3
+static_findings:
+  - Agent SDK root and portable export entrypoints are unchanged from 0.8.9; the API-shape delta is confined to agent-free query lineage and readable conversation or agent identity.
+  - Letta Code 0.32.12 adds bounded Cloud deployment-interruption recovery and fixes disconnected teleport handoff cleanup.
+  - Letta Code 0.32.12 changes Desktop credential forwarding to subagent launches and adds CLI-only usage and coarse quota visibility.
+  - Direct dependency families relevant to the current sharp advisories and transitive-license review are unchanged.
+mandatory_path_impact: no-required-change
+dependency_blocker_effect: unchanged
+release_decision: retain-0.8.9-0.32.11
+decision_reason: The mandatory persistent Agent SDK path has no root export delta and existing conservative lifecycle credential quota and runtime non-claims remain valid; repinning would add maintenance churn without resolving publication blockers.
+repin_triggers:
+  - A newer tuple fixes a release-blocking defect in the mandatory persistent-session path.
+  - Exact dependency audit evidence materially changes the publication blocker.
+  - Current official guidance makes an existing release claim unsafe or false.
+  - The pinned tuple becomes unavailable or unsupported for the declared lane.
+runtime_claim: false

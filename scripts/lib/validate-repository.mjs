@@ -348,6 +348,8 @@ export async function validateRepository(root) {
   const capabilityRegistry = docs.get('capabilities/core.yml');
   const capabilities = Array.isArray(capabilityRegistry?.capabilities) ? capabilityRegistry.capabilities : [];
   const capabilityIds = new Set(capabilities.map(objectId));
+  const driftRehearsal = docs.get('maintenance/drift-rehearsal.yml');
+  for (const capabilityId of strings(driftRehearsal?.affected_capability_ids)) if (!capabilityIds.has(capabilityId)) issue(errors, 'DRIFT_REHEARSAL', 'maintenance/drift-rehearsal.yml', `references absent capability ${capabilityId}`);
   const discrepancyIds = new Set((recordsByFile.get('sources/discrepancies.yml') || []).map(objectId));
   const practicum = docs.get('practicum/registry.yml');
   const fixtures = Array.isArray(practicum?.fixtures) ? practicum.fixtures : [];

@@ -26,7 +26,7 @@ notes:
   - Static package and source evidence does not constitute Runtime Validation.
 required_files:
   - path: .github/workflows/ci.yml
-    sha256: ae149b14ca06dffc354b7704759b341f5f2d29dbcae07cad81ab93e73b186ed3
+    sha256: 6482405062376d7c5c6e93ad660a288d814700ffa2f79ca46f8c72feb323f2a2
   - path: .github/workflows/network-evidence.yml
     sha256: f7bc035c2d047af84b4145db9794fcab4e5694baa44402269fd06dc0935141e4
   - path: .gitignore
@@ -38,9 +38,9 @@ required_files:
   - path: .security/audit-exceptions.json
     sha256: 0ac8348bebafd0e5f6bd6f12a33954c10c2e47153d8efcd6d6d61e8dfd1e7987
   - path: .security/audit-exceptions.test.mjs
-    sha256: 91c193b4e3d2e0e9e1fed850502ae7a6821d262b62dbfdadf58ee7e3b9f0a4aa
+    sha256: e8d9a7f3a06c71d7c3b72b1fd37e8f06370fb1859abf6779086e306c07f44d8b
   - path: .security/check-audit-exceptions.mjs
-    sha256: a14912ca2c16d380a3276e9496c3012bc18dcda4df381981dbef43f813e242a6
+    sha256: 9892b3d1a3a2701b28fc919f459202449114880ede910fde33ff587a9946782c
   - path: AGENTS.md
     sha256: 32f4ccdf5dc0cd10aa5c9b073fd94322efbd7d8025c04ac166736c0e0dbb0d1e
   - path: ATTRIBUTION.md
@@ -48,7 +48,7 @@ required_files:
   - path: CONTRIBUTING.md
     sha256: efbc145a44546c4ca5cbeb71fd55521ae8bd6d545a966b7cfe487223f77c4cbe
   - path: DESIGN_SPEC.md
-    sha256: 075e6ad01bd11d51191265085d4798088a9f6fcba5ce454f3bb54f91fbb1b92c
+    sha256: bd74ccd76467047424f0ec3ad8b65e472729411c70308a5b00f63f5ca1c48831
   - path: LICENSE
     sha256: 4e129a55704620f6d0ede4322c98169f43b992c0006946363a1db0569f740c80
   - path: README.md
@@ -56,7 +56,7 @@ required_files:
   - path: SECURITY.md
     sha256: f9d0bc4dfa5707893efef974a045f771adc6e4aa1d885229e6e5fe9340bf1407
   - path: SECURITY_CHECKS.md
-    sha256: ef49f7b259e0459a43bb216d8440eaaaba78b989f227cb9199ee540651a4e06f
+    sha256: 1e0b250c5f2fe02fd2da42d2d74c061fb0de6493fa1fef09817f623533ef368b
   - path: SOURCE_USE_POLICY.md
     sha256: d19a87560668d25497b1cbef3ca249fac0b9636b17a49ae42fe9a3008421f0e7
   - path: START_HERE.md
@@ -64,11 +64,11 @@ required_files:
   - path: assessments/FORMATIVE_CHECKPOINTS.md
     sha256: 83e292f57bb6078a3cc5d8341c29000f09aa0b8b956d160bab9fccfce7882664
   - path: assessments/PUBLIC_RUBRIC.md
-    sha256: 0175ac2f950828723cdad2abd9bafa971b30eea6d9d9a92e81b9e10fff38f6f3
+    sha256: 97c74cccf7d4e89a88cc7e807b3b65d4cf1a977a1be26ce90b6421e51192b9e4
   - path: assessments/contract.yml
     sha256: bf33828612e306997eacb2cce14d65ece7d0e46a654ac003b762ef111b1f88a4
   - path: assessments/evaluator-report.template.yml
-    sha256: 339243f0f5e0420016c4ed7fee404b86c1f6bd7a7c46592e752ae07f2bb4b37d
+    sha256: 8f93ac14b8e34ef8f0b9ab03d4f4bb3f161fa741f05004be1db988ff6a652c65
   - path: assessments/formative/MOD-00.md
     sha256: 219129123e9ddcff11923c8ee250076abacf3c19c2bce1f4da56893d0dcaf02b
   - path: assessments/formative/MOD-01.md
@@ -114,19 +114,21 @@ required_files:
   - path: compatibility/versions.yml
     sha256: fba62785a2f23c9e6584b8c0645a52bffb3bf6edbf5e9aa447671e03d19bb32e
   - path: curriculum.yml
-    sha256: 0501c93fbc39f085035afbb632af0cbd1cd2e89ef34ac6d83a59a77eaf8cafc1
+    sha256: 78453a72801714e741191afae0f551e7a6160ce61d2bf484a2488916c5666fd2
   - path: dossier/README.md
     sha256: 40fe773bda98b34a8b907b752f58253d6d59cb2c88dc8351038d4bd640a61863
   - path: dossier/template.yml
     sha256: 5c9fe726c4cac41b7c093c3662bddb7e71ca3d3e91c34ccb4619c47da1df42c1
   - path: maintenance/RELEASE_WORKFLOW.md
-    sha256: 08a46b0d664446c7074038fa98ff298a3c78f340e61890ba015cf779cdd132dd
+    sha256: a89abb916b965074f6a7dbaa98d16bf82b300f5e5066cb81aec40cb70c441c3f
   - path: maintenance/drift-rehearsal.yml
     sha256: 25c443147aef7be92743c28f14ab77b460c5dbb5fd5fee4aa3e163509057d579
+  - path: maintenance/upstream-drift-review.yml
+    sha256: 03714e8fb42a979c3a6d8d518134ebf8d42478f880595f04a30d96cb8d7c433d
   - path: modules/AUTHORING_CONTRACT.md
     sha256: 379e0869b25fbb2eaa72281a967127876c8ad007481e68b71794577138bf0815
   - path: modules/MOD-00.md
-    sha256: c4d51bbf73d47be2e0c4f2c5851bfb7e828da2744d224a06dda549adf009c511
+    sha256: 96515ffafd937f06d42aecd82b43e391dbab6a398e7d7a433042e8b665d0e613
   - path: modules/MOD-01.md
     sha256: c4714863d874f3371b9c8d3faf21b88c58d20b955886708ac8c310035d1536a5
   - path: modules/MOD-02.md
@@ -144,21 +146,21 @@ required_files:
   - path: modules/MOD-08.md
     sha256: c6bdc26dbfcd5543f2b191de68ac9cb27b49930eff9e95c2e233fd000222ce45
   - path: modules/MOD-09.md
-    sha256: 03bc09d54116dd98988f0ca601f2e70ec9e5d5e40609c1182b935768755d2483
+    sha256: 2b907605228bae90facfda35de8ebda57307e02d87f355232d80b853215c4c9d
   - path: modules/MOD-10.md
     sha256: 0ae90a0adb015438201f6c009929f031e20b07dae78db3d4adaf6cfa859ff857
   - path: modules/MOD-11.md
     sha256: b54810b5ab2badd424ae31deeb314e1bc404c33908d9e25ff5cb2fa78229ff11
   - path: modules/MOD-12.md
-    sha256: fbcda6e230384a10bfccaca1736fff22f45497c84d6ba78e0a1cd9aa87e867c1
+    sha256: 757da1ef9072665250e6d5d01601b9f727f62f6160cebea01da8e5a78ebbf6b9
   - path: modules/MOD-13.md
-    sha256: 20997cb1f417f6445d0197eb610a87c937fd69a56b095cb3722595838bd7b962
+    sha256: d0ce884984d75d68d7300e6522e9bc4d8198fe4397d30bb7218ac5a8f1d0bc63
   - path: modules/README.md
     sha256: a5284d66095aff6dd506d119056450755675d05d0719e1803aa5f27ffdd46a85
   - path: package-lock.json
     sha256: b566ce09b9786ecbd1f1dfc3968ac7cbfbb21f561cc90eb00f1a0ce21c15885a
   - path: package.json
-    sha256: 8a67a15cdc5999df387721fe625f802d34f01a0ec3b214353963e5744d28d2b5
+    sha256: 9d22d0005223e279632b535308d03d3af62cf3dd78d170020fa06e4b06d39a14
   - path: pointers/registry.yml
     sha256: fadb6b5a63d96c3b7781b18dfb593897dc8b927630540050bafe3d00502a0dcb
   - path: practicum/registry.yml
@@ -172,7 +174,7 @@ required_files:
   - path: practicum/scenarios/04-topology-concurrency-supervision-improvement.md
     sha256: a714385ce6a635362a3488976170b368be57eec6599483241a7a550f947fb4bf
   - path: practicum/specs/01/artifact-bundle.schema.json
-    sha256: d1cb525d7045964b1fae6ac325917ac198e2ed5b166e6dccc83b3deb693c0be9
+    sha256: d20adb090a9eb32550de79f50a8eac20aa7bb50b73db2a092eacc4791d5f5519
   - path: practicum/specs/01/contracts.d.ts
     sha256: 84e50548947844df65e14c6de1ca3780dde5cc1136ca436f338ca2e7368db619
   - path: practicum/specs/01/input.json
@@ -184,13 +186,13 @@ required_files:
   - path: practicum/specs/02/input.json
     sha256: 72140fc4c1f0fbfdfccfc9944be69571c213e9fbc8fe5478737890e4f215aec6
   - path: practicum/specs/03/artifact-bundle.schema.json
-    sha256: c45077e8670e69daabbe15ed47ff72f9a3d30cb3c9eb82a46ea7f9a25919a389
+    sha256: 366f9c60b6cd374fe9b183edf8017e426ef636b1a335fef3a79af57648831f95
   - path: practicum/specs/03/contracts.d.ts
     sha256: 08f304b189d1ece8eea64a6a5bb9829b64076b9239215f1bbb9639c8c91db2b7
   - path: practicum/specs/03/input.json
     sha256: 9f8cb45af68ab72aa4c827025daf20bc4239f80b88e9f8b07697276d3cd678f8
   - path: practicum/specs/04/artifact-bundle.schema.json
-    sha256: 66b4cd75ad45273d4211d251283e9b0f286efa0ce4924c1dc1c1bc160a07d6ae
+    sha256: 189487ffee2be745e4e93e67314d5c59f42b2e57103654b540c979b0135bea78
   - path: practicum/specs/04/contracts.d.ts
     sha256: d3331658604a996b56f58f4f3d66a904276411819579aeb872bc9422232bac42
   - path: practicum/specs/04/input.json
@@ -198,9 +200,9 @@ required_files:
   - path: practicum/tsconfig.json
     sha256: c0adab256672a4a6583bb91194dd5e6b8f915f76771db282f5c734747a0e599e
   - path: release/dependency-review.yml
-    sha256: 6e7c9d61a99181828f64522f1f5430140559fc904b1855e6fc5ab1cc6d6a9a91
+    sha256: 5d21e9e81d847c927ad12d8acbd1603ef8bf88a01181818c6e80360a4739d470
   - path: release/manifest.yml
-    sha256: 68f8e01dcb9b57740ec88442e17e83aed28810d1736166d5260e75e284eb5af4
+    sha256: 7f7258249696ea75d8f1a0335eda5ddde90d61507f2d37f29dd845880b16c782
   - path: runtime-claims/README.md
     sha256: 9aee8f80bbb874250df54c28640777750721ea06d0f09ac4fbfac97afec7e45b
   - path: runtime-claims/registry.yml
@@ -218,17 +220,17 @@ required_files:
   - path: schemas/curriculum.schema.json
     sha256: 3c91d5da1e88cdc0c6624d9be7629eedbf515aff62d190defafd0689c09d6084
   - path: schemas/dependency-review.schema.json
-    sha256: b9ead126d16482b326615ecd0d91f6d6088817b9a5c685d06045ebf357a3e801
+    sha256: d0a6e2083dc0499362e848d982db9eedf6b26250d00137470a66b569b2407cf0
   - path: schemas/dossier.schema.json
     sha256: 4f5d2934d40e60726205262204e2cd9d869b65cc25b47781cf903b7290ba8b90
   - path: schemas/drift-rehearsal.schema.json
-    sha256: af3ede4584a53b754f65e5b4a615bda9e19062feb3aa87229d328a5afe3c2466
+    sha256: 2c09322b104b977b3df9b9971b007ebdd5348ff02862672392cc6c59926f0370
   - path: schemas/evaluator-report.schema.json
-    sha256: cc547e8b842e4e37465054fa98db3e9d8be9904d742e52fbdde2f232ae9c2c44
+    sha256: 72f175a812351a71894e6b900bbebbf6398776add44bce6afc4b3b55657fa9d9
   - path: schemas/legacy-denylist.schema.json
     sha256: 5ccf33836be5cfdf7871aa314de141e6466840fd14983d9a0973b26065448b3d
   - path: schemas/lock.schema.json
-    sha256: 721b035ced8a90bf60919677823ddc6505b49cc54ec0d40416339550a3243004
+    sha256: fbfd528a5db40fc15dbd34f83b495140cae5e3431536302d48c3eae01d1870d5
   - path: schemas/misconceptions.schema.json
     sha256: 32b59bb8890afb8e722df225d037661bf3aa1dde8d45d96d0d695e08e053bca2
   - path: schemas/pointers.schema.json
@@ -238,7 +240,7 @@ required_files:
   - path: schemas/registry.schema.json
     sha256: b32df3e2e3f24c1577c322d489440b9e36f0d3394ff57798a2eea1a8edfc540f
   - path: schemas/release-manifest.schema.json
-    sha256: f902b112e17de08b9e92f461f0dc4760701279fcfd911f0d7e5cc9d79138cf66
+    sha256: d70fd86583445613ad42baa7f08fcc6fa2ef8be19e95a32e068ab439f12a5579
   - path: schemas/runtime-claims.schema.json
     sha256: ec181638940d1b363cb84491a0924a0a05f368c6d742cc8e4007c07d5f099925
   - path: schemas/sdk-exports.schema.json
@@ -247,12 +249,14 @@ required_files:
     sha256: 1ad7aec62974e9116c1b7bc1e7bd7483c7230d856f7f3c6d81ab22dbb9fc7c76
   - path: schemas/traceability.schema.json
     sha256: 94fa18fa1964b2b3ee1029699a426b3d3fac41983824aba6660e22ce6d56b7d9
+  - path: schemas/upstream-drift-review.schema.json
+    sha256: 9ec2e86e858123f3d1ace3a825a2ad3ebe6496a1c8ba986239c6673c2e8497a6
   - path: scripts/check-clean-copy.mjs
-    sha256: 514f12ccbd1cbf02af8dc41e6e46a779c079fa747e3de8b03de64e6a282b15c1
+    sha256: 3b7a46a00ec547974484b08fd80148ad01d1a8d6f834e8c1945578eea1732e17
   - path: scripts/check-cold-reader.mjs
-    sha256: b77515f666bd01ed50947dda4aa2585059cbc26bf4914acabea3ffc8904448df
+    sha256: fb8ea632681a191f09d2edd64fddee95073dbcef73e4af1ada9006a63fdc78a0
   - path: scripts/check-drift-rehearsal.mjs
-    sha256: 98996a91e3e14a900b5625b079d53783677fc3231ec897d65860eea1323db444
+    sha256: 3af19c7f26723cbeadf6176f6f81155e31ed756bea292f32560e73a31e316bf7
   - path: scripts/check-external-links.mjs
     sha256: ad781991a80c479b505f84cae7f11e9574eb8b7fcfee09424120dd119a7e6522
   - path: scripts/check-formative.mjs
@@ -262,9 +266,11 @@ required_files:
   - path: scripts/check-package-evidence.mjs
     sha256: 0af9da6f718a09db262b77ddf3d258194212ae34df34bf388d766a00afa62afd
   - path: scripts/check-practicum-specs.mjs
-    sha256: 7f2f7ccc0c5d85ad207579dda801a83492035ee3a1fb770521061c2b42c55648
+    sha256: 9880aeeb760ce7d028a88e22c271647780431895070e6ea6b294db0f154232cf
+  - path: scripts/check-release-candidate.mjs
+    sha256: a6d34ade2e858073fdb6f0b2aae11d29f83b9d396eb19c0c1b53cba48f309673
   - path: scripts/check-vertical-slice.mjs
-    sha256: 2dd091cf4ca785a9d1245dffe5feab64d7740aefb39de069645d282fb8a1145a
+    sha256: bfaca66abb2fec00c8b9c7432d6d92fea9a1b3f8812a5243f336801dd7d5c0cd
   - path: scripts/generate-integrity.mjs
     sha256: cbdc80f7e10583dc5164d0c472903abe5a117f7c7fd2de3f3a26d2f36c66a37f
   - path: scripts/generate-lock.mjs
@@ -276,7 +282,11 @@ required_files:
   - path: scripts/lib/generators.mjs
     sha256: 5f0eafb6db8ab0b050c61fac69917ce9682c3843c868ce2eca8afeb13e5d9b3a
   - path: scripts/lib/validate-repository.mjs
-    sha256: 150b41e00932dd81792e135300a8218bf96666c87089655cf3e0839716bd4690
+    sha256: 78c2641610e16262b5a4983ecae2be949289e2fe3fdbea25dc687170782716ff
+  - path: scripts/tests/evaluator-report-hardening.test.mjs
+    sha256: 2ec63d02759b9a59688526927a7f0fd2ea679b3a8d32e54fb5b12dcf316f9c7c
+  - path: scripts/tests/hardening-contracts.test.mjs
+    sha256: b902dff61810ab01d4a582d8d73464ca44d9db8baf89aaefb68aa378c12f2167
   - path: scripts/tests/network-checks.test.mjs
     sha256: 56d0f8886cb395830541600caf600fd67b3f804f659002acef9aa2e09744dde7
   - path: scripts/tests/network-policy.test.mjs
@@ -285,6 +295,8 @@ required_files:
     sha256: 572464389d1198c56bb90e6684221c40ab3a0d3d4bf0774eaadc96183d2062aa
   - path: scripts/tests/phase1-gates.test.mjs
     sha256: a709e1d36ae2889d4206c95af43003ea9cfd1d0d7b10bdd75e5f9c6bad17cbbf
+  - path: scripts/tests/practicum-hardening.test.mjs
+    sha256: 87b15846db80bafea46111a612fad633a7d931a465d646bdc76b1afbfb11c2f3
   - path: scripts/tests/revision04-contracts.test.mjs
     sha256: 4e325e440973a905a234fd2af87a3cb458c2e71470a54ade28cc17abcea13c80
   - path: scripts/validate.mjs
@@ -304,19 +316,19 @@ required_files:
   - path: traceability/registry.yml
     sha256: b71f9c4af41c85bd0b2ae2f295b274e2b156c56c04b81239049e4ca70f5c201f
   - path: vertical-slice/API_CARD.md
-    sha256: 4b2540cc7f129ea9f69c709b5c2f59bddeda60dd6dae51b6e1bfd231e688e453
+    sha256: 3d518979a464b4660c15865821109c2f4b157ed8d9127c28664131e216aeb444
   - path: vertical-slice/FAILURE_LESSON.md
-    sha256: 19310d4e7923055fc924e81d455c84fa3c81d4bbd4657c06909fd01f246c544a
+    sha256: b5e302757f2058319ff41576efdcb493019b08398325e9e77be08d40255b37dd
   - path: vertical-slice/README.md
     sha256: 2f42c5b70f0ca8efc06c7208ddb6164ef44d5f780cd2511d202aeb7cc0c19793
   - path: vertical-slice/fixtures/provisioning-partial-success.json
-    sha256: b1eeb4b21d998c3ac5494805ec0d2a56492e5ddeef4f459cb12cb3610728325d
+    sha256: cca6e3e12f78d47c8ac5265a2ab3ae7d38aaee36e716214cf53371fd2343df3f
   - path: vertical-slice/package-lock.json
     sha256: 6c19c2c117140caca2829bbfbcaae80bcad5a96808d4b1fdc7a7032c2763a6b0
   - path: vertical-slice/package.json
     sha256: a46e0a1c9c3b791d0032a183ac59ba20caf90ab9e2684c33a2b91d9a74975e75
   - path: vertical-slice/src/agent-provisioning.ts
-    sha256: 9c65ed5811d5ab763a1d964d1cc270b7612b451067cc0f4c1f4b725a3831901d
+    sha256: 0d07424039069b6e721eb46cb71553b9453f85eb18e5f7c27dffc6dddef2a497
   - path: vertical-slice/tsconfig.json
     sha256: 9856b142b59c7fc734dad66cac66d53576b3931d2945891b5d719453b5921968
 schema_version: 1.0.0
@@ -349,6 +361,6 @@ target_contract:
   teaching_mode: read-only
   word_budget:
     complete: true
-    current_prose: 70891
+    current_prose: 71001
     mandatory_prose_max: 74000
     mandatory_prose_min: 70000

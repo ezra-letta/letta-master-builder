@@ -222,7 +222,7 @@ Every release candidate must:
 7. obtain independent content, code, evidence, and licensing review;
 8. keep runtime and production claims absent unless separately evidenced.
 
-The support horizon target is current plus one prior minor line, but that is a maintenance goal rather than a shipped guarantee. The desired release-response interval is seven calendar days for high-impact upstream change, and the maintenance ceiling is eight maintainer hours per monthly refresh. Revision 0.4 records one drift rehearsal from SDK 0.8.6/Code 0.32.8 to SDK 0.8.9/Code 0.32.11. Publication remains blocked by dependency advisories and incomplete transitive license metadata; no waiver is implicit.
+The support horizon target is current plus one prior minor line, but that is a maintenance goal rather than a shipped guarantee. The desired release-response interval is seven calendar days for high-impact upstream change, and the maintenance ceiling is eight maintainer hours per monthly refresh. Revision 0.4 records one drift rehearsal from SDK 0.8.6/Code 0.32.8 to SDK 0.8.9/Code 0.32.11. Publication remains blocked by dependency advisories and incomplete accountable transitive-license review; no waiver is implicit.
 
 ## 13. Revision 0.4 implementation boundary
 

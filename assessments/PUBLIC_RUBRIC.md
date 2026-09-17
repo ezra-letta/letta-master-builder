@@ -99,6 +99,21 @@ Any of the following fails the attempt regardless of aggregate score:
 
 No owner may promote another axis by implication. An evaluator report is evidence for its declared assessment scope only.
 
+## Executed-report contract
+
+The checked-in YAML remains an `unexecuted-template` and must continue to validate in that state. A separately authorized evaluator may copy it into an attempt-bound report and change `kind` to `evaluator-report`, `report_status` to `executed-attested-report`, and `execution_authorized` to `true`. That executed form must contain a non-placeholder signature or equivalent attestation and an attestation timestamp; this repository does not create either.
+
+Any promoted decision (`independently-verified`, `attested`, `compile-verified`, or `offline-conformance-verified`) is valid only when the schema also establishes all of the following:
+
+- every machine gate passes at its threshold, deterministic rerun succeeds, forbidden-effect counts are zero, and artifact evidence is present;
+- the evaluator is independent from the subject attempt and the report is separately authorized;
+- all six required attestations are affirmative;
+- no critical failure is recorded;
+- conceptual and transfer scoring states pass, including overall, per-domain, and critical-judgment thresholds;
+- the implementation decision is no stronger than `machine_results.eligible_implementation_status`, and `offline-conformance-verified` is unavailable in `degraded-conceptual` mode.
+
+The evaluator-report contract does not award learner status. Both `awards_learner_status` and `decisions.learner_status_awarded` remain `false`; any future award requires a separate, explicitly versioned contract and status owner.
+
 ## Outcome language
 
 A report must state the exact curriculum release, package tuple, access mode, learner profile, evaluator identity, form and artifact digests, and limitations. The unqualified label `Master Builder Ready — Verified` is prohibited. This unexecuted contract awards no label and no learner status.

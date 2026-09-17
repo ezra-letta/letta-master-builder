@@ -54,19 +54,7 @@ export async function checkCleanCopy(source) {
     await copyRepository(source, copy);
     await runCommand('npm', ['ci', '--ignore-scripts', '--no-audit', '--no-fund'], copy, environment);
     await runCommand('npm', ['ci', '--ignore-scripts', '--no-audit', '--no-fund', '--prefix', 'vertical-slice'], copy, environment);
-    await runCommand('npm', ['test'], copy, environment);
-    await runCommand('npm', ['run', 'sdk-exports:check'], copy, environment);
-    await runCommand('npm', ['run', 'vertical-slice:check'], copy, environment);
-    await runCommand('npm', ['run', 'drift:check'], copy, environment);
-    await runCommand(process.execPath, ['--test', '.security/audit-exceptions.test.mjs'], copy, environment);
-    await runCommand('npm', ['run', 'validate'], copy, environment);
-    await runCommand('npm', ['run', 'modules:check'], copy, environment);
-    await runCommand('npm', ['run', 'practicum:check'], copy, environment);
-    await runCommand('npm', ['run', 'practicum:types'], copy, environment);
-    await runCommand('npm', ['run', 'formative:check'], copy, environment);
-    await runCommand('npm', ['run', 'cold-reader:check'], copy, environment);
-    await runCommand('npm', ['run', 'lock:check'], copy, environment);
-    await runCommand('npm', ['run', 'integrity:check'], copy, environment);
+    await runCommand('npm', ['run', 'release:inner'], copy, environment);
   } finally {
     await rm(temporary, { recursive: true, force: true });
   }

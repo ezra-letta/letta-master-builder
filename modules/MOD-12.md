@@ -62,6 +62,8 @@ Readiness has layers. The controller store must be readable and writable. Config
 
 Admission begins only after required readiness gates pass. During a readiness loss, stop taking new work; do not necessarily kill active work blindly. Observe whether runtime execution continues, preserve connection-loss evidence, and reconcile. Liveness probes must allow for legitimate long turns without interpreting quiet output as death. Heartbeats for project leases are separate from process-health signals.
 
+Readiness answers whether components can accept their role; capacity admission answers whether this work may consume a bounded reservation now. Admission requires fresh implementation-owned evidence. Missing or stale capacity evidence fails closed without becoming a claim about model quota, account credit, provider availability, runtime throughput, or accepted work.
+
 Graceful shutdown starts with drain. Mark the instance unavailable for new leases, stop trigger intake or transfer it durably, and identify active work. For each work unit, finish a safe bounded step or request cancellation where appropriate, observe the response, reconcile uncertain effects, checkpoint, release or allow expiry of leases, close SDK sessions and clients according to their ownership, flush audit records, and then terminate. If the grace period expires, record forced termination so restart recovery treats active effects as uncertain.
 
 ## State, files, secrets, and backups

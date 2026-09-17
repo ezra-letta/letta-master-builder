@@ -11,7 +11,7 @@ package_tuple:
 docs_source_id: SRC-DOCS-20260916
 toolchain: {node: '>=22.19.0', typescript: 5.9.3}
 lanes: {primary: agent-sdk-node-local, contrast: agent-sdk-node-cloud, hosted_runtime: unknown-not-tested}
-artifacts: {curriculum_available: true, mandatory_modules: 'ready:14:70891-words', practicum_specs: ready-unexecuted, assessment_governance: ready-unexecuted, vertical_slice: compile-verified, sdk_export_ledger: generated}
+artifacts: {curriculum_available: true, mandatory_modules: 'ready:14:71001-words', practicum_specs: ready-unexecuted, assessment_governance: ready-unexecuted, vertical_slice: compile-verified, sdk_export_ledger: generated}
 dependency_audit:
   control_plane: zero-known-vulnerabilities
   compile_only_slice: known-upstream-advisories
@@ -19,17 +19,30 @@ dependency_audit:
   advisory_ids: [GHSA-f88m-g3jw-g9cj, GHSA-rgj7-g3m4-5g8c]
   affected_packages: [sharp, '@janhapke/sharp-electron', '@letta-ai/letta-code', '@letta-ai/letta-agent-sdk']
 dependency_review: release/dependency-review.yml
+observed_upstream_drift: maintenance/upstream-drift-review.yml
 independent_review:
-  status: local-release-candidate-approved
-  completed_at: 2026-09-16T14:54:41Z
-  reviewers: [factual-evidence, pedagogical-transfer, security-assessment]
+  status: multi-agent-review-completed
+  completed_at: 2026-09-17T14:41:57Z
+  independence_basis: separate-reviewer-agent-identities-and-task-records
+  attestation_status: not-cryptographically-signed
+  review_records:
+    - {reviewer_agent_id: agent-0794a628-1316-420e-acc3-7f4610150c4e, task_id: task_111, scope: factual-evidence, result: pass}
+    - {reviewer_agent_id: agent-e66e257e-e698-47da-8001-96518adcd81f, task_id: task_112, scope: pedagogical-transfer, result: pass}
+    - {reviewer_agent_id: agent-571fc214-f0a2-4ada-adad-289819486e95, task_id: task_114, scope: security-assessment-follow-up, result: pass}
+    - {reviewer_agent_id: agent-4ad0802a-3bb9-47cf-8d98-7a081ab0c3c8, task_id: task_147, scope: evaluator-and-practicum-contract-hardening, result: pass}
+    - {reviewer_agent_id: agent-53828ec0-840d-4f78-8079-a7e60d972d34, task_id: task_149, scope: dependency-license-and-upstream-drift-evidence, result: pass}
+    - {reviewer_agent_id: agent-f13991b4-2f4d-43e4-9af7-4e57f5c7ded8, task_id: task_150, scope: validator-ci-and-clean-copy-follow-up, result: pass}
   closed_findings:
     - release and module status drift
     - subagent and App Server evidence registration gaps
     - dossier formative and assessment reader continuity
     - incomplete practicum input type schema and perturbation contracts
     - duplicate JSON schema metadata keys and fail-closed parsing
-  remaining_external_blockers: [dependency advisories and incomplete transitive license metadata block publication]
+    - contradictory evaluator promotion and practicum artifact states
+    - duplicated release gate inventories and incomplete cold-reader ordering checks
+    - unscoped nested dependency audit policy and string-via vulnerability handling
+    - unrecorded current upstream package drift decision
+  remaining_external_blockers: [dependency advisories and incomplete accountable transitive-license review block publication]
 runtime_validation: not-performed
 non_claims:
   - This unpublished release-candidate manifest is not a learner credential publication approval runtime validation or production qualification.

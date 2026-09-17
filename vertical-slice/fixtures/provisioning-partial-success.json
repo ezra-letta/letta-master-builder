@@ -15,6 +15,32 @@
     "agentId": "agent-example-123",
     "retryWithSameRequestKey": true
   },
+  "creation_retrieval_failure": {
+    "steps": [
+      {"operation": "createAgent", "result_agent_id": "agent-example-456"},
+      {"operation": "agents.retrieve", "agent_id": "agent-example-456", "error": "simulated retrieval outage"}
+    ],
+    "expected_result": {
+      "state": "verification-pending",
+      "source": "created",
+      "agentId": "agent-example-456",
+      "retryWithSameRequestKey": true,
+      "prohibitBlindRecreation": true
+    },
+    "store_save_attempted": false
+  },
+  "already_recorded_retrieval_failure": {
+    "store_mapping": "agent-example-789",
+    "retrieve_error": "simulated retrieval outage",
+    "expected_result": {
+      "state": "verification-pending",
+      "source": "already-recorded",
+      "agentId": "agent-example-789",
+      "retryWithSameRequestKey": true,
+      "prohibitBlindRecreation": true
+    },
+    "create_attempted": false
+  },
   "next_retry": {
     "store_mapping": null,
     "tag_match_ids": ["agent-example-123"],

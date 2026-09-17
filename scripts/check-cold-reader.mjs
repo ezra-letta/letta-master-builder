@@ -45,6 +45,28 @@ export async function checkColdReader(root) {
       try { await safeFile(root, item); await readText(root, item); traversed.push(item); }
       catch (error) { fail(`reader_sequence item is unavailable: ${item} (${error.message})`); }
     }
+
+    if (curriculum.repository_stage === 'release-candidate') {
+      const position = new Map(sequence.map((item, index) => [item, index]));
+      for (const module of Array.isArray(modules) ? modules : []) {
+        const moduleFiles = Array.isArray(module?.required_files) ? module.required_files : [];
+        const formativeFile = `assessments/formative/${module?.id}.md`;
+        const start = position.get(moduleFiles[0]);
+        const expected = [...moduleFiles, formativeFile];
+        if (!Number.isInteger(start) || expected.some((item, offset) => sequence[start + offset] !== item)) fail(`${module?.id ?? 'unknown'} required files must be contiguous and immediately followed by its formative checkpoint`);
+      }
+      try {
+        const practicum = await readYaml(root, 'practicum/registry.yml');
+        for (const scenario of practicum.scenarios ?? []) {
+          const expected = [scenario.brief_path, ...(scenario.specification_files ?? [])];
+          const start = position.get(scenario.brief_path);
+          if (!Number.isInteger(start) || expected.some((item, offset) => sequence[start + offset] !== item)) fail(`${scenario.id ?? 'unknown'} reader bundle must keep its brief and specification files contiguous`);
+        }
+      } catch (error) { fail(`practicum reader bundle contract is unavailable (${error.message})`); }
+      const assessmentTail = ['assessments/contract.yml', 'assessments/PUBLIC_RUBRIC.md', 'assessments/evaluator-report.template.yml', 'assessments/misconceptions.yml', curriculum.terminal_contract, 'INTEGRITY.SHA256'];
+      const tailStart = sequence.length - assessmentTail.length;
+      if (tailStart < 0 || assessmentTail.some((item, offset) => sequence[tailStart + offset] !== item)) fail('reader_sequence must end with ordered assessment governance, terminal contract, and INTEGRITY.SHA256');
+    }
   }
 
   const preContent = ['pre-content', 'scaffold'].includes(curriculum.repository_stage);

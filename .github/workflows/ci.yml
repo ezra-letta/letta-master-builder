@@ -21,20 +21,8 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm run vertical-slice:install
-      - run: npm test
-      - run: npm run sdk-exports:check
-      - run: npm run vertical-slice:check
-      - run: npm run drift:check
-      - run: npm run validate
-      - run: npm run modules:check
-      - run: npm run practicum:check
-      - run: npm run practicum:types
-      - run: npm run formative:check
-      - run: npm run cold-reader:check
-      - run: npm run lock:check
-      - run: npm run integrity:check
-      - name: Verify clean-copy reproducibility
-        run: npm run clean-copy:check
+      - name: Verify complete offline release-candidate gate set
+        run: npm run release:check
 
   dependency-audit:
     runs-on: ubuntu-latest
@@ -49,19 +37,32 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: node --test .security/audit-exceptions.test.mjs
-      - name: Enforce dependency audit policy
+      - name: Enforce root dependency audit policy
         run: |
           audit_file="$(mktemp)"
           trap 'rm -f "$audit_file"' EXIT
           set +e
-          npm audit --json --omit=optional > "$audit_file"
+          npm audit --json --package-lock-only > "$audit_file"
           audit_rc=$?
           set -e
           if [ "$audit_rc" -ne 0 ] && [ "$audit_rc" -ne 1 ]; then
-            echo "npm audit failed before producing an evaluable finding set" >&2
+            echo "root npm audit failed before producing an evaluable finding set" >&2
             exit "$audit_rc"
           fi
-          node .security/check-audit-exceptions.mjs < "$audit_file"
+          node .security/check-audit-exceptions.mjs root package-lock.json < "$audit_file"
+      - name: Enforce vertical-slice publication block
+        run: |
+          audit_file="$(mktemp)"
+          trap 'rm -f "$audit_file"' EXIT
+          set +e
+          npm audit --json --package-lock-only --prefix vertical-slice > "$audit_file"
+          audit_rc=$?
+          set -e
+          if [ "$audit_rc" -ne 0 ] && [ "$audit_rc" -ne 1 ]; then
+            echo "vertical-slice npm audit failed before producing an evaluable finding set" >&2
+            exit "$audit_rc"
+          fi
+          node .security/check-audit-exceptions.mjs vertical-slice vertical-slice/package-lock.json < "$audit_file"
 
   secret-scan:
     runs-on: ubuntu-latest

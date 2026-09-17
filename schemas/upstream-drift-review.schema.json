@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://letta-master-builder.local/schemas/upstream-drift-review.schema.json",
+  "x-target": "maintenance/upstream-drift-review.yml",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "status", "reviewed_at", "baseline", "observed", "static_findings", "mandatory_path_impact", "dependency_blocker_effect", "release_decision", "decision_reason", "repin_triggers", "runtime_claim"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"const": "REL-DRIFT-REVIEW-0-8-11"},
+    "status": {"const": "reviewed-retain-baseline"},
+    "reviewed_at": {"const": "2026-09-17"},
+    "baseline": {
+      "type": "object", "additionalProperties": false,
+      "required": ["agent_sdk", "sdk_declared_runtime", "standalone_runtime"],
+      "properties": {"agent_sdk": {"const": "0.8.9"}, "sdk_declared_runtime": {"const": "0.32.11"}, "standalone_runtime": {"const": "0.32.11"}}
+    },
+    "observed": {
+      "type": "object", "additionalProperties": false, "required": ["agent_sdk", "letta_code"],
+      "properties": {
+        "agent_sdk": {"allOf": [{"$ref": "#/$defs/package"}, {"type": "object", "required": ["declared_runtime"], "properties": {"version": {"const": "0.8.11"}, "published_at": {"const": "2026-09-16T23:56:32.095Z"}, "integrity": {"const": "sha512-iwJweBycqkAl0hMSMRfSc0Gv62XnTsNceR9er+ntW6fc/bRlQ+i0zSUPWdZY7BtUWMCzQvDj5GXyB5i3C9zlwg=="}, "source_commit": {"const": "9c8e854d9deeb72725b284967b7f07bf791106c1"}, "declared_runtime": {"const": "0.32.12"}}}]},
+        "letta_code": {"allOf": [{"$ref": "#/$defs/package"}, {"type": "object", "properties": {"version": {"const": "0.32.12"}, "published_at": {"const": "2026-09-16T18:43:30.522Z"}, "integrity": {"const": "sha512-D5MHvCBubNedH3cjZSq12Yd4zQUFwzXIaW5EV7a0360vM4XOsS+DF6jFWi+T7q8CCFa01Ft50XU1AXF0kyrv+Q=="}, "source_commit": {"const": "69254ef0a20975a2d7d68464285c752ac55614c3"}}}]}
+      }
+    },
+    "static_findings": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "mandatory_path_impact": {"const": "no-required-change"},
+    "dependency_blocker_effect": {"const": "unchanged"},
+    "release_decision": {"const": "retain-0.8.9-0.32.11"},
+    "decision_reason": {"type": "string", "minLength": 1},
+    "repin_triggers": {"type": "array", "minItems": 4, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "runtime_claim": {"const": false}
+  },
+  "$defs": {
+    "semver": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "package": {"type": "object", "additionalProperties": false, "required": ["version", "published_at", "integrity", "source_commit"], "properties": {"version": {"$ref": "#/$defs/semver"}, "published_at": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$"}, "integrity": {"type": "string", "pattern": "^sha512-[A-Za-z0-9+/=]+$"}, "source_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"}, "declared_runtime": {"$ref": "#/$defs/semver"}}}
+  }
+}

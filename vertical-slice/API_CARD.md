@@ -21,9 +21,10 @@ The exact package also exports broader creation and management options. This car
 
 ## Inputs and outputs
 
-The controller supplies a stable request key, display name, description, optional tags, SDK client, and durable controller store. It returns one of five explicit states:
+The controller supplies a stable request key, display name, description, optional tags, SDK client, and durable controller store. It returns one of six explicit states:
 
 - `already-recorded` — controller mapping existed and the SDK retrieved that ID;
+- `verification-pending` — a canonical ID returned by creation, or already present in the controller mapping, could not be retrieved; the result preserves the ID, identifies its source, requires the same request key, and explicitly prohibits blind recreation;
 - `reconciled` — no controller mapping existed, but exactly one tagged agent was found and recorded;
 - `created` — creation, retrieval, and controller persistence all completed;
 - `created-unrecorded` — the SDK returned and retrieved an agent ID, but controller persistence failed.
@@ -35,19 +36,19 @@ Calling this function against a real client can list, retrieve, or create a pers
 
 ## Idempotency and reconciliation
 
-The stable request tag provides a lookup key before a retry creates another agent. It is not a server-side uniqueness constraint. Zero matches allow creation; one match allows reconciliation; multiple matches stop as ambiguous and require operator review. The controller must retry with the same request key after `created-unrecorded`.
+The stable request tag provides a lookup key before a retry creates another agent. It is not a server-side uniqueness constraint. Zero matches allow creation only when no canonical ID is already known; one match allows reconciliation; multiple matches stop as ambiguous and require operator review. The controller must retry with the same request key after `created-unrecorded` or `verification-pending`. A known canonical ID is never discarded merely because retrieval failed.
 
 ## Partial success
 
-Agent creation and controller persistence are separate effects. An agent may exist even when saving its ID fails. The returned canonical ID is evidence of that effect during the same process, while the tag supports a later lookup. A crash between creation and receiving or recording the ID remains an uncertain-effect window; the retry must search before creating. A persistence failure after finding an older tagged agent is reported separately as `reconciled-unrecorded`, so the current invocation never claims creation it did not perform.
+Agent creation, retrieval verification, and controller persistence are separate effects. An agent may exist when retrieval or saving its ID fails. Once creation returns a canonical ID, a retrieval failure returns `verification-pending` with that ID instead of throwing away the strongest recovery handle; persistence is not attempted until verification succeeds. The same typed state safely preserves an already-recorded ID when its retrieval fails. The tag supports later reconciliation, but neither path authorizes blind recreation. A crash between creation and receiving or recording the ID remains an uncertain-effect window; the retry must search before creating. A persistence failure after finding an older tagged agent is reported separately as `reconciled-unrecorded`, so the current invocation never claims creation it did not perform.
 
 ## Errors and recovery
 
 - Invalid request key: reject before any SDK effect.
-- Stored ID cannot be retrieved: stop; do not silently create a replacement.
+- Stored ID cannot be retrieved: return `verification-pending` with `source: "already-recorded"`; preserve the ID and do not silently create a replacement.
 - More than one tagged agent: stop as ambiguous.
 - List or create failure: propagate; do not claim creation.
-- Retrieve failure after returned ID: treat the effect as uncertain and investigate by ID and tag.
+- Retrieve failure after returned ID: return `verification-pending` with `source: "created"`, preserve the canonical ID, and investigate by ID and tag without blind recreation.
 - Store failure after verified creation: return `created-unrecorded`; retry with the same key.
 - Store failure after finding an existing tagged agent: return `reconciled-unrecorded`; retry with the same key.
 

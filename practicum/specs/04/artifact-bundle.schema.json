@@ -12,129 +12,371 @@
     "controller-trace.jsonl"
   ],
   "properties": {
-    "topology-decision.json": { "$ref": "#/$defs/topologyDecision" },
-    "operation-ledger.json": { "$ref": "#/$defs/operationLedger" },
-    "supervision-report.json": { "$ref": "#/$defs/supervisionReport" },
-    "improvement-record.json": { "$ref": "#/$defs/improvementRecord" },
-    "controller-trace.jsonl": { "$ref": "#/$defs/controllerTrace" }
+    "topology-decision.json": {
+      "$ref": "#/$defs/topologyDecision"
+    },
+    "operation-ledger.json": {
+      "$ref": "#/$defs/operationLedger"
+    },
+    "supervision-report.json": {
+      "$ref": "#/$defs/supervisionReport"
+    },
+    "improvement-record.json": {
+      "$ref": "#/$defs/improvementRecord"
+    },
+    "controller-trace.jsonl": {
+      "$ref": "#/$defs/controllerTrace"
+    }
   },
   "$defs": {
-    "text": { "type": "string", "minLength": 1 },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
     "nonClaims": {
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": { "$ref": "#/$defs/text" }
+      "items": {
+        "$ref": "#/$defs/text"
+      }
     },
-    "controllerId": { "enum": ["controller-a", "controller-b"] },
-    "lane": { "enum": ["node-local", "cloud-managed"] },
+    "controllerId": {
+      "enum": [
+        "controller-a",
+        "controller-b"
+      ]
+    },
+    "lane": {
+      "enum": [
+        "node-local",
+        "cloud-managed"
+      ]
+    },
     "topologyDecision": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["scenario_id", "selected_lane", "constraints", "rationale", "rejected_alternatives", "unknowns", "no_parity_inference", "workspace_expiry_disposition", "non_claims"],
+      "required": [
+        "scenario_id",
+        "selected_lane",
+        "constraints",
+        "rationale",
+        "rejected_alternatives",
+        "unknowns",
+        "no_parity_inference",
+        "workspace_expiry_disposition",
+        "non_claims"
+      ],
       "properties": {
-        "scenario_id": { "const": "SCN-SUPERVISED-IMPROVEMENT" },
-        "selected_lane": { "$ref": "#/$defs/lane" },
-        "constraints": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/text" } },
-        "rationale": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } },
+        "scenario_id": {
+          "const": "SCN-SUPERVISED-IMPROVEMENT"
+        },
+        "selected_lane": {
+          "$ref": "#/$defs/lane"
+        },
+        "constraints": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "rationale": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
         "rejected_alternatives": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["lane", "reasons"],
+            "required": [
+              "lane",
+              "reasons"
+            ],
             "properties": {
-              "lane": { "$ref": "#/$defs/lane" },
-              "reasons": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } }
+              "lane": {
+                "$ref": "#/$defs/lane"
+              },
+              "reasons": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$ref": "#/$defs/text"
+                }
+              }
             }
           }
         },
-        "unknowns": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/text" } },
-        "no_parity_inference": { "const": true },
-        "workspace_expiry_disposition": { "const": "fixture-only" },
-        "non_claims": { "$ref": "#/$defs/nonClaims" }
+        "unknowns": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "no_parity_inference": {
+          "const": true
+        },
+        "workspace_expiry_disposition": {
+          "const": "fixture-only"
+        },
+        "non_claims": {
+          "$ref": "#/$defs/nonClaims"
+        }
       }
     },
     "ledgerEntry": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sequence", "tick", "controller_id", "work_key", "observed_version", "expected_version", "authoritative_version", "cas_result", "lease_state", "budget_limit", "budget_consumed", "budget_remaining", "supervisor_authority", "effect_dispatched", "authoritative_completion", "terminal_state"],
+      "required": [
+        "sequence",
+        "tick",
+        "controller_id",
+        "work_key",
+        "observed_version",
+        "expected_version",
+        "authoritative_version",
+        "cas_result",
+        "lease_state",
+        "budget_limit",
+        "budget_consumed",
+        "budget_remaining",
+        "supervisor_authority",
+        "effect_dispatched",
+        "authoritative_completion",
+        "terminal_state"
+      ],
       "properties": {
-        "sequence": { "type": "integer", "minimum": 0 },
-        "tick": { "type": "integer", "minimum": 0 },
-        "controller_id": { "$ref": "#/$defs/controllerId" },
-        "work_key": { "$ref": "#/$defs/text" },
-        "observed_version": { "type": "integer", "minimum": 0 },
-        "expected_version": { "type": "integer", "minimum": 0 },
-        "authoritative_version": { "type": "integer", "minimum": 0 },
-        "cas_result": { "enum": ["won", "stale", "contended", "duplicate", "already-completed"] },
-        "lease_state": { "enum": ["active", "lost", "expired"] },
-        "budget_limit": { "type": "integer", "minimum": 0 },
-        "budget_consumed": { "type": "integer", "minimum": 0 },
-        "budget_remaining": { "type": "integer", "minimum": 0 },
-        "supervisor_authority": { "enum": ["active", "revoked"] },
-        "effect_dispatched": { "type": "boolean" },
-        "authoritative_completion": { "type": "boolean" },
-        "terminal_state": { "enum": ["completed", "stale", "paused", "stopped", "duplicate"] }
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controller_id": {
+          "$ref": "#/$defs/controllerId"
+        },
+        "work_key": {
+          "$ref": "#/$defs/text"
+        },
+        "observed_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expected_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "authoritative_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cas_result": {
+          "enum": [
+            "won",
+            "stale",
+            "contended",
+            "duplicate",
+            "already-completed"
+          ]
+        },
+        "lease_state": {
+          "enum": [
+            "active",
+            "lost",
+            "expired"
+          ]
+        },
+        "budget_limit": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "budget_consumed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "budget_remaining": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "supervisor_authority": {
+          "enum": [
+            "active",
+            "revoked"
+          ]
+        },
+        "effect_dispatched": {
+          "type": "boolean"
+        },
+        "authoritative_completion": {
+          "type": "boolean"
+        },
+        "terminal_state": {
+          "enum": [
+            "completed",
+            "stale",
+            "paused",
+            "stopped",
+            "duplicate"
+          ]
+        }
       }
     },
     "operationLedger": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["scenario_id", "ordering_rule", "cas_rule", "entries", "authoritative_owners", "non_claims"],
+      "required": [
+        "scenario_id",
+        "ordering_rule",
+        "cas_rule",
+        "entries",
+        "authoritative_owners",
+        "non_claims"
+      ],
       "properties": {
-        "scenario_id": { "const": "SCN-SUPERVISED-IMPROVEMENT" },
-        "ordering_rule": { "const": "tick-kind-controller-id-record-id" },
-        "cas_rule": { "const": "expected-version-equals-authoritative-version-lowest-controller-id-wins" },
-        "entries": { "type": "array", "minItems": 2, "items": { "$ref": "#/$defs/ledgerEntry" } },
+        "scenario_id": {
+          "const": "SCN-SUPERVISED-IMPROVEMENT"
+        },
+        "ordering_rule": {
+          "const": "tick-kind-controller-id-record-id"
+        },
+        "cas_rule": {
+          "const": "expected-version-equals-authoritative-version-lowest-controller-id-wins"
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/ledgerEntry"
+          },
+          "maxItems": 64
+        },
         "authoritative_owners": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["work_key", "version", "controller_id"],
+            "required": [
+              "work_key",
+              "version",
+              "controller_id"
+            ],
             "properties": {
-              "work_key": { "$ref": "#/$defs/text" },
-              "version": { "type": "integer", "minimum": 0 },
-              "controller_id": { "$ref": "#/$defs/controllerId" }
+              "work_key": {
+                "$ref": "#/$defs/text"
+              },
+              "version": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "controller_id": {
+                "$ref": "#/$defs/controllerId"
+              }
             }
           }
         },
-        "non_claims": { "$ref": "#/$defs/nonClaims" }
+        "non_claims": {
+          "$ref": "#/$defs/nonClaims"
+        }
       }
     },
     "signal": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["signal_id", "tick", "controller_id", "action", "reason"],
+      "required": [
+        "signal_id",
+        "tick",
+        "controller_id",
+        "action",
+        "reason"
+      ],
       "properties": {
-        "signal_id": { "$ref": "#/$defs/text" },
-        "tick": { "type": "integer", "minimum": 0 },
-        "controller_id": { "$ref": "#/$defs/controllerId" },
-        "action": { "enum": ["continue", "pause", "intervene", "stop"] },
-        "reason": { "$ref": "#/$defs/text" }
+        "signal_id": {
+          "$ref": "#/$defs/text"
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "controller_id": {
+          "$ref": "#/$defs/controllerId"
+        },
+        "action": {
+          "enum": [
+            "continue",
+            "pause",
+            "intervene",
+            "stop"
+          ]
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
       }
     },
     "supervisionReport": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["scenario_id", "signals", "interventions", "checkpoints", "stop_reasons", "later_effect_dispatch_blocked", "incident_chronology", "non_claims"],
+      "required": [
+        "scenario_id",
+        "signals",
+        "interventions",
+        "checkpoints",
+        "stop_reasons",
+        "later_effect_dispatch_blocked",
+        "incident_chronology",
+        "non_claims"
+      ],
       "properties": {
-        "scenario_id": { "const": "SCN-SUPERVISED-IMPROVEMENT" },
-        "signals": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/signal" } },
+        "scenario_id": {
+          "const": "SCN-SUPERVISED-IMPROVEMENT"
+        },
+        "signals": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/signal"
+          }
+        },
         "interventions": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["tick", "controller_id", "action", "reason"],
+            "required": [
+              "tick",
+              "controller_id",
+              "action",
+              "reason"
+            ],
             "properties": {
-              "tick": { "type": "integer", "minimum": 0 },
-              "controller_id": { "$ref": "#/$defs/controllerId" },
-              "action": { "enum": ["pause", "intervene", "stop"] },
-              "reason": { "$ref": "#/$defs/text" }
+              "tick": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "controller_id": {
+                "$ref": "#/$defs/controllerId"
+              },
+              "action": {
+                "enum": [
+                  "pause",
+                  "intervene",
+                  "stop"
+                ]
+              },
+              "reason": {
+                "$ref": "#/$defs/text"
+              }
             }
           }
         },
@@ -143,74 +385,188 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["checkpoint_id", "tick", "controller_id", "work_key", "authoritative_version", "last_completed_sequence", "pending_effects"],
+            "required": [
+              "checkpoint_id",
+              "tick",
+              "controller_id",
+              "work_key",
+              "authoritative_version",
+              "last_completed_sequence",
+              "pending_effects"
+            ],
             "properties": {
-              "checkpoint_id": { "$ref": "#/$defs/text" },
-              "tick": { "type": "integer", "minimum": 0 },
-              "controller_id": { "$ref": "#/$defs/controllerId" },
-              "work_key": { "$ref": "#/$defs/text" },
-              "authoritative_version": { "type": "integer", "minimum": 0 },
-              "last_completed_sequence": { "type": "integer", "minimum": 0 },
-              "pending_effects": { "type": "integer", "minimum": 0 }
+              "checkpoint_id": {
+                "$ref": "#/$defs/text"
+              },
+              "tick": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "controller_id": {
+                "$ref": "#/$defs/controllerId"
+              },
+              "work_key": {
+                "$ref": "#/$defs/text"
+              },
+              "authoritative_version": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "last_completed_sequence": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "pending_effects": {
+                "type": "integer",
+                "minimum": 0
+              }
             }
           }
         },
-        "stop_reasons": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/text" } },
-        "later_effect_dispatch_blocked": { "const": true },
-        "incident_chronology": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } },
-        "non_claims": { "$ref": "#/$defs/nonClaims" }
+        "stop_reasons": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "later_effect_dispatch_blocked": {
+          "const": true
+        },
+        "incident_chronology": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        },
+        "non_claims": {
+          "$ref": "#/$defs/nonClaims"
+        }
       }
     },
-    "improvementState": { "enum": ["proposal", "independent-evaluation", "promotion", "rejection", "monitoring", "retained", "rollback"] },
+    "improvementState": {
+      "enum": [
+        "proposal",
+        "independent-evaluation",
+        "promotion",
+        "rejection",
+        "monitoring",
+        "retained",
+        "rollback"
+      ]
+    },
     "improvementRecord": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["scenario_id", "proposal", "evaluator", "frozen_evaluation", "transitions", "promotion_decision", "rejection_rationale", "rollback_target", "monitoring", "insufficient_evidence", "self_promotion", "non_claims"],
+      "required": [
+        "scenario_id",
+        "proposal",
+        "evaluator",
+        "frozen_evaluation",
+        "transitions",
+        "promotion_decision",
+        "rejection_rationale",
+        "rollback_target",
+        "monitoring",
+        "insufficient_evidence",
+        "self_promotion",
+        "non_claims"
+      ],
       "properties": {
-        "scenario_id": { "const": "SCN-SUPERVISED-IMPROVEMENT" },
+        "scenario_id": {
+          "const": "SCN-SUPERVISED-IMPROVEMENT"
+        },
         "proposal": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["proposal_id", "proposer_id", "candidate_version", "baseline_version", "claim"],
+          "required": [
+            "proposal_id",
+            "proposer_id",
+            "candidate_version",
+            "baseline_version",
+            "claim"
+          ],
           "properties": {
-            "proposal_id": { "$ref": "#/$defs/text" },
-            "proposer_id": { "$ref": "#/$defs/text" },
-            "candidate_version": { "$ref": "#/$defs/text" },
-            "baseline_version": { "$ref": "#/$defs/text" },
-            "claim": { "$ref": "#/$defs/text" }
+            "proposal_id": {
+              "$ref": "#/$defs/text"
+            },
+            "proposer_id": {
+              "$ref": "#/$defs/text"
+            },
+            "candidate_version": {
+              "$ref": "#/$defs/text"
+            },
+            "baseline_version": {
+              "$ref": "#/$defs/text"
+            },
+            "claim": {
+              "$ref": "#/$defs/text"
+            }
           }
         },
         "evaluator": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["evaluator_id", "distinct_from_proposer", "independently_responsible"],
+          "required": [
+            "evaluator_id",
+            "distinct_from_proposer",
+            "independently_responsible"
+          ],
           "properties": {
-            "evaluator_id": { "$ref": "#/$defs/text" },
-            "distinct_from_proposer": { "const": true },
-            "independently_responsible": { "const": true }
+            "evaluator_id": {
+              "$ref": "#/$defs/text"
+            },
+            "distinct_from_proposer": {
+              "const": true
+            },
+            "independently_responsible": {
+              "const": true
+            }
           }
         },
         "frozen_evaluation": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["evaluation_id", "frozen_case_digest", "gates", "all_mandatory_gates_passed"],
+          "required": [
+            "evaluation_id",
+            "frozen_case_digest",
+            "gates",
+            "all_mandatory_gates_passed"
+          ],
           "properties": {
-            "evaluation_id": { "$ref": "#/$defs/text" },
-            "frozen_case_digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+            "evaluation_id": {
+              "$ref": "#/$defs/text"
+            },
+            "frozen_case_digest": {
+              "type": "string",
+              "pattern": "^sha256:[0-9a-f]{64}$"
+            },
             "gates": {
               "type": "array",
               "minItems": 1,
               "items": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["gate_id", "passed"],
+                "required": [
+                  "gate_id",
+                  "passed"
+                ],
                 "properties": {
-                  "gate_id": { "$ref": "#/$defs/text" },
-                  "passed": { "type": "boolean" }
+                  "gate_id": {
+                    "$ref": "#/$defs/text"
+                  },
+                  "passed": {
+                    "type": "boolean"
+                  }
                 }
-              }
+              },
+              "uniqueItems": true
             },
-            "all_mandatory_gates_passed": { "type": "boolean" }
+            "all_mandatory_gates_passed": {
+              "type": "boolean"
+            }
           }
         },
         "transitions": {
@@ -219,69 +575,180 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["sequence", "tick", "from", "to", "reason", "authority_id"],
+            "required": [
+              "sequence",
+              "tick",
+              "from",
+              "to",
+              "reason",
+              "authority_id"
+            ],
             "properties": {
-              "sequence": { "type": "integer", "minimum": 0 },
-              "tick": { "type": "integer", "minimum": 0 },
-              "from": { "$ref": "#/$defs/improvementState" },
-              "to": { "$ref": "#/$defs/improvementState" },
-              "reason": { "$ref": "#/$defs/text" },
-              "authority_id": { "$ref": "#/$defs/text" }
+              "sequence": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "tick": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "from": {
+                "$ref": "#/$defs/improvementState"
+              },
+              "to": {
+                "$ref": "#/$defs/improvementState"
+              },
+              "reason": {
+                "$ref": "#/$defs/text"
+              },
+              "authority_id": {
+                "$ref": "#/$defs/text"
+              }
             }
+          },
+          "maxItems": 16
+        },
+        "promotion_decision": {
+          "enum": [
+            "promote",
+            "reject"
+          ]
+        },
+        "rejection_rationale": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
           }
         },
-        "promotion_decision": { "enum": ["promote", "reject"] },
-        "rejection_rationale": { "type": "array", "items": { "$ref": "#/$defs/text" } },
-        "rollback_target": { "$ref": "#/$defs/text" },
+        "rollback_target": {
+          "$ref": "#/$defs/text"
+        },
         "monitoring": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["metric", "operator", "threshold", "observations", "terminal_decision"],
+          "required": [
+            "metric",
+            "operator",
+            "threshold",
+            "observations",
+            "terminal_decision"
+          ],
           "properties": {
-            "metric": { "$ref": "#/$defs/text" },
-            "operator": { "const": "less-than-or-equal" },
-            "threshold": { "type": "number", "minimum": 0 },
+            "metric": {
+              "$ref": "#/$defs/text"
+            },
+            "operator": {
+              "const": "less-than-or-equal"
+            },
+            "threshold": {
+              "type": "number",
+              "minimum": 0
+            },
             "observations": {
               "type": "array",
               "minItems": 1,
               "items": {
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["tick", "value", "certainty"],
+                "required": [
+                  "tick",
+                  "value",
+                  "certainty"
+                ],
                 "properties": {
-                  "tick": { "type": "integer", "minimum": 0 },
-                  "value": { "type": "number", "minimum": 0 },
-                  "certainty": { "enum": ["certain", "uncertain"] }
+                  "tick": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "certainty": {
+                    "enum": [
+                      "certain",
+                      "uncertain"
+                    ]
+                  }
                 }
               }
             },
-            "terminal_decision": { "enum": ["retained", "rollback", "safe-stop"] }
+            "terminal_decision": {
+              "enum": [
+                "retained",
+                "rollback",
+                "safe-stop"
+              ]
+            }
           }
         },
         "insufficient_evidence": {
           "type": "array",
           "minItems": 5,
           "uniqueItems": true,
-          "items": { "enum": ["assistant-text", "reflection", "dreaming", "commit", "turn-success"] },
+          "items": {
+            "enum": [
+              "assistant-text",
+              "reflection",
+              "dreaming",
+              "commit",
+              "turn-success"
+            ]
+          },
           "allOf": [
-            { "contains": { "const": "assistant-text" } },
-            { "contains": { "const": "reflection" } },
-            { "contains": { "const": "dreaming" } },
-            { "contains": { "const": "commit" } },
-            { "contains": { "const": "turn-success" } }
+            {
+              "contains": {
+                "const": "assistant-text"
+              }
+            },
+            {
+              "contains": {
+                "const": "reflection"
+              }
+            },
+            {
+              "contains": {
+                "const": "dreaming"
+              }
+            },
+            {
+              "contains": {
+                "const": "commit"
+              }
+            },
+            {
+              "contains": {
+                "const": "turn-success"
+              }
+            }
           ]
         },
-        "self_promotion": { "const": false },
-        "non_claims": { "$ref": "#/$defs/nonClaims" }
+        "self_promotion": {
+          "const": false
+        },
+        "non_claims": {
+          "$ref": "#/$defs/nonClaims"
+        }
       }
     },
     "traceRecord": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sequence", "tick", "kind", "record_id"],
+      "required": [
+        "sequence",
+        "tick",
+        "kind",
+        "record_id"
+      ],
       "properties": {
-        "sequence": { "type": "integer", "minimum": 0 },
-        "tick": { "type": "integer", "minimum": 0 },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0
+        },
         "kind": {
           "enum": [
             "lmb.practicum.v1.topology.constraints",
@@ -292,20 +759,38 @@
             "lmb.practicum.v1.improvement.transition"
           ]
         },
-        "record_id": { "$ref": "#/$defs/text" },
-        "controller_id": { "$ref": "#/$defs/controllerId" },
-        "work_key": { "$ref": "#/$defs/text" },
-        "version": { "type": "integer", "minimum": 0 },
-        "action": { "$ref": "#/$defs/text" },
-        "decision": { "$ref": "#/$defs/text" },
-        "reason": { "$ref": "#/$defs/text" }
+        "record_id": {
+          "$ref": "#/$defs/text"
+        },
+        "controller_id": {
+          "$ref": "#/$defs/controllerId"
+        },
+        "work_key": {
+          "$ref": "#/$defs/text"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "action": {
+          "$ref": "#/$defs/text"
+        },
+        "decision": {
+          "$ref": "#/$defs/text"
+        },
+        "reason": {
+          "$ref": "#/$defs/text"
+        }
       }
     },
     "controllerTrace": {
       "description": "The JSONL artifact represented for schema validation as its ordered array of parsed lines.",
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/traceRecord" }
+      "items": {
+        "$ref": "#/$defs/traceRecord"
+      },
+      "maxItems": 128
     }
   }
 }

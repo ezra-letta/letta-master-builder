@@ -6,7 +6,7 @@ design_revision: '0.4'
 repository_stage: release-candidate
 status: release-candidate
 publication_status: blocked
-publication_non_claim: Release-candidate content status does not authorize publication; unresolved dependency advisories and transitive license metadata remain release blockers.
+publication_non_claim: Release-candidate content status does not authorize publication; unresolved dependency advisories and accountable transitive-license review remain release blockers.
 implementation_baseline: exact-package-static
 graduate_claim: A successful learner can design implement and supervise a bounded persistent autonomous agent through the Agent SDK while separating static package evidence runtime observations evaluation results and production qualification.
 entrypoint: START_HERE.md
@@ -107,6 +107,7 @@ control_files:
   - release/manifest.yml
   - release/dependency-review.yml
   - maintenance/drift-rehearsal.yml
+  - maintenance/upstream-drift-review.yml
   - maintenance/RELEASE_WORKFLOW.md
   - canaries/registry.yml
   - vertical-slice/package.json
@@ -122,6 +123,7 @@ control_files:
   - scripts/check-modules.mjs
   - scripts/check-practicum-specs.mjs
   - scripts/check-formative.mjs
+  - scripts/check-release-candidate.mjs
   - scripts/check-drift-rehearsal.mjs
   - scripts/check-external-links.mjs
   - scripts/check-package-evidence.mjs
@@ -138,6 +140,9 @@ control_files:
   - scripts/tests/offline-validator.test.mjs
   - scripts/tests/phase1-gates.test.mjs
   - scripts/tests/revision04-contracts.test.mjs
+  - scripts/tests/evaluator-report-hardening.test.mjs
+  - scripts/tests/hardening-contracts.test.mjs
+  - scripts/tests/practicum-hardening.test.mjs
   - schemas/curriculum.schema.json
   - schemas/terminal-contract.schema.json
   - schemas/pointers.schema.json
@@ -159,6 +164,7 @@ control_files:
   - schemas/traceability.schema.json
   - schemas/runtime-claims.schema.json
   - schemas/drift-rehearsal.schema.json
+  - schemas/upstream-drift-review.schema.json
 target_contract:
   primary_persona: technically-proficient-coding-agent
   domain_baseline: zero-prior-letta-knowledge
@@ -173,7 +179,7 @@ target_contract:
   agent_foundry: conceptual-only
   evidence_cutoff_semantics: latest-exactly-verified-at-release-cutoff
   side_effects: forbidden-without-separate-explicit-authorization
-  word_budget: {mandatory_prose_min: 70000, mandatory_prose_max: 74000, current_prose: 70891, complete: true}
+  word_budget: {mandatory_prose_min: 70000, mandatory_prose_max: 74000, current_prose: 71001, complete: true}
   completion: true
   runtime_claims: false
   autonomous_execution: false

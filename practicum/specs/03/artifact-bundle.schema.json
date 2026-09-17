@@ -11,45 +11,93 @@
     "controller-trace.jsonl"
   ],
   "properties": {
-    "tool-authority.json": { "$ref": "#/$defs/toolAuthority" },
-    "effect-ledger.json": { "$ref": "#/$defs/effectLedger" },
-    "reconciliation-report.json": { "$ref": "#/$defs/reconciliationReport" },
+    "tool-authority.json": {
+      "$ref": "#/$defs/toolAuthority"
+    },
+    "effect-ledger.json": {
+      "$ref": "#/$defs/effectLedger"
+    },
+    "reconciliation-report.json": {
+      "$ref": "#/$defs/reconciliationReport"
+    },
     "controller-trace.jsonl": {
       "description": "The JSONL artifact represented for validation as an ordered array, one item per line in file order.",
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/traceRecord" }
+      "items": {
+        "$ref": "#/$defs/traceRecord"
+      },
+      "maxItems": 64
     }
   },
   "$defs": {
-    "text": { "type": "string", "minLength": 1 },
-    "timestamp": { "type": "string", "format": "date-time" },
-    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
-    "requestKey": { "type": "string", "pattern": "^lmb-s03-request-[0-9]{4}$" },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "requestKey": {
+      "type": "string",
+      "pattern": "^lmb-s03-request-[0-9]{4}$"
+    },
     "ticketInput": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["project", "summary", "labels", "priority"],
+      "required": [
+        "project",
+        "summary",
+        "labels",
+        "priority"
+      ],
       "properties": {
-        "project": { "$ref": "#/$defs/text" },
-        "summary": { "$ref": "#/$defs/text" },
+        "project": {
+          "$ref": "#/$defs/text"
+        },
+        "summary": {
+          "$ref": "#/$defs/text"
+        },
         "labels": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": { "$ref": "#/$defs/text" }
+          "items": {
+            "$ref": "#/$defs/text"
+          }
         },
-        "priority": { "enum": ["low", "normal", "high"] }
+        "priority": {
+          "enum": [
+            "low",
+            "normal",
+            "high"
+          ]
+        }
       }
     },
     "receipt": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["externalEffectId", "requestKey", "status"],
+      "required": [
+        "externalEffectId",
+        "requestKey",
+        "status"
+      ],
       "properties": {
-        "externalEffectId": { "$ref": "#/$defs/text" },
-        "requestKey": { "$ref": "#/$defs/requestKey" },
-        "status": { "const": "created" }
+        "externalEffectId": {
+          "$ref": "#/$defs/text"
+        },
+        "requestKey": {
+          "$ref": "#/$defs/requestKey"
+        },
+        "status": {
+          "const": "created"
+        }
       }
     },
     "toolAuthority": {
@@ -68,33 +116,84 @@
         "permission"
       ],
       "properties": {
-        "scenarioId": { "const": "SCN-TOOLS-EFFECTS" },
-        "proposalId": { "$ref": "#/$defs/text" },
-        "locality": { "enum": ["client", "server"] },
-        "localityRationale": { "$ref": "#/$defs/text" },
+        "scenarioId": {
+          "const": "SCN-TOOLS-EFFECTS"
+        },
+        "proposalId": {
+          "$ref": "#/$defs/text"
+        },
+        "locality": {
+          "enum": [
+            "client",
+            "server"
+          ]
+        },
+        "localityRationale": {
+          "$ref": "#/$defs/text"
+        },
         "credentialHandling": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["custody", "valuesPresent", "modelVisible"],
+          "required": [
+            "custody",
+            "valuesPresent",
+            "modelVisible"
+          ],
           "properties": {
-            "custody": { "const": "host-only" },
-            "valuesPresent": { "const": false },
-            "modelVisible": { "const": false }
+            "custody": {
+              "const": "host-only"
+            },
+            "valuesPresent": {
+              "const": false
+            },
+            "modelVisible": {
+              "const": false
+            }
           }
         },
-        "proposedInput": { "$ref": "#/$defs/ticketInput" },
-        "authorizedInput": { "$ref": "#/$defs/ticketInput" },
-        "proposedInputDigest": { "$ref": "#/$defs/digest" },
-        "authorizedInputDigest": { "$ref": "#/$defs/digest" },
+        "proposedInput": {
+          "$ref": "#/$defs/ticketInput"
+        },
+        "authorizedInput": {
+          "$ref": "#/$defs/ticketInput"
+        },
+        "proposedInputDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "authorizedInputDigest": {
+          "$ref": "#/$defs/digest"
+        },
         "permission": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["decision", "validFrom", "expiresAt", "authorityState"],
+          "required": [
+            "decision",
+            "validFrom",
+            "expiresAt",
+            "authorityState"
+          ],
           "properties": {
-            "decision": { "enum": ["allow", "deny", "pending"] },
-            "validFrom": { "$ref": "#/$defs/timestamp" },
-            "expiresAt": { "$ref": "#/$defs/timestamp" },
-            "authorityState": { "enum": ["valid", "expired", "lost", "ambiguous"] }
+            "decision": {
+              "enum": [
+                "allow",
+                "deny",
+                "pending"
+              ]
+            },
+            "validFrom": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "expiresAt": {
+              "$ref": "#/$defs/timestamp"
+            },
+            "authorityState": {
+              "enum": [
+                "valid",
+                "expired",
+                "lost",
+                "ambiguous"
+              ]
+            }
           }
         }
       }
@@ -115,21 +214,67 @@
         "reconciliationState"
       ],
       "properties": {
-        "scenarioId": { "const": "SCN-TOOLS-EFFECTS" },
-        "requestKey": { "$ref": "#/$defs/requestKey" },
-        "effectClass": { "enum": ["read-only", "idempotent", "compensatable", "irreversible"] },
-        "proposalId": { "$ref": "#/$defs/text" },
-        "authorizedInputDigest": { "$ref": "#/$defs/digest" },
-        "dispatchState": { "enum": ["not-dispatched", "dispatched", "blocked"] },
-        "observationState": { "enum": ["none", "timeout", "aborted", "receipt-observed"] },
-        "canonicalReceipt": {
-          "oneOf": [
-            { "$ref": "#/$defs/receipt" },
-            { "type": "null" }
+        "scenarioId": {
+          "const": "SCN-TOOLS-EFFECTS"
+        },
+        "requestKey": {
+          "$ref": "#/$defs/requestKey"
+        },
+        "effectClass": {
+          "enum": [
+            "read-only",
+            "idempotent",
+            "compensatable",
+            "irreversible"
           ]
         },
-        "verificationState": { "enum": ["not-attempted", "zero-matches", "one-match", "multiple-matches"] },
-        "reconciliationState": { "enum": ["blocked", "uncertain", "confirmed", "operator-review"] }
+        "proposalId": {
+          "$ref": "#/$defs/text"
+        },
+        "authorizedInputDigest": {
+          "$ref": "#/$defs/digest"
+        },
+        "dispatchState": {
+          "enum": [
+            "not-dispatched",
+            "dispatched",
+            "blocked"
+          ]
+        },
+        "observationState": {
+          "enum": [
+            "none",
+            "timeout",
+            "aborted",
+            "receipt-observed"
+          ]
+        },
+        "canonicalReceipt": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/receipt"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verificationState": {
+          "enum": [
+            "not-attempted",
+            "zero-matches",
+            "one-match",
+            "multiple-matches"
+          ]
+        },
+        "reconciliationState": {
+          "enum": [
+            "blocked",
+            "uncertain",
+            "confirmed",
+            "operator-review"
+          ]
+        }
       }
     },
     "reconciliationReport": {
@@ -145,22 +290,47 @@
         "nonClaims"
       ],
       "properties": {
-        "scenarioId": { "const": "SCN-TOOLS-EFFECTS" },
-        "requestKey": { "$ref": "#/$defs/requestKey" },
+        "scenarioId": {
+          "const": "SCN-TOOLS-EFFECTS"
+        },
+        "requestKey": {
+          "$ref": "#/$defs/requestKey"
+        },
         "lookup": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["attempts", "maximumAttempts", "matches"],
+          "required": [
+            "attempts",
+            "maximumAttempts",
+            "matches"
+          ],
           "properties": {
-            "attempts": { "type": "integer", "minimum": 0 },
-            "maximumAttempts": { "type": "integer", "minimum": 1 },
+            "attempts": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16
+            },
+            "maximumAttempts": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 16
+            },
             "matches": {
               "type": "array",
-              "items": { "$ref": "#/$defs/receipt" }
+              "items": {
+                "$ref": "#/$defs/receipt"
+              },
+              "maxItems": 16
             }
           }
         },
-        "ambiguity": { "enum": ["none", "zero-matches", "multiple-matches"] },
+        "ambiguity": {
+          "enum": [
+            "none",
+            "zero-matches",
+            "multiple-matches"
+          ]
+        },
         "allowedNextAction": {
           "enum": [
             "stop-confirmed",
@@ -170,34 +340,74 @@
             "separately-authorized-compensation"
           ]
         },
-        "incidentSummary": { "$ref": "#/$defs/text" },
+        "incidentSummary": {
+          "$ref": "#/$defs/text"
+        },
         "nonClaims": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/text" }
+          "items": {
+            "$ref": "#/$defs/text"
+          }
         }
       }
     },
     "traceRecord": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sequence", "kind", "observedAt", "requestKey", "phase", "redaction", "data"],
+      "required": [
+        "sequence",
+        "kind",
+        "observedAt",
+        "requestKey",
+        "phase",
+        "redaction",
+        "data"
+      ],
       "properties": {
-        "sequence": { "type": "integer", "minimum": 1 },
-        "kind": { "type": "string", "pattern": "^lmb\\.practicum\\.v1\\.[a-z0-9_.]+$" },
-        "observedAt": { "$ref": "#/$defs/timestamp" },
-        "requestKey": { "$ref": "#/$defs/requestKey" },
-        "phase": { "enum": ["proposal", "authorization", "dispatch", "observation", "verification", "reconciliation"] },
+        "sequence": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "kind": {
+          "type": "string",
+          "pattern": "^lmb\\.practicum\\.v1\\.[a-z0-9_.]+$"
+        },
+        "observedAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "requestKey": {
+          "$ref": "#/$defs/requestKey"
+        },
+        "phase": {
+          "enum": [
+            "proposal",
+            "authorization",
+            "dispatch",
+            "observation",
+            "verification",
+            "reconciliation"
+          ]
+        },
         "redaction": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["secretValuesPresent", "credentialReferencesOnly"],
+          "required": [
+            "secretValuesPresent",
+            "credentialReferencesOnly"
+          ],
           "properties": {
-            "secretValuesPresent": { "const": false },
-            "credentialReferencesOnly": { "const": true }
+            "secretValuesPresent": {
+              "const": false
+            },
+            "credentialReferencesOnly": {
+              "const": true
+            }
           }
         },
-        "data": { "type": "object" }
+        "data": {
+          "type": "object"
+        }
       }
     }
   }

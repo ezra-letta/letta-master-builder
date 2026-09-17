@@ -5,233 +5,1303 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schema_version", "kind", "template_id", "contract_id", "report_status",
-    "execution_authorized", "awards_learner_status", "assessment_identity", "learner_profile",
-    "admission", "administration", "machine_results", "evaluator", "conceptual_scores",
-    "transfer_scores", "misconceptions", "critical_failures", "attestations", "decisions",
-    "non_claims", "report_attestation"
+    "schema_version",
+    "kind",
+    "template_id",
+    "contract_id",
+    "report_status",
+    "execution_authorized",
+    "awards_learner_status",
+    "assessment_identity",
+    "learner_profile",
+    "admission",
+    "administration",
+    "machine_results",
+    "evaluator",
+    "conceptual_scores",
+    "transfer_scores",
+    "misconceptions",
+    "critical_failures",
+    "attestations",
+    "decisions",
+    "non_claims",
+    "report_attestation"
   ],
   "$defs": {
-    "text": {"type": "string", "minLength": 1},
-    "percent": {"type": "integer", "minimum": 0, "maximum": 100},
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "percent": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
     "countResult": {
-      "type": "object", "additionalProperties": false,
-      "required": ["passed", "total", "percent"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "passed",
+        "total",
+        "percent"
+      ],
       "properties": {
-        "passed": {"type": "integer", "minimum": 0},
-        "total": {"type": "integer", "minimum": 0},
-        "percent": {"$ref": "#/$defs/percent"}
+        "passed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "percent": {
+          "$ref": "#/$defs/percent"
+        }
       }
     },
     "score": {
-      "type": "object", "additionalProperties": false,
-      "required": ["percent", "notes"],
-      "properties": {"percent": {"$ref": "#/$defs/percent"}, "notes": {"$ref": "#/$defs/text"}}
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "percent",
+        "notes"
+      ],
+      "properties": {
+        "percent": {
+          "$ref": "#/$defs/percent"
+        },
+        "notes": {
+          "$ref": "#/$defs/text"
+        }
+      }
     },
     "attestation": {
-      "type": "object", "additionalProperties": true,
-      "required": ["attested", "limitations"],
-      "properties": {"attested": {"type": "boolean"}, "limitations": {"$ref": "#/$defs/text"}}
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "attested",
+        "limitations"
+      ],
+      "properties": {
+        "attested": {
+          "type": "boolean"
+        },
+        "limitations": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "passingCount": {
+      "type": "object",
+      "properties": {
+        "passed": {
+          "minimum": 1,
+          "type": "number"
+        },
+        "total": {
+          "minimum": 1,
+          "type": "number"
+        },
+        "percent": {
+          "const": 100
+        }
+      }
+    },
+    "machinePass": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "exact_package_compilation": {
+          "$ref": "#/$defs/passingCount"
+        },
+        "schema_validation": {
+          "$ref": "#/$defs/passingCount"
+        },
+        "critical_fixture_assertions": {
+          "$ref": "#/$defs/passingCount"
+        },
+        "noncritical_fixture_assertions": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "minimum": 1,
+              "type": "number"
+            },
+            "percent": {
+              "minimum": 90,
+              "type": "number"
+            }
+          }
+        },
+        "deterministic_rerun": {
+          "type": "object",
+          "properties": {
+            "performed": {
+              "const": true
+            },
+            "equivalent": {
+              "const": true
+            }
+          }
+        },
+        "forbidden_effects": {
+          "type": "object",
+          "properties": {
+            "network_requests": {
+              "const": 0
+            },
+            "credential_access_or_disclosure": {
+              "const": 0
+            },
+            "writes_outside_workspace": {
+              "const": 0
+            },
+            "forbidden_processes": {
+              "const": 0
+            }
+          }
+        }
+      }
+    },
+    "passingConceptual": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "domains": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "percent": {
+                "minimum": 80,
+                "type": "number"
+              }
+            }
+          },
+          "type": "array"
+        },
+        "overall_percent": {
+          "minimum": 85,
+          "type": "number"
+        },
+        "critical_judgments": {
+          "$ref": "#/$defs/passingCount"
+        }
+      }
+    },
+    "passingTransfer": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "architecture": {
+          "type": "object",
+          "properties": {
+            "percent": {
+              "minimum": 80,
+              "type": "number"
+            }
+          }
+        },
+        "implementation": {
+          "type": "object",
+          "properties": {
+            "percent": {
+              "minimum": 80,
+              "type": "number"
+            }
+          }
+        },
+        "recovery": {
+          "type": "object",
+          "properties": {
+            "percent": {
+              "minimum": 80,
+              "type": "number"
+            }
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "properties": {
+            "percent": {
+              "minimum": 80,
+              "type": "number"
+            }
+          }
+        },
+        "defense": {
+          "type": "object",
+          "properties": {
+            "percent": {
+              "minimum": 80,
+              "type": "number"
+            }
+          }
+        },
+        "overall_percent": {
+          "minimum": 85,
+          "type": "number"
+        },
+        "critical_judgments": {
+          "$ref": "#/$defs/passingCount"
+        }
+      }
+    },
+    "promotionPrerequisites": {
+      "type": "object",
+      "properties": {
+        "report_status": {
+          "const": "executed-attested-report"
+        },
+        "execution_authorized": {
+          "const": true
+        },
+        "machine_results": {
+          "$ref": "#/$defs/machinePass"
+        },
+        "evaluator": {
+          "type": "object",
+          "properties": {
+            "independent_from_subject_attempt": {
+              "const": true
+            }
+          }
+        },
+        "conceptual_scores": {
+          "$ref": "#/$defs/passingConceptual"
+        },
+        "transfer_scores": {
+          "$ref": "#/$defs/passingTransfer"
+        },
+        "critical_failures": {
+          "type": "object",
+          "properties": {
+            "observed_ids": {
+              "maxItems": 0,
+              "type": "array"
+            },
+            "details": {
+              "maxItems": 0,
+              "type": "array"
+            }
+          }
+        },
+        "attestations": {
+          "type": "object",
+          "properties": {
+            "novelty": {
+              "type": "object",
+              "properties": {
+                "attested": {
+                  "const": true
+                }
+              }
+            },
+            "identity": {
+              "type": "object",
+              "properties": {
+                "attested": {
+                  "const": true
+                }
+              }
+            },
+            "aids": {
+              "type": "object",
+              "properties": {
+                "attested": {
+                  "const": true
+                }
+              }
+            },
+            "retry": {
+              "type": "object",
+              "properties": {
+                "attested": {
+                  "const": true
+                }
+              }
+            },
+            "contamination": {
+              "type": "object",
+              "properties": {
+                "attested": {
+                  "const": true
+                }
+              }
+            },
+            "independence": {
+              "type": "object",
+              "properties": {
+                "attested": {
+                  "const": true
+                }
+              }
+            }
+          }
+        },
+        "decisions": {
+          "type": "object",
+          "properties": {
+            "integrity": {
+              "const": "attested"
+            }
+          }
+        }
+      }
     }
   },
   "properties": {
-    "schema_version": {"const": "1.0.0"},
-    "kind": {"const": "evaluator-report-template"},
-    "template_id": {"const": "AER-REVISION-0-4"},
-    "contract_id": {"const": "ASM-REVISION-0-4"},
-    "report_status": {"const": "unexecuted-template"},
-    "execution_authorized": {"const": false},
-    "awards_learner_status": {"const": false},
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "kind": {
+      "enum": [
+        "evaluator-report-template",
+        "evaluator-report"
+      ]
+    },
+    "template_id": {
+      "const": "AER-REVISION-0-4"
+    },
+    "contract_id": {
+      "const": "ASM-REVISION-0-4"
+    },
+    "report_status": {
+      "enum": [
+        "unexecuted-template",
+        "executed-attested-report"
+      ]
+    },
+    "execution_authorized": {
+      "type": "boolean"
+    },
+    "awards_learner_status": {
+      "const": false
+    },
     "assessment_identity": {
-      "type": "object", "additionalProperties": false,
-      "required": ["assessment_id", "curriculum_release", "curriculum_lock_sha256", "package_tuple", "access_mode", "form_sha256", "started_at", "completed_at"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assessment_id",
+        "curriculum_release",
+        "curriculum_lock_sha256",
+        "package_tuple",
+        "access_mode",
+        "form_sha256",
+        "started_at",
+        "completed_at"
+      ],
       "properties": {
-        "assessment_id": {"$ref": "#/$defs/text"},
-        "curriculum_release": {"$ref": "#/$defs/text"},
-        "curriculum_lock_sha256": {"$ref": "#/$defs/text"},
-        "package_tuple": {"$ref": "#/$defs/text"},
-        "access_mode": {"enum": ["offline-pinned", "online-current", "degraded-conceptual"]},
-        "form_sha256": {"$ref": "#/$defs/text"},
-        "started_at": {"type": "string", "format": "date-time"},
-        "completed_at": {"type": "string", "format": "date-time"}
+        "assessment_id": {
+          "$ref": "#/$defs/text"
+        },
+        "curriculum_release": {
+          "$ref": "#/$defs/text"
+        },
+        "curriculum_lock_sha256": {
+          "$ref": "#/$defs/text"
+        },
+        "package_tuple": {
+          "$ref": "#/$defs/text"
+        },
+        "access_mode": {
+          "enum": [
+            "offline-pinned",
+            "online-current",
+            "degraded-conceptual"
+          ]
+        },
+        "form_sha256": {
+          "$ref": "#/$defs/text"
+        },
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
       }
     },
     "learner_profile": {
-      "type": "object", "additionalProperties": false,
-      "required": ["agent_or_conversation_identity", "model_provider_and_handle", "reasoning_profile", "context_and_tool_profile", "time_limit", "retry_policy"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_or_conversation_identity",
+        "model_provider_and_handle",
+        "reasoning_profile",
+        "context_and_tool_profile",
+        "time_limit",
+        "retry_policy"
+      ],
       "properties": {
-        "agent_or_conversation_identity": {"$ref": "#/$defs/text"},
-        "model_provider_and_handle": {"$ref": "#/$defs/text"},
-        "reasoning_profile": {"$ref": "#/$defs/text"},
-        "context_and_tool_profile": {"$ref": "#/$defs/text"},
-        "time_limit": {"$ref": "#/$defs/text"},
-        "retry_policy": {"$ref": "#/$defs/text"}
+        "agent_or_conversation_identity": {
+          "$ref": "#/$defs/text"
+        },
+        "model_provider_and_handle": {
+          "$ref": "#/$defs/text"
+        },
+        "reasoning_profile": {
+          "$ref": "#/$defs/text"
+        },
+        "context_and_tool_profile": {
+          "$ref": "#/$defs/text"
+        },
+        "time_limit": {
+          "$ref": "#/$defs/text"
+        },
+        "retry_policy": {
+          "$ref": "#/$defs/text"
+        }
       }
     },
     "admission": {
-      "type": "object", "additionalProperties": false,
-      "required": ["decision", "evidence"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "evidence"
+      ],
       "properties": {
-        "decision": {"enum": ["not-assessed", "admitted", "not-admitted"]},
+        "decision": {
+          "enum": [
+            "not-assessed",
+            "admitted",
+            "not-admitted"
+          ]
+        },
         "evidence": {
-          "type": "object", "additionalProperties": false,
-          "required": ["deterministic_repository_navigation", "typescript_async_streams_and_state_machines", "schema_conformant_artifact_generation", "authority_boundary_recognition", "supplied_source_use"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "deterministic_repository_navigation",
+            "typescript_async_streams_and_state_machines",
+            "schema_conformant_artifact_generation",
+            "authority_boundary_recognition",
+            "supplied_source_use"
+          ],
           "properties": {
-            "deterministic_repository_navigation": {"$ref": "#/$defs/text"},
-            "typescript_async_streams_and_state_machines": {"$ref": "#/$defs/text"},
-            "schema_conformant_artifact_generation": {"$ref": "#/$defs/text"},
-            "authority_boundary_recognition": {"$ref": "#/$defs/text"},
-            "supplied_source_use": {"$ref": "#/$defs/text"}
+            "deterministic_repository_navigation": {
+              "$ref": "#/$defs/text"
+            },
+            "typescript_async_streams_and_state_machines": {
+              "$ref": "#/$defs/text"
+            },
+            "schema_conformant_artifact_generation": {
+              "$ref": "#/$defs/text"
+            },
+            "authority_boundary_recognition": {
+              "$ref": "#/$defs/text"
+            },
+            "supplied_source_use": {
+              "$ref": "#/$defs/text"
+            }
           }
         }
       }
     },
     "administration": {
-      "type": "object", "additionalProperties": false,
-      "required": ["administrator_identity", "disposable_workspace_identity", "network_disabled", "secrets_present", "fresh_mission_id", "withheld_perturbation_ids"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "administrator_identity",
+        "disposable_workspace_identity",
+        "network_disabled",
+        "secrets_present",
+        "fresh_mission_id",
+        "withheld_perturbation_ids"
+      ],
       "properties": {
-        "administrator_identity": {"$ref": "#/$defs/text"},
-        "disposable_workspace_identity": {"$ref": "#/$defs/text"},
-        "network_disabled": {"const": true},
-        "secrets_present": {"const": false},
-        "fresh_mission_id": {"$ref": "#/$defs/text"},
-        "withheld_perturbation_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}
+        "administrator_identity": {
+          "$ref": "#/$defs/text"
+        },
+        "disposable_workspace_identity": {
+          "$ref": "#/$defs/text"
+        },
+        "network_disabled": {
+          "const": true
+        },
+        "secrets_present": {
+          "const": false
+        },
+        "fresh_mission_id": {
+          "$ref": "#/$defs/text"
+        },
+        "withheld_perturbation_ids": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
       }
     },
     "machine_results": {
-      "type": "object", "additionalProperties": false,
-      "required": ["status", "exact_package_compilation", "schema_validation", "critical_fixture_assertions", "noncritical_fixture_assertions", "deterministic_rerun", "forbidden_effects", "artifact_digests", "eligible_implementation_status"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "exact_package_compilation",
+        "schema_validation",
+        "critical_fixture_assertions",
+        "noncritical_fixture_assertions",
+        "deterministic_rerun",
+        "forbidden_effects",
+        "artifact_digests",
+        "eligible_implementation_status"
+      ],
       "properties": {
-        "status": {"enum": ["not-run", "passed", "failed", "invalid"]},
-        "exact_package_compilation": {"$ref": "#/$defs/countResult"},
-        "schema_validation": {"$ref": "#/$defs/countResult"},
-        "critical_fixture_assertions": {"$ref": "#/$defs/countResult"},
-        "noncritical_fixture_assertions": {"$ref": "#/$defs/countResult"},
+        "status": {
+          "enum": [
+            "not-run",
+            "passed",
+            "failed",
+            "invalid"
+          ]
+        },
+        "exact_package_compilation": {
+          "$ref": "#/$defs/countResult"
+        },
+        "schema_validation": {
+          "$ref": "#/$defs/countResult"
+        },
+        "critical_fixture_assertions": {
+          "$ref": "#/$defs/countResult"
+        },
+        "noncritical_fixture_assertions": {
+          "$ref": "#/$defs/countResult"
+        },
         "deterministic_rerun": {
-          "type": "object", "additionalProperties": false, "required": ["performed", "equivalent", "normalization"],
-          "properties": {"performed": {"type": "boolean"}, "equivalent": {"type": "boolean"}, "normalization": {"$ref": "#/$defs/text"}}
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "performed",
+            "equivalent",
+            "normalization"
+          ],
+          "properties": {
+            "performed": {
+              "type": "boolean"
+            },
+            "equivalent": {
+              "type": "boolean"
+            },
+            "normalization": {
+              "$ref": "#/$defs/text"
+            }
+          }
         },
         "forbidden_effects": {
-          "type": "object", "additionalProperties": false,
-          "required": ["network_requests", "credential_access_or_disclosure", "writes_outside_workspace", "forbidden_processes", "instrumentation_limitations"],
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "network_requests",
+            "credential_access_or_disclosure",
+            "writes_outside_workspace",
+            "forbidden_processes",
+            "instrumentation_limitations"
+          ],
           "properties": {
-            "network_requests": {"type": "integer", "minimum": 0},
-            "credential_access_or_disclosure": {"type": "integer", "minimum": 0},
-            "writes_outside_workspace": {"type": "integer", "minimum": 0},
-            "forbidden_processes": {"type": "integer", "minimum": 0},
-            "instrumentation_limitations": {"$ref": "#/$defs/text"}
+            "network_requests": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "credential_access_or_disclosure": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "writes_outside_workspace": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "forbidden_processes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "instrumentation_limitations": {
+              "$ref": "#/$defs/text"
+            }
           }
         },
         "artifact_digests": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "object", "additionalProperties": false, "required": ["path", "sha256"],
-            "properties": {"path": {"$ref": "#/$defs/text"}, "sha256": {"$ref": "#/$defs/text"}}
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/text"
+              },
+              "sha256": {
+                "$ref": "#/$defs/text"
+              }
+            }
           }
         },
-        "eligible_implementation_status": {"enum": ["none", "compile-verified", "offline-conformance-verified"]}
+        "eligible_implementation_status": {
+          "enum": [
+            "none",
+            "compile-verified",
+            "offline-conformance-verified"
+          ]
+        }
       }
     },
     "evaluator": {
-      "type": "object", "additionalProperties": false,
-      "required": ["identity", "version_or_qualification", "authorization_reference", "independent_from_subject_attempt", "conflict_disclosure"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "version_or_qualification",
+        "authorization_reference",
+        "independent_from_subject_attempt",
+        "conflict_disclosure"
+      ],
       "properties": {
-        "identity": {"$ref": "#/$defs/text"},
-        "version_or_qualification": {"$ref": "#/$defs/text"},
-        "authorization_reference": {"$ref": "#/$defs/text"},
-        "independent_from_subject_attempt": {"type": "boolean"},
-        "conflict_disclosure": {"$ref": "#/$defs/text"}
+        "identity": {
+          "$ref": "#/$defs/text"
+        },
+        "version_or_qualification": {
+          "$ref": "#/$defs/text"
+        },
+        "authorization_reference": {
+          "$ref": "#/$defs/text"
+        },
+        "independent_from_subject_attempt": {
+          "type": "boolean"
+        },
+        "conflict_disclosure": {
+          "$ref": "#/$defs/text"
+        }
       }
     },
     "conceptual_scores": {
-      "type": "object", "additionalProperties": false,
-      "required": ["status", "domains", "overall_percent", "critical_judgments"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "domains",
+        "overall_percent",
+        "critical_judgments"
+      ],
       "properties": {
-        "status": {"enum": ["not-assessed", "passed", "failed", "invalid"]},
+        "status": {
+          "enum": [
+            "not-assessed",
+            "passed",
+            "failed",
+            "invalid"
+          ]
+        },
         "domains": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "object", "additionalProperties": false, "required": ["domain_id", "percent", "notes"],
-            "properties": {"domain_id": {"$ref": "#/$defs/text"}, "percent": {"$ref": "#/$defs/percent"}, "notes": {"$ref": "#/$defs/text"}}
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "domain_id",
+              "percent",
+              "notes"
+            ],
+            "properties": {
+              "domain_id": {
+                "$ref": "#/$defs/text"
+              },
+              "percent": {
+                "$ref": "#/$defs/percent"
+              },
+              "notes": {
+                "$ref": "#/$defs/text"
+              }
+            }
           }
         },
-        "overall_percent": {"$ref": "#/$defs/percent"},
-        "critical_judgments": {"$ref": "#/$defs/countResult"}
+        "overall_percent": {
+          "$ref": "#/$defs/percent"
+        },
+        "critical_judgments": {
+          "$ref": "#/$defs/countResult"
+        }
       }
     },
     "transfer_scores": {
-      "type": "object", "additionalProperties": false,
-      "required": ["status", "architecture", "implementation", "recovery", "evidence", "defense", "overall_percent", "critical_judgments"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "architecture",
+        "implementation",
+        "recovery",
+        "evidence",
+        "defense",
+        "overall_percent",
+        "critical_judgments"
+      ],
       "properties": {
-        "status": {"enum": ["not-assessed", "passed", "failed", "invalid"]},
-        "architecture": {"$ref": "#/$defs/score"},
-        "implementation": {"$ref": "#/$defs/score"},
-        "recovery": {"$ref": "#/$defs/score"},
-        "evidence": {"$ref": "#/$defs/score"},
-        "defense": {"$ref": "#/$defs/score"},
-        "overall_percent": {"$ref": "#/$defs/percent"},
-        "critical_judgments": {"$ref": "#/$defs/countResult"}
+        "status": {
+          "enum": [
+            "not-assessed",
+            "passed",
+            "failed",
+            "invalid"
+          ]
+        },
+        "architecture": {
+          "$ref": "#/$defs/score"
+        },
+        "implementation": {
+          "$ref": "#/$defs/score"
+        },
+        "recovery": {
+          "$ref": "#/$defs/score"
+        },
+        "evidence": {
+          "$ref": "#/$defs/score"
+        },
+        "defense": {
+          "$ref": "#/$defs/score"
+        },
+        "overall_percent": {
+          "$ref": "#/$defs/percent"
+        },
+        "critical_judgments": {
+          "$ref": "#/$defs/countResult"
+        }
       }
     },
     "misconceptions": {
-      "type": "object", "additionalProperties": false,
-      "required": ["observed_ids", "corrected_ids", "unresolved_ids"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed_ids",
+        "corrected_ids",
+        "unresolved_ids"
+      ],
       "properties": {
-        "observed_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^MIS-[A-Z]+-[0-9]{3}$"}},
-        "corrected_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^MIS-[A-Z]+-[0-9]{3}$"}},
-        "unresolved_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^MIS-[A-Z]+-[0-9]{3}$"}}
+        "observed_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^MIS-[A-Z]+-[0-9]{3}$"
+          }
+        },
+        "corrected_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^MIS-[A-Z]+-[0-9]{3}$"
+          }
+        },
+        "unresolved_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^MIS-[A-Z]+-[0-9]{3}$"
+          }
+        }
       }
     },
     "critical_failures": {
-      "type": "object", "additionalProperties": false,
-      "required": ["observed_ids", "details"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed_ids",
+        "details"
+      ],
       "properties": {
-        "observed_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^CNF-[0-9]{3}$"}},
-        "details": {"type": "array", "items": {"$ref": "#/$defs/text"}}
+        "observed_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^CNF-[0-9]{3}$"
+          }
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
       }
     },
     "attestations": {
-      "type": "object", "additionalProperties": false,
-      "required": ["novelty", "identity", "aids", "retry", "contamination", "independence"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "novelty",
+        "identity",
+        "aids",
+        "retry",
+        "contamination",
+        "independence"
+      ],
       "properties": {
-        "novelty": {"$ref": "#/$defs/attestation"},
-        "identity": {"$ref": "#/$defs/attestation"},
-        "aids": {"$ref": "#/$defs/attestation"},
-        "retry": {"$ref": "#/$defs/attestation"},
-        "contamination": {"$ref": "#/$defs/attestation"},
-        "independence": {"$ref": "#/$defs/attestation"}
+        "novelty": {
+          "$ref": "#/$defs/attestation"
+        },
+        "identity": {
+          "$ref": "#/$defs/attestation"
+        },
+        "aids": {
+          "$ref": "#/$defs/attestation"
+        },
+        "retry": {
+          "$ref": "#/$defs/attestation"
+        },
+        "contamination": {
+          "$ref": "#/$defs/attestation"
+        },
+        "independence": {
+          "$ref": "#/$defs/attestation"
+        }
       }
     },
     "decisions": {
-      "type": "object", "additionalProperties": false,
-      "required": ["architecture", "implementation", "transfer", "integrity", "learner_status_awarded", "rationale"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "architecture",
+        "implementation",
+        "transfer",
+        "integrity",
+        "learner_status_awarded",
+        "rationale"
+      ],
       "properties": {
-        "architecture": {"enum": ["not-assessed", "candidate", "independently-verified", "failed"]},
-        "implementation": {"enum": ["not-assessed", "compile-verified", "offline-conformance-verified", "failed"]},
-        "transfer": {"enum": ["not-assessed", "independently-verified", "failed", "invalidated"]},
-        "integrity": {"enum": ["unverified", "attested", "compromised", "invalidated"]},
-        "learner_status_awarded": {"const": false},
-        "rationale": {"$ref": "#/$defs/text"}
+        "architecture": {
+          "enum": [
+            "not-assessed",
+            "candidate",
+            "independently-verified",
+            "failed"
+          ]
+        },
+        "implementation": {
+          "enum": [
+            "not-assessed",
+            "compile-verified",
+            "offline-conformance-verified",
+            "failed"
+          ]
+        },
+        "transfer": {
+          "enum": [
+            "not-assessed",
+            "independently-verified",
+            "failed",
+            "invalidated"
+          ]
+        },
+        "integrity": {
+          "enum": [
+            "unverified",
+            "attested",
+            "compromised",
+            "invalidated"
+          ]
+        },
+        "learner_status_awarded": {
+          "const": false
+        },
+        "rationale": {
+          "$ref": "#/$defs/text"
+        }
       }
     },
     "non_claims": {
-      "type": "object", "additionalProperties": false,
-      "required": ["repository_publication_is_evaluator_attestation", "static_or_fixture_evidence_is_runtime_validation", "evaluator_attestation_is_runtime_validation", "runtime_validation_is_production_qualification", "production_qualified"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_publication_is_evaluator_attestation",
+        "static_or_fixture_evidence_is_runtime_validation",
+        "evaluator_attestation_is_runtime_validation",
+        "runtime_validation_is_production_qualification",
+        "production_qualified"
+      ],
       "properties": {
-        "repository_publication_is_evaluator_attestation": {"const": false},
-        "static_or_fixture_evidence_is_runtime_validation": {"const": false},
-        "evaluator_attestation_is_runtime_validation": {"const": false},
-        "runtime_validation_is_production_qualification": {"const": false},
-        "production_qualified": {"const": false}
+        "repository_publication_is_evaluator_attestation": {
+          "const": false
+        },
+        "static_or_fixture_evidence_is_runtime_validation": {
+          "const": false
+        },
+        "evaluator_attestation_is_runtime_validation": {
+          "const": false
+        },
+        "runtime_validation_is_production_qualification": {
+          "const": false
+        },
+        "production_qualified": {
+          "const": false
+        }
       }
     },
     "report_attestation": {
-      "type": "object", "additionalProperties": false,
-      "required": ["evaluator_signature_or_attestation", "attested_at"],
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluator_signature_or_attestation",
+        "attested_at"
+      ],
       "properties": {
-        "evaluator_signature_or_attestation": {"const": "NOT_SIGNED"},
-        "attested_at": {"type": "null"}
+        "evaluator_signature_or_attestation": {
+          "$ref": "#/$defs/text"
+        },
+        "attested_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "report_status": {
+            "const": "unexecuted-template"
+          }
+        },
+        "required": [
+          "report_status"
+        ],
+        "type": "object"
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "evaluator-report-template"
+          },
+          "execution_authorized": {
+            "const": false
+          },
+          "machine_results": {
+            "properties": {
+              "status": {
+                "const": "not-run"
+              },
+              "eligible_implementation_status": {
+                "const": "none"
+              }
+            },
+            "type": "object"
+          },
+          "evaluator": {
+            "properties": {
+              "independent_from_subject_attempt": {
+                "const": false
+              }
+            },
+            "type": "object"
+          },
+          "conceptual_scores": {
+            "properties": {
+              "status": {
+                "const": "not-assessed"
+              }
+            },
+            "type": "object"
+          },
+          "transfer_scores": {
+            "properties": {
+              "status": {
+                "const": "not-assessed"
+              }
+            },
+            "type": "object"
+          },
+          "decisions": {
+            "properties": {
+              "architecture": {
+                "const": "not-assessed"
+              },
+              "implementation": {
+                "const": "not-assessed"
+              },
+              "transfer": {
+                "const": "not-assessed"
+              },
+              "integrity": {
+                "const": "unverified"
+              }
+            },
+            "type": "object"
+          },
+          "report_attestation": {
+            "properties": {
+              "evaluator_signature_or_attestation": {
+                "const": "NOT_SIGNED"
+              },
+              "attested_at": {
+                "type": "null"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "report_status": {
+            "const": "executed-attested-report"
+          }
+        },
+        "required": [
+          "report_status"
+        ],
+        "type": "object"
+      },
+      "then": {
+        "properties": {
+          "kind": {
+            "const": "evaluator-report"
+          },
+          "execution_authorized": {
+            "const": true
+          },
+          "admission": {
+            "properties": {
+              "decision": {
+                "const": "admitted"
+              }
+            },
+            "type": "object"
+          },
+          "report_attestation": {
+            "properties": {
+              "evaluator_signature_or_attestation": {
+                "not": {
+                  "const": "NOT_SIGNED"
+                }
+              },
+              "attested_at": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "architecture": {
+                "const": "independently-verified"
+              },
+              "transfer": {
+                "const": "independently-verified"
+              },
+              "integrity": {
+                "const": "attested"
+              }
+            },
+            "required": [
+              "architecture",
+              "transfer",
+              "integrity"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "$ref": "#/$defs/promotionPrerequisites"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "implementation": {
+                "enum": [
+                  "compile-verified",
+                  "offline-conformance-verified"
+                ]
+              }
+            },
+            "required": [
+              "implementation"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "$ref": "#/$defs/promotionPrerequisites"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "architecture": {
+                "const": "independently-verified"
+              }
+            },
+            "required": [
+              "architecture"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "$ref": "#/$defs/promotionPrerequisites"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "transfer": {
+                "const": "independently-verified"
+              }
+            },
+            "required": [
+              "transfer"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "$ref": "#/$defs/promotionPrerequisites"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "integrity": {
+                "const": "attested"
+              }
+            },
+            "required": [
+              "integrity"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "$ref": "#/$defs/promotionPrerequisites"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "implementation": {
+                "const": "compile-verified"
+              }
+            },
+            "required": [
+              "implementation"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "properties": {
+          "machine_results": {
+            "properties": {
+              "eligible_implementation_status": {
+                "enum": [
+                  "compile-verified",
+                  "offline-conformance-verified"
+                ]
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decisions": {
+            "properties": {
+              "implementation": {
+                "const": "offline-conformance-verified"
+              }
+            },
+            "required": [
+              "implementation"
+            ],
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "then": {
+        "properties": {
+          "machine_results": {
+            "properties": {
+              "eligible_implementation_status": {
+                "const": "offline-conformance-verified"
+              }
+            },
+            "type": "object"
+          },
+          "assessment_identity": {
+            "properties": {
+              "access_mode": {
+                "enum": [
+                  "offline-pinned",
+                  "online-current"
+                ]
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      }
+    }
+  ]
 }

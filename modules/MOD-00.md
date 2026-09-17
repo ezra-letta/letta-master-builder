@@ -205,7 +205,7 @@ Freshness is event-driven as well as release-driven. A selected package or depen
 
 Maintenance should compare both SDK entry points, claim-bearing members, discrepancies, examples, and prose impact. Static gates include schemas, reciprocal references, exact-lock compilation, fixtures, legacy boundaries, source use, secrets, links, cold-reader traversal, clean-copy behavior, and integrity generation. Independent factual, pedagogical, traceability, licensing, and code review remain necessary even when automation passes.
 
-The current manifest also demonstrates that “compile-verified” can coexist with “publication blocked.” Its compile-only dependency closure carries known upstream advisories and incomplete transitive license metadata. A successful compile does not cancel dependency risk. Release discipline permits multiple truths to remain visible rather than compressing them into one green or red badge.
+The current manifest also demonstrates that “compile-verified” can coexist with “publication blocked.” Its compile-only dependency closure carries known upstream advisories and lacks accountable transitive-license clearance. A successful compile does not cancel dependency risk. Release discipline permits multiple truths to remain visible rather than compressing them into one green or red badge.
 
 ### Immutability and errata
 
